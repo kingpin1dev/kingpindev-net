@@ -54,12 +54,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rg
 
 /* SKILLS STRIP */
 .strip{overflow:hidden;position:relative;padding:13px 0}
-.strip::before,.strip::after{content:'';position:absolute;top:0;width:80px;height:100%;z-index:2;pointer-events:none}
+.strip::before,.strip::after{content:'';position:absolute;top:0;width:100px;height:100%;z-index:2;pointer-events:none}
 .strip::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
 .strip::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
-.strip-t{display:flex;width:max-content;gap:28px;padding:0 14px;animation:stripL 24s linear infinite}
-.strip:hover .strip-t{animation-play-state:paused}
-@keyframes stripL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.strip-inner{display:flex;width:max-content;animation:stripL 28s linear infinite;will-change:transform}
+.strip:hover .strip-inner{animation-play-state:paused}
+.strip-t{display:flex;gap:28px;padding:0 14px;flex-shrink:0}
+@keyframes stripL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .sk{display:flex;align-items:center;gap:8px;font-size:12px;font-family:'Space Mono',monospace;color:rgba(255,255,255,.4);white-space:nowrap;transition:color .2s}
 .sk:hover{color:rgba(255,255,255,.85)}
 .sk i{font-size:17px}
@@ -171,23 +172,27 @@ section{padding:88px 0 48px;position:relative;z-index:1}
 <!-- SKILLS STRIP -->
 <div style="position:relative;z-index:1;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)">
   <div class="strip">
-    <div class="strip-t">
-      <div class="sk"><i class="fab fa-js" style="color:#f1e05a"></i>JavaScript</div>
-      <div class="sk"><i class="fab fa-python" style="color:#3572A5"></i>Python</div>
-      <div class="sk"><i class="fab fa-windows" style="color:#a855f7"></i>C# / .NET</div>
-      <div class="sk"><i class="fas fa-wind" style="color:#06b6d4"></i>Tailwind CSS</div>
-      <div class="sk"><i class="fas fa-video" style="color:#ec4899"></i>Premiere Pro</div>
-      <div class="sk"><i class="fas fa-film" style="color:#6366f1"></i>After Effects</div>
-      <div class="sk"><i class="fab fa-figma" style="color:#f97316"></i>Figma</div>
-      <div class="sk"><i class="fab fa-html5" style="color:#e44d26"></i>HTML / CSS</div>
-      <div class="sk"><i class="fab fa-js" style="color:#f1e05a"></i>JavaScript</div>
-      <div class="sk"><i class="fab fa-python" style="color:#3572A5"></i>Python</div>
-      <div class="sk"><i class="fab fa-windows" style="color:#a855f7"></i>C# / .NET</div>
-      <div class="sk"><i class="fas fa-wind" style="color:#06b6d4"></i>Tailwind CSS</div>
-      <div class="sk"><i class="fas fa-video" style="color:#ec4899"></i>Premiere Pro</div>
-      <div class="sk"><i class="fas fa-film" style="color:#6366f1"></i>After Effects</div>
-      <div class="sk"><i class="fab fa-figma" style="color:#f97316"></i>Figma</div>
-      <div class="sk"><i class="fab fa-html5" style="color:#e44d26"></i>HTML / CSS</div>
+    <div class="strip-inner">
+      <div class="strip-t">
+        <div class="sk"><i class="fab fa-js" style="color:#f1e05a"></i>JavaScript</div>
+        <div class="sk"><i class="fab fa-python" style="color:#3572A5"></i>Python</div>
+        <div class="sk"><i class="fab fa-windows" style="color:#a855f7"></i>C# / .NET</div>
+        <div class="sk"><i class="fas fa-wind" style="color:#06b6d4"></i>Tailwind CSS</div>
+        <div class="sk"><i class="fas fa-video" style="color:#ec4899"></i>Premiere Pro</div>
+        <div class="sk"><i class="fas fa-film" style="color:#6366f1"></i>After Effects</div>
+        <div class="sk"><i class="fab fa-figma" style="color:#f97316"></i>Figma</div>
+        <div class="sk"><i class="fab fa-html5" style="color:#e44d26"></i>HTML / CSS</div>
+      </div>
+      <div class="strip-t" aria-hidden="true">
+        <div class="sk"><i class="fab fa-js" style="color:#f1e05a"></i>JavaScript</div>
+        <div class="sk"><i class="fab fa-python" style="color:#3572A5"></i>Python</div>
+        <div class="sk"><i class="fab fa-windows" style="color:#a855f7"></i>C# / .NET</div>
+        <div class="sk"><i class="fas fa-wind" style="color:#06b6d4"></i>Tailwind CSS</div>
+        <div class="sk"><i class="fas fa-video" style="color:#ec4899"></i>Premiere Pro</div>
+        <div class="sk"><i class="fas fa-film" style="color:#6366f1"></i>After Effects</div>
+        <div class="sk"><i class="fab fa-figma" style="color:#f97316"></i>Figma</div>
+        <div class="sk"><i class="fab fa-html5" style="color:#e44d26"></i>HTML / CSS</div>
+      </div>
     </div>
   </div>
 </div>
