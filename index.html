@@ -8,409 +8,547 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--cyan:#00f5ff;--purple:#b400ff;--pink:#ff006e;--green:#00ff87;--bg:#04030a;--glass:rgba(255,255,255,0.04);--border:rgba(255,255,255,0.08)}
+:root{--c:#00f5ff;--p:#b400ff;--pk:#ff006e;--g:#00ff87;--bg:#04030a;--gl:rgba(255,255,255,0.04);--bd:rgba(255,255,255,0.08)}
 html{scroll-behavior:smooth}
-body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:#e0e0e0;overflow-x:hidden;min-height:100vh}
-#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
-.blob{position:fixed;border-radius:50%;filter:blur(120px);opacity:.15;animation:blobFloat 14s ease-in-out infinite;pointer-events:none;z-index:0}
-.blob-1{width:600px;height:600px;background:var(--purple);top:-150px;left:-150px;animation-delay:0s}
-.blob-2{width:500px;height:500px;background:var(--cyan);top:40%;right:-100px;animation-delay:-5s}
-.blob-3{width:400px;height:400px;background:var(--pink);bottom:-100px;left:30%;animation-delay:-9s}
-@keyframes blobFloat{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.05)}66%{transform:translate(-20px,40px) scale(.95)}}
-.container{max-width:920px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;background:rgba(4,3,10,.7);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-nav .inner{max-width:920px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-family:'Space Mono',monospace;font-size:18px;font-weight:700;background:linear-gradient(90deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.nav-links{display:flex;gap:24px}
-.nav-links a{color:#666;text-decoration:none;font-size:13px;font-weight:500;letter-spacing:.05em;transition:color .2s;text-transform:uppercase}
-.nav-links a:hover{color:var(--cyan)}
-.glass{background:var(--glass);border:1px solid var(--border);border-radius:20px;backdrop-filter:blur(12px);transition:border-color .3s,transform .3s}
-.glass:hover{border-color:rgba(255,255,255,.15);transform:translateY(-2px)}
-section{padding:100px 0 60px}
-.section-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;display:flex;align-items:center;gap:10px}
-.section-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(0,245,255,.3),transparent)}
-.section-title{font-size:clamp(26px,4vw,38px);font-weight:700;letter-spacing:-.02em;color:#fff;margin-bottom:40px}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:#e0e0e0;overflow-x:hidden}
+#bgc{position:fixed;inset:0;z-index:0;pointer-events:none}
+.blob{position:fixed;border-radius:50%;filter:blur(120px);opacity:.14;animation:bf 14s ease-in-out infinite;pointer-events:none;z-index:0}
+.b1{width:600px;height:600px;background:var(--p);top:-150px;left:-150px}
+.b2{width:500px;height:500px;background:var(--c);top:40%;right:-100px;animation-delay:-5s}
+.b3{width:400px;height:400px;background:var(--pk);bottom:-100px;left:30%;animation-delay:-9s}
+@keyframes bf{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.05)}66%{transform:translate(-20px,40px) scale(.95)}}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(4,3,10,.75);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd)}
+nav .ni{max-width:920px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Space Mono',monospace;font-size:17px;font-weight:700;background:linear-gradient(90deg,var(--c),var(--p));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nl{display:flex;gap:22px}
+.nl a{color:#555;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.06em;transition:color .2s;text-transform:uppercase}
+.nl a:hover,.nl a.act{color:var(--c)}
+/* GLASS */
+.gl{background:var(--gl);border:1px solid var(--bd);border-radius:18px;backdrop-filter:blur(12px);transition:border-color .3s,transform .3s}
+.gl:hover{border-color:rgba(255,255,255,.14);transform:translateY(-2px)}
+/* SECTION */
+section{padding:90px 0 50px}
+.slb{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--c);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.slb::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(0,245,255,.3),transparent)}
+.stl{font-size:clamp(24px,4vw,36px);font-weight:700;letter-spacing:-.02em;color:#fff;margin-bottom:36px}
+/* REVEAL */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+.rv.on{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#222;border-radius:2px}
-
+@keyframes fU{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fD{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pu{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#1a1a1a;border-radius:2px}
 /* HERO */
-.hero{text-align:center;padding:180px 0 100px}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,245,255,.08);border:1px solid rgba(0,245,255,.2);border-radius:100px;padding:6px 16px;font-size:12px;font-family:'Space Mono',monospace;color:var(--cyan);margin-bottom:28px;animation:fadeDown .6s ease both}
-.hero-badge .dot{width:6px;height:6px;background:var(--cyan);border-radius:50%;animation:pulse 2s ease-in-out infinite}
-.hero h1{font-size:clamp(44px,8vw,90px);font-weight:700;line-height:1;letter-spacing:-.03em;margin-bottom:20px;animation:fadeUp .7s .1s ease both}
-.hero h1 .name{display:block;background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.5) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero h1 .role{display:block;font-size:.42em;font-weight:400;font-family:'Space Mono',monospace;background:linear-gradient(90deg,var(--cyan),var(--purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-top:10px}
-.hero-desc{max-width:500px;margin:0 auto 36px;color:#777;line-height:1.7;font-size:15px;animation:fadeUp .7s .2s ease both}
-.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fadeUp .7s .3s ease both}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:14px;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none;font-family:'Space Grotesk',sans-serif}
-.btn-primary{background:linear-gradient(135deg,var(--cyan),var(--purple));color:#000}
-.btn-primary:hover{opacity:.85;transform:translateY(-1px)}
-.btn-ghost{background:var(--glass);border:1px solid var(--border);color:#ccc;backdrop-filter:blur(8px)}
-.btn-ghost:hover{border-color:rgba(255,255,255,.2);color:#fff;transform:translateY(-1px)}
+.hero{text-align:center;padding:170px 0 90px}
+.hbadge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,245,255,.07);border:1px solid rgba(0,245,255,.2);border-radius:100px;padding:5px 15px;font-size:11px;font-family:'Space Mono',monospace;color:var(--c);margin-bottom:24px;animation:fD .6s ease both}
+.hbadge .dt{width:6px;height:6px;background:var(--c);border-radius:50%;animation:pu 2s ease-in-out infinite}
+.avatar{width:100px;height:100px;border-radius:50%;border:2px solid var(--c);padding:3px;margin-bottom:24px;box-shadow:0 0 20px rgba(0,245,255,.25);animation:fU .6s .05s ease both}
+.hero h1{font-size:clamp(40px,7vw,84px);font-weight:700;line-height:1;letter-spacing:-.03em;margin-bottom:18px;animation:fU .7s .1s ease both}
+.hn{display:block;background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.45) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hr{display:block;font-size:.4em;font-weight:400;font-family:'Space Mono',monospace;background:linear-gradient(90deg,var(--c),var(--p));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-top:8px}
+.hdesc{max-width:480px;margin:0 auto 32px;color:#666;line-height:1.7;font-size:14px;animation:fU .7s .2s ease both}
+.hact{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;animation:fU .7s .3s ease both}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 22px;border-radius:11px;font-size:13px;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none;font-family:'Space Grotesk',sans-serif}
+.bp{background:linear-gradient(135deg,var(--c),var(--p));color:#000}.bp:hover{opacity:.85;transform:translateY(-1px)}
+.bg2{background:var(--gl);border:1px solid var(--bd);color:#ccc;backdrop-filter:blur(8px)}.bg2:hover{border-color:rgba(255,255,255,.2);color:#fff;transform:translateY(-1px)}
+/* MARQUEE */
+.mq{overflow:hidden;white-space:nowrap;width:100%;position:relative;cursor:grab;touch-action:pan-y;background:rgba(9,11,15,.8);border:1px solid var(--bd);border-radius:14px;padding:16px 0}
+.mq:active{cursor:grabbing}
+.mq::before,.mq::after{content:"";position:absolute;top:0;width:60px;height:100%;z-index:2;pointer-events:none}
+.mq::before{left:0;background:linear-gradient(to right,#04030a,transparent)}
+.mq::after{right:0;background:linear-gradient(to left,#04030a,transparent)}
+.mqt{display:flex;width:max-content;will-change:transform}
+.skill{display:flex;align-items:center;gap:8px;padding:0 28px;color:#444;transition:color .2s;font-size:13px;font-family:'Space Mono',monospace}
+.skill:hover{color:#ccc}
+.skill i{font-size:20px}
+/* HARDWARE */
+.term{background:#090b0f;border:1px solid rgba(255,255,255,.07);border-radius:14px;overflow:hidden}
+.term-bar{background:#0f1117;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:6px}
+.term-bar .tc{width:10px;height:10px;border-radius:50%}
+.term-body{padding:20px 24px;font-family:'Space Mono',monospace;font-size:12px;line-height:1.9;overflow-x:auto}
+.tc1{background:#ff5f57}.tc2{background:#ffbd2e}.tc3{background:#28c840}
+.hw-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+@media(max-width:700px){.hw-grid{grid-template-columns:1fr}}
+/* ACTIVITY */
+.act-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.act-card{padding:20px;min-height:130px;display:flex;flex-direction:column;justify-content:center}
+/* PROJECTS */
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:18px}
+.pc{padding:26px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden}
+.pc::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at top left,var(--ac,rgba(0,245,255,.07)),transparent 60%);opacity:0;transition:opacity .3s}
+.pc:hover::before{opacity:1}
+.pi{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:19px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07)}
+.pb{font-size:10px;font-family:'Space Mono',monospace;padding:2px 9px;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#777;display:inline-block;margin-bottom:2px}
+.pn{font-size:18px;font-weight:700;color:#fff}
+.pd{font-size:12px;color:#555;line-height:1.6;flex:1}
+.ptags{display:flex;flex-wrap:wrap;gap:5px}
+.tag{font-size:10px;font-family:'Space Mono',monospace;padding:2px 9px;border-radius:5px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);color:#444}
+.pf{display:flex;gap:8px;padding-top:12px;border-top:1px solid rgba(255,255,255,.05)}
+.pbtn{flex:1;display:flex;align-items:center;justify-content:center;gap:5px;padding:9px;border-radius:9px;font-size:11px;font-weight:600;text-decoration:none;transition:all .2s;border:1px solid transparent}
+.pbtn.pr{color:#000}.pbtn.pr:hover{opacity:.8}
+.pbtn.pg2{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.07);color:#666}.pbtn.pg2:hover{color:#fff;border-color:rgba(255,255,255,.18)}
+/* STEAM */
+.sg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:28px}
+@media(min-width:560px){.sg{grid-template-columns:repeat(4,1fr)}}
+.sc{padding:20px 12px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;overflow:hidden}
+.sc::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:var(--ac,var(--c));opacity:0;transition:opacity .3s}
+.sc:hover::after{opacity:.7}
+.sc i{font-size:18px;color:#2a2a2a;transition:color .3s}
+.sc:hover i{color:var(--ac,var(--c))}
+.sv{font-size:24px;font-weight:700;font-family:'Space Mono',monospace;color:#fff}
+.sl{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#333}
+.lvl-row{display:flex;align-items:center;gap:14px;padding:18px 22px;margin-bottom:26px}
+.lvl-badge{width:58px;height:58px;border-radius:14px;background:linear-gradient(135deg,#66c0f4,#1a9fff);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;font-family:'Space Mono',monospace;font-weight:700}
+.lvl-badge .lv{font-size:9px;color:rgba(0,0,0,.7)}
+.lvl-badge .ln{font-size:22px;color:#000;line-height:1}
+.gg{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:560px){.gg{grid-template-columns:repeat(4,1fr)}}
+.gc{position:relative;aspect-ratio:3/4;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.05);cursor:pointer;transition:border-color .3s,transform .3s}
+.gc:hover{border-color:rgba(0,255,159,.4);transform:translateY(-3px)}
+.gc img{width:100%;height:100%;object-fit:cover;opacity:.7;transition:opacity .3s,transform .4s}
+.gc:hover img{opacity:1;transform:scale(1.05)}
+.go{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.88) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:12px}
+.gn{font-size:11px;font-weight:700;color:#fff;margin-bottom:5px}
+.gbw{width:100%;background:rgba(255,255,255,.1);border-radius:4px;height:2px}
+.gbr{height:100%;border-radius:4px}
+/* ACHIEVEMENTS */
+.ach-row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:22px;padding-top:22px;border-top:1px solid rgba(255,255,255,.05)}
+.ach{width:36px;height:36px;border-radius:7px;overflow:hidden;border:1px solid rgba(255,255,255,.07);transition:all .2s;cursor:help}
+.ach:hover{transform:scale(1.15);border-color:rgba(234,179,8,.5)}
+.ach img{width:100%;height:100%;object-fit:cover}
+/* GITHUB */
+.ghg{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px}
+.ghc{padding:22px;display:flex;flex-direction:column;gap:9px;min-height:130px}
+.ghh{display:flex;justify-content:space-between;align-items:flex-start}
+.ghi{font-size:22px;opacity:.5;transition:opacity .3s}
+.ghc:hover .ghi{opacity:1}
+.gha{display:flex;gap:10px;align-items:center}
+.ghs{font-size:11px;color:#555;display:flex;align-items:center;gap:3px}
+.ghl{color:#444;font-size:13px;transition:color .2s;text-decoration:none}
+.ghl:hover{color:#fff}
+.ghn{font-size:14px;font-weight:700;color:#fff;word-break:break-all}
+.ghd{font-size:11px;color:#444;line-height:1.5;flex:1}
+.ghlng{font-size:10px;font-family:'Space Mono',monospace;padding:2px 9px;border-radius:5px;border:1px solid;width:max-content}
+.ghl2{text-align:center;color:#222;font-family:'Space Mono',monospace;font-size:12px;padding:30px}
+/* CREATIVE */
+.cr2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px}
+@media(max-width:600px){.cr2{grid-template-columns:1fr}}
+.crc{padding:24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px}
+.ig-g{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+@media(max-width:560px){.ig-g{grid-template-columns:repeat(2,1fr)}}
+.igc{aspect-ratio:1;border-radius:12px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,.05);cursor:pointer;transition:transform .3s,border-color .3s}
+.igc:hover{transform:scale(1.02);border-color:rgba(255,0,110,.3)}
+.igc img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.igc:hover img{transform:scale(1.07)}
+.igo{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent 60%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;gap:16px}
+.igc:hover .igo{opacity:1}
+.igs{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:#fff}
+/* CONTACT */
+.soc{display:flex;gap:10px;flex-wrap:wrap}
+.sb{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:17px;background:var(--gl);border:1px solid var(--bd);color:#444;text-decoration:none;transition:all .25s}
+.sb:hover{transform:translateY(-3px)}
+.sb.dc:hover{color:#5865F2;border-color:#5865F2;background:rgba(88,101,242,.1)}
+.sb.gh:hover{color:#fff;border-color:#fff;background:rgba(255,255,255,.05)}
+.sb.i1:hover{color:#e1306c;border-color:#e1306c;background:rgba(225,48,108,.1)}
+.sb.i2:hover{color:#c13584;border-color:#c13584;background:rgba(193,53,132,.1)}
+.sb.ml:hover{color:var(--c);border-color:var(--c);background:rgba(0,245,255,.07)}
+/* DISCORD CARD */
+.dsc{padding:20px;display:flex;flex-direction:column;gap:12px}
+.dsh{display:flex;align-items:center;gap:12px}
+.dav{position:relative;width:52px;height:52px;flex-shrink:0}
+.dav img{width:100%;height:100%;border-radius:50%;border:2px solid rgba(255,255,255,.1)}
+.dsd{position:absolute;bottom:1px;right:1px;width:12px;height:12px;border-radius:50%;border:2px solid #04030a}
+.s-on{background:#22c55e;box-shadow:0 0 6px #22c55e}
+.s-id{background:#f59e0b;box-shadow:0 0 6px #f59e0b}
+.s-dn{background:#ef4444;box-shadow:0 0 6px #ef4444}
+.s-of{background:#555}
+.dact{font-size:11px;color:#444;font-family:'Space Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* BACK TO TOP */
+#btt{position:fixed;bottom:24px;right:24px;width:42px;height:42px;border-radius:50%;background:rgba(0,245,255,.1);border:1px solid rgba(0,245,255,.3);color:var(--c);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:50;opacity:0;pointer-events:none;transform:translateY(8px);transition:all .3s;font-size:15px}
+#btt.show{opacity:1;pointer-events:all;transform:translateY(0)}
+#btt:hover{background:var(--c);color:#000}
+footer{padding:40px 0;border-top:1px solid var(--bd);text-align:center;color:#222;font-size:11px;font-family:'Space Mono',monospace;position:relative;z-index:1}
 </style>
 </head>
 <body>
-<div class="blob blob-1"></div>
-<div class="blob blob-2"></div>
-<div class="blob blob-3"></div>
-<canvas id="bg-canvas"></canvas>
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+<canvas id="bgc"></canvas>
 <nav>
-  <div class="inner">
-    <span class="nav-logo">kp1dev</span>
-    <div class="nav-links">
-      <a href="#platforms">Sistem</a>
+  <div class="ni">
+    <span class="logo">kp1dev</span>
+    <div class="nl">
+      <a href="#skills">Beceriler</a>
       <a href="#projects">Projeler</a>
-      <a href="#steam">Steam</a>
+      <a href="#activity">Aktivite</a>
       <a href="#creative">Kreatif</a>
       <a href="#contact">İletişim</a>
     </div>
   </div>
 </nav>
-<section class="hero">
-  <div class="container">
-    <div class="hero-badge"><span class="dot"></span>Geliştirici &amp; Video Editör</div>
-    <h1><span class="name">Burak PEKEL</span><span class="role">// Full-Stack · UI/UX · Motion</span></h1>
-    <p class="hero-desc">Yaratıcı uygulamaları geliştirmeyi ve fikirleri gerçeğe dönüştürmeyi seviyorum. Video kurgu ve UI/UX tasarımı tutkunu bir geliştirici. Güncel olarak Sonar Vice, Daylight ve BokMail üzerinde çalışıyorum.</p>
-    <div class="hero-actions">
-      <a href="#projects" class="btn btn-primary"><i class="fas fa-rocket"></i> Projeleri Gör</a>
-      <a href="https://github.com/kingpin1dev" target="_blank" class="btn btn-ghost"><i class="fab fa-github"></i> GitHub</a>
-    </div>
-  </div>
-</section>
-<style>
-/* PLATFORMS */
-.platforms-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.platform-card{padding:24px;display:flex;align-items:center;gap:16px;position:relative;overflow:hidden;cursor:pointer;text-decoration:none;color:inherit}
-.platform-card:hover{text-decoration:none;color:inherit}
-.plat-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;border:1px solid rgba(255,255,255,.08)}
-.plat-info{flex:1;min-width:0}
-.plat-name{font-size:16px;font-weight:700;color:#fff;margin-bottom:3px}
-.plat-sub{font-size:12px;color:#555}
-.plat-badge{font-size:10px;font-family:'Space Mono',monospace;padding:3px 10px;border-radius:100px;border:1px solid;margin-top:6px;display:inline-block}
-.status-online{color:#22c55e;border-color:#22c55e;background:rgba(34,197,94,.1)}
-.status-idle{color:#f59e0b;border-color:#f59e0b;background:rgba(245,158,11,.1)}
-.status-dnd{color:#ef4444;border-color:#ef4444;background:rgba(239,68,68,.1)}
-.status-offline{color:#666;border-color:#666;background:rgba(100,100,100,.1)}
-.status-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:6px}
-.dot-online{background:#22c55e;box-shadow:0 0 6px #22c55e}
-.dot-idle{background:#f59e0b;box-shadow:0 0 6px #f59e0b}
-.dot-dnd{background:#ef4444;box-shadow:0 0 6px #ef4444}
-.dot-offline{background:#555}
-.discord-activity{margin-top:8px;font-size:11px;color:#666;font-family:'Space Mono',monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-
-/* PROJECTS */
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.proj-card{padding:28px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden}
-.proj-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at top left,var(--ac,rgba(0,245,255,.08)),transparent 60%);opacity:0;transition:opacity .3s}
-.proj-card:hover::before{opacity:1}
-.proj-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
-.proj-badge{font-size:10px;font-family:'Space Mono',monospace;padding:3px 10px;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#888;margin-bottom:2px;display:inline-block}
-.proj-name{font-size:19px;font-weight:700;color:#fff}
-.proj-desc{font-size:13px;color:#666;line-height:1.6;flex:1}
-.proj-tags{display:flex;flex-wrap:wrap;gap:6px}
-.tag{font-size:11px;font-family:'Space Mono',monospace;padding:3px 10px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#555}
-.proj-footer{display:flex;gap:10px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)}
-.proj-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;border-radius:10px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s;border:1px solid transparent}
-.proj-btn.primary{color:#000}
-.proj-btn.primary:hover{opacity:.8}
-.proj-btn.ghost{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08);color:#777}
-.proj-btn.ghost:hover{color:#fff;border-color:rgba(255,255,255,.2)}
-</style>
-
-<section id="platforms">
-  <div class="container">
-    <p class="section-label reveal">01 — Sistem</p>
-    <h2 class="section-title reveal d1">Platform Profilleri</h2>
-    <div class="platforms-grid">
-      <a href="https://discord.com/users/kingpin1dev" target="_blank" class="glass platform-card reveal">
-        <div class="plat-icon" style="background:rgba(88,101,242,.1);border-color:rgba(88,101,242,.2);color:#5865F2"><i class="fab fa-discord"></i></div>
-        <div class="plat-info">
-          <div class="plat-name">kingpin1dev</div>
-          <div class="plat-sub" id="discord-status-text">Yükleniyor...</div>
-          <div id="discord-activity" class="discord-activity"></div>
-        </div>
-        <span id="discord-status-badge" class="plat-badge status-offline">—</span>
-      </a>
-      <a href="https://www.xbox.com/tr-TR/play/user/Kingpin7841" target="_blank" class="glass platform-card reveal d1">
-        <div class="plat-icon" style="background:rgba(16,124,16,.1);border-color:rgba(16,124,16,.2);color:#107C10"><i class="fab fa-xbox"></i></div>
-        <div class="plat-info">
-          <div class="plat-name">Kingpin7841</div>
-          <div class="plat-sub">Xbox Live · Konsol & PC</div>
-        </div>
-        <span class="plat-badge" style="color:#107C10;border-color:#107C10;background:rgba(16,124,16,.1)">Xbox Live</span>
-      </a>
-      <a href="https://steamcommunity.com/id/burakpekel/" target="_blank" class="glass platform-card reveal d2">
-        <div class="plat-icon" style="background:rgba(102,192,244,.1);border-color:rgba(102,192,244,.2);color:#66c0f4"><i class="fab fa-steam"></i></div>
-        <div class="plat-info">
-          <div class="plat-name">KINGPIN</div>
-          <div class="plat-sub">Steam · Level 35</div>
-        </div>
-        <span class="plat-badge" style="color:#66c0f4;border-color:#66c0f4;background:rgba(102,192,244,.1)">Lv. 35</span>
-      </a>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="hbadge"><span class="dt"></span>Geliştirici &amp; Video Editör</div>
+    <img src="https://avatars.githubusercontent.com/u/75186785?v=4" alt="Burak PEKEL" class="avatar">
+    <h1><span class="hn">Burak PEKEL</span><span class="hr">// Full-Stack · UI/UX · Motion</span></h1>
+    <p class="hdesc">Yaratıcı uygulamaları geliştirmeyi ve fikirleri gerçeğe dönüştürmeyi seviyorum. Video kurgu ve UI/UX tasarımı tutkunu bir geliştirici. Güncel olarak Sonar Vice, Daylight ve BokMail üzerinde çalışıyorum.</p>
+    <div class="hact">
+      <a href="#projects" class="btn bp"><i class="fas fa-rocket"></i> Projeleri Gör</a>
+      <a href="https://github.com/kingpin1dev" target="_blank" class="btn bg2"><i class="fab fa-github"></i> GitHub</a>
     </div>
   </div>
 </section>
 
+<!-- SKILLS MARQUEE -->
+<section id="skills" style="padding:20px 0">
+  <div class="wrap">
+    <div class="mq rv"><div class="mqt" id="mqt">
+      <div class="skill"><i class="fab fa-js" style="color:#f1e05a"></i>JavaScript</div>
+      <div class="skill"><i class="fab fa-python" style="color:#3572A5"></i>Python</div>
+      <div class="skill"><i class="fab fa-windows" style="color:#a855f7"></i>C# / .NET</div>
+      <div class="skill"><i class="fas fa-wind" style="color:#06b6d4"></i>Tailwind CSS</div>
+      <div class="skill"><i class="fas fa-video" style="color:#ec4899"></i>Premiere Pro</div>
+      <div class="skill"><i class="fas fa-film" style="color:#6366f1"></i>After Effects</div>
+      <div class="skill"><i class="fab fa-figma" style="color:#f97316"></i>Figma</div>
+      <div class="skill"><i class="fab fa-js" style="color:#f1e05a"></i>JavaScript</div>
+      <div class="skill"><i class="fab fa-python" style="color:#3572A5"></i>Python</div>
+      <div class="skill"><i class="fab fa-windows" style="color:#a855f7"></i>C# / .NET</div>
+      <div class="skill"><i class="fas fa-wind" style="color:#06b6d4"></i>Tailwind CSS</div>
+      <div class="skill"><i class="fas fa-video" style="color:#ec4899"></i>Premiere Pro</div>
+      <div class="skill"><i class="fas fa-film" style="color:#6366f1"></i>After Effects</div>
+      <div class="skill"><i class="fab fa-figma" style="color:#f97316"></i>Figma</div>
+    </div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
 <section id="projects">
-  <div class="container">
-    <p class="section-label reveal">02 — Projeler</p>
-    <h2 class="section-title reveal d1">Öne Çıkan İşler</h2>
-    <div class="projects-grid">
-      <div class="glass proj-card reveal" style="--ac:rgba(0,245,255,.08)">
-        <div class="proj-icon" style="color:#00f5ff"><i class="fas fa-envelope-open-text"></i></div>
-        <div><span class="proj-badge">Web App</span><div class="proj-name">BokMail</div></div>
-        <p class="proj-desc">Gerçek e-posta adresinizi koruyun. Şifresiz, anında aktif, kalıcı saklama destekli anonim geçici e-posta servisi.</p>
-        <div class="proj-tags"><span class="tag">Şifresiz</span><span class="tag">Kalıcı Depolama</span><span class="tag">Anonim</span></div>
-        <div class="proj-footer">
-          <a href="https://bokmails.com" target="_blank" class="proj-btn primary" style="background:linear-gradient(135deg,#00f5ff,#0080ff)"><i class="fas fa-arrow-up-right-from-square" style="font-size:10px"></i> Ziyaret Et</a>
-          <a href="https://github.com/kingpin1dev/" target="_blank" class="proj-btn ghost"><i class="fab fa-github"></i></a>
+  <div class="wrap">
+    <p class="slb rv">01 — Projeler</p>
+    <h2 class="stl rv d1">Öne Çıkan İşler</h2>
+    <div class="pg">
+      <div class="gl pc rv" style="--ac:rgba(0,245,255,.07)">
+        <div class="pi" style="color:#00f5ff"><i class="fas fa-envelope-open-text"></i></div>
+        <div><span class="pb">Web App</span><div class="pn">BokMail</div></div>
+        <p class="pd">Gerçek e-posta adresinizi koruyun. Şifresiz, anında aktif, kalıcı saklama destekli anonim geçici e-posta servisi. Kayıt gerektirmez, doğrulama yok.</p>
+        <div class="ptags"><span class="tag">Şifresiz</span><span class="tag">Kalıcı Depolama</span><span class="tag">Anonim</span><span class="tag">Spam Koruması</span></div>
+        <div class="pf">
+          <a href="https://bokmails.com" target="_blank" class="pbtn pr" style="background:linear-gradient(135deg,#00f5ff,#0080ff)"><i class="fas fa-arrow-up-right-from-square" style="font-size:9px"></i> Ziyaret Et</a>
+          <a href="https://github.com/kingpin1dev/" target="_blank" class="pbtn pg2"><i class="fab fa-github"></i></a>
         </div>
       </div>
-      <div class="glass proj-card reveal d1" style="--ac:rgba(56,189,248,.08)">
-        <div class="proj-icon" style="color:#38bdf8"><i class="fas fa-sun"></i></div>
-        <div><span class="proj-badge">Windows</span><div class="proj-name">Daylight</div></div>
-        <p class="proj-desc">Windows için otomatik karanlık/açık mod değiştirici. Gün doğumu ve batımına göre tema geçişini otomatikleştirir.</p>
-        <div class="proj-tags"><span class="tag">Otomasyon</span><span class="tag">Sistem Teması</span><span class="tag">Hafif</span></div>
-        <div class="proj-footer">
-          <a href="https://github.com/kingpin1dev/Daylight/releases" target="_blank" class="proj-btn primary" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><i class="fas fa-download" style="font-size:10px"></i> İndir</a>
-          <a href="https://github.com/kingpin1dev/Daylight" target="_blank" class="proj-btn ghost"><i class="fab fa-github"></i></a>
+      <div class="gl pc rv d1" style="--ac:rgba(56,189,248,.07)">
+        <div class="pi" style="color:#38bdf8"><i class="fas fa-sun"></i></div>
+        <div><span class="pb">Windows</span><div class="pn">Daylight</div></div>
+        <p class="pd">Windows için Dynamic Island tarzı masaüstü overlay. Fizik tabanlı animasyonlar, modüler widget'lar ve 10 dil desteğiyle macOS'tan ilham alan bir deneyim.</p>
+        <div class="ptags"><span class="tag">Dynamic Island</span><span class="tag">Animasyonlar</span><span class="tag">Widget'lar</span><span class="tag">Çok Dilli</span></div>
+        <div class="pf">
+          <a href="https://github.com/kingpin1dev/Daylight/releases" target="_blank" class="pbtn pr" style="background:linear-gradient(135deg,#38bdf8,#0ea5e9)"><i class="fas fa-download" style="font-size:9px"></i> İndir</a>
+          <a href="https://github.com/kingpin1dev/Daylight" target="_blank" class="pbtn pg2"><i class="fab fa-github"></i></a>
         </div>
       </div>
-      <div class="glass proj-card reveal d2" style="--ac:rgba(249,104,21,.08)">
-        <div class="proj-icon" style="color:#f96815"><i class="fas fa-headphones"></i></div>
-        <div><span class="proj-badge">Windows</span><div class="proj-name">VICE Sonar</div></div>
-        <p class="proj-desc">SteelSeries GG Sonar için hafif masaüstü widget'ı. Ses, EQ ve RGB'yi ana uygulama olmadan yönet.</p>
-        <div class="proj-tags"><span class="tag">Ses Kontrolü</span><span class="tag">EQ</span><span class="tag">RGB</span></div>
-        <div class="proj-footer">
-          <a href="https://apps.microsoft.com/detail/9p40tmplqb43?hl=tr-TR&gl=TR" target="_blank" class="proj-btn primary" style="background:linear-gradient(135deg,#f96815,#c0440a)"><i class="fas fa-download" style="font-size:10px"></i> İndir</a>
-          <a href="https://github.com/kingpin1dev/VICE-Sonar" target="_blank" class="proj-btn ghost"><i class="fab fa-github"></i></a>
+      <div class="gl pc rv d2" style="--ac:rgba(249,104,21,.07)">
+        <div class="pi" style="color:#f96815"><i class="fas fa-headphones"></i></div>
+        <div><span class="pb">Windows</span><div class="pn">VICE Sonar</div></div>
+        <p class="pd">SteelSeries GG Sonar için hafif masaüstü widget'ı. Ses kanalları, EQ profilleri ve RGB aydınlatmayı ana uygulamayı açmadan yönet.</p>
+        <div class="ptags"><span class="tag">Ses Kontrolü</span><span class="tag">EQ Profilleri</span><span class="tag">RGB</span><span class="tag">7 Tema</span></div>
+        <div class="pf">
+          <a href="https://apps.microsoft.com/detail/9p40tmplqb43?hl=tr-TR&gl=TR" target="_blank" class="pbtn pr" style="background:linear-gradient(135deg,#f96815,#c0440a)"><i class="fas fa-download" style="font-size:9px"></i> İndir</a>
+          <a href="https://github.com/kingpin1dev/VICE-Sonar" target="_blank" class="pbtn pg2"><i class="fab fa-github"></i></a>
         </div>
+      </div>
+    </div>
+    <div style="margin-top:18px" id="ghp"><div class="ghl2">GitHub'dan yükleniyor...</div></div>
+  </div>
+</section>
+
+<!-- HARDWARE -->
+<section id="setup">
+  <div class="wrap">
+    <p class="slb rv">02 — Sistem</p>
+    <h2 class="stl rv d1">Donanım & Ekipman</h2>
+    <div class="hw-grid rv d2">
+      <div class="term">
+        <div class="term-bar"><div class="tc tc1"></div><div class="tc tc2"></div><div class="tc tc3"></div><span style="margin-left:10px;font-size:10px;font-family:'Space Mono',monospace;color:#333">kingpin1dev@main-rig ~</span></div>
+        <div class="term-body">
+          <p style="color:var(--c);margin-bottom:12px">kingpin1dev@main-rig ~ % <span style="color:#e0e0e0">neofetch --hardware</span></p>
+          <ul style="list-style:none;space-y:4px">
+            <li><span style="color:#444">CPU  :</span> <span style="color:#ccc">AMD Ryzen™ 7 8700F (8-Core, 5.0 GHz)</span></li>
+            <li><span style="color:#444">GPU  :</span> <span style="color:#ccc">ASUS Dual GeForce RTX™ 4070 OC 12GB</span></li>
+            <li><span style="color:#444">RAM  :</span> <span style="color:#ccc">32GB Corsair Dominator Platinum RGB DDR5</span></li>
+            <li><span style="color:#444">MOBO :</span> <span style="color:#ccc">ASUS Prime A620M-K</span></li>
+            <li><span style="color:#444">COOL :</span> <span style="color:#ccc">Thermalright Aqua Elite 240 ARGB</span></li>
+          </ul>
+          <p style="color:var(--c);margin-top:14px;animation:pu 1.2s infinite">_</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;gap:12px">
+        <p style="color:#fff;font-size:18px;font-weight:700">Yüksek Performanslı Rig</p>
+        <p style="color:#555;font-size:13px;line-height:1.7">Yüksek performanslı kod derleme, akıcı video kurgu süreçleri ve sağlam bir oyun deneyimi için özenle topladığım güncel sistemim.</p>
       </div>
     </div>
   </div>
 </section>
-<style>
-/* STEAM */
-.steam-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:32px}
-@media(min-width:600px){.steam-stats{grid-template-columns:repeat(4,1fr)}}
-.stat-card{padding:22px 14px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:7px;position:relative;overflow:hidden}
-.stat-card::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:var(--ac,var(--cyan));opacity:0;transition:opacity .3s}
-.stat-card:hover::after{opacity:.7}
-.stat-icon{font-size:20px;color:#333;transition:color .3s}
-.stat-card:hover .stat-icon{color:var(--ac,var(--cyan))}
-.stat-val{font-size:26px;font-weight:700;font-family:'Space Mono',monospace;color:#fff}
-.stat-lbl{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#444}
-.steam-level{display:flex;align-items:center;gap:16px;padding:20px 24px;margin-bottom:32px}
-.level-badge{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,#66c0f4,#1a9fff);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;font-family:'Space Mono',monospace;font-weight:700}
-.level-badge .lv{font-size:10px;color:rgba(0,0,0,.7)}
-.level-badge .num{font-size:24px;color:#000;line-height:1}
-.level-info{flex:1}
-.level-title{font-size:15px;font-weight:700;color:#fff}
-.level-sub{font-size:12px;color:#555;margin-top:3px}
-.game-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-@media(min-width:600px){.game-grid{grid-template-columns:repeat(4,1fr)}}
-.game-card{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:border-color .3s,transform .3s}
-.game-card:hover{border-color:rgba(0,255,159,.4);transform:translateY(-4px)}
-.game-card img{width:100%;height:100%;object-fit:cover;opacity:.75;transition:opacity .3s,transform .4s}
-.game-card:hover img{opacity:1;transform:scale(1.05)}
-.game-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:14px}
-.game-name{font-size:12px;font-weight:700;color:#fff;margin-bottom:6px}
-.game-bar-wrap{width:100%;background:rgba(255,255,255,.1);border-radius:4px;height:3px;overflow:hidden}
-.game-bar{height:100%;border-radius:4px;box-shadow:0 0 6px currentColor}
+<!-- ACTIVITY -->
+<section id="activity">
+  <div class="wrap">
+    <p class="slb rv">03 — Aktivite</p>
+    <h2 class="stl rv d1">Canlı Durum</h2>
+    <div class="act-grid">
+      <div class="gl act-card rv" id="sp-card">
+        <div id="sp-content" style="display:flex;flex-direction:column;align-items:center;gap:8px;color:#333;text-align:center">
+          <i class="fab fa-spotify" style="font-size:32px"></i><p style="font-size:12px">Yükleniyor...</p>
+        </div>
+      </div>
+      <div class="gl act-card rv d1" id="vs-card">
+        <div id="vs-content" style="display:flex;flex-direction:column;align-items:center;gap:8px;color:#333;text-align:center">
+          <i class="fas fa-code" style="font-size:32px"></i><p style="font-size:12px">Yükleniyor...</p>
+        </div>
+      </div>
+      <a href="https://steamcommunity.com/id/burakpekel/" target="_blank" class="gl act-card rv d2" style="text-decoration:none;color:inherit">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px"><i class="fab fa-steam" style="color:#66c0f4;font-size:11px"></i><span style="color:#66c0f4;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Steam</span></div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <img src="https://avatars.fastly.steamstatic.com/6699308c9128ee16df2523235ee7d01ddbfb7b63_full.jpg" style="width:44px;height:44px;border-radius:10px;border:1px solid rgba(102,192,244,.3);object-fit:cover" alt="steam">
+          <div><p style="color:#fff;font-weight:700;font-size:13px">Kingpin</p><p style="color:#555;font-size:11px;margin-top:2px">PC Oyuncusu</p><p style="color:#66c0f4;font-size:9px;font-family:'Space Mono',monospace;margin-top:6px;border:1px solid rgba(102,192,244,.2);background:rgba(102,192,244,.07);padding:2px 8px;border-radius:4px;display:inline-block">Profili Gör</p></div>
+        </div>
+      </a>
+      <a href="https://www.xbox.com/tr-TR/play/user/Kingpin7841" target="_blank" class="gl act-card rv d3" style="text-decoration:none;color:inherit">
+        <div style="display:flex;align-items:center;gap:6px;margin-bottom:10px"><i class="fab fa-xbox" style="color:#107C10;font-size:11px"></i><span style="color:#107C10;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Xbox Live</span></div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:44px;height:44px;border-radius:50%;background:rgba(16,124,16,.1);border:1px solid rgba(16,124,16,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fab fa-xbox" style="font-size:20px;color:#107C10"></i></div>
+          <div><p style="color:#fff;font-weight:700;font-size:13px">Kingpin7841</p><p style="color:#555;font-size:11px;margin-top:2px">Konsol &amp; PC</p><p style="color:#107C10;font-size:9px;font-family:'Space Mono',monospace;margin-top:6px;border:1px solid rgba(16,124,16,.2);background:rgba(16,124,16,.07);padding:2px 8px;border-radius:4px;display:inline-block">Profili Gör</p></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
-/* GITHUB */
-.gh-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.gh-card{padding:24px;display:flex;flex-direction:column;gap:10px;min-height:140px}
-.gh-header{display:flex;justify-content:space-between;align-items:flex-start}
-.gh-icon{font-size:24px;opacity:.6;transition:opacity .3s}
-.gh-card:hover .gh-icon{opacity:1}
-.gh-actions{display:flex;gap:12px;align-items:center}
-.gh-stars{font-size:12px;color:#666;display:flex;align-items:center;gap:4px}
-.gh-link{color:#555;font-size:14px;transition:color .2s;text-decoration:none}
-.gh-link:hover{color:#fff}
-.gh-name{font-size:15px;font-weight:700;color:#fff;word-break:break-all}
-.gh-desc{font-size:12px;color:#555;line-height:1.5;flex:1}
-.gh-lang{font-size:10px;font-family:'Space Mono',monospace;padding:3px 10px;border-radius:6px;background:rgba(0,245,255,.06);border:1px solid rgba(0,245,255,.15);color:var(--cyan);width:max-content}
-.gh-loading{text-align:center;color:#333;font-family:'Space Mono',monospace;font-size:13px;padding:40px}
-
-/* CREATIVE */
-.sineorbit-card{padding:28px;display:flex;align-items:center;gap:20px;margin-bottom:28px;text-decoration:none;color:inherit}
-.sineorbit-card:hover{color:inherit;text-decoration:none}
-.so-icon{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);display:flex;align-items:center;justify-content:center;font-size:28px;color:#fff;flex-shrink:0}
-.so-info{flex:1}
-.so-name{font-size:20px;font-weight:700;color:#fff}
-.so-desc{font-size:13px;color:#666;margin-top:4px}
-.so-badge{font-size:10px;font-family:'Space Mono',monospace;padding:3px 10px;border-radius:100px;background:rgba(225,48,108,.1);border:1px solid rgba(225,48,108,.3);color:#e1306c;margin-top:8px;display:inline-block}
-.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-@media(max-width:600px){.ig-grid{grid-template-columns:repeat(2,1fr)}}
-.ig-card{aspect-ratio:1;border-radius:14px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:transform .3s,border-color .3s}
-.ig-card:hover{transform:scale(1.02);border-color:rgba(255,0,110,.3)}
-.ig-card img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.ig-card:hover img{transform:scale(1.08)}
-.ig-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent 60%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;justify-content:center;padding-bottom:12px;gap:18px}
-.ig-card:hover .ig-overlay{opacity:1}
-.ig-stat{display:flex;align-items:center;gap:4px;font-size:12px;font-weight:700;color:#fff}
-
-/* CONTACT */
-.socials{display:flex;gap:12px;flex-wrap:wrap}
-.soc-btn{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;background:var(--glass);border:1px solid var(--border);color:#555;text-decoration:none;transition:all .25s}
-.soc-btn:hover{transform:translateY(-3px)}
-.soc-btn.dc:hover{color:#5865F2;border-color:#5865F2;background:rgba(88,101,242,.1)}
-.soc-btn.gh:hover{color:#fff;border-color:#fff;background:rgba(255,255,255,.05)}
-.soc-btn.ig1:hover{color:#e1306c;border-color:#e1306c;background:rgba(225,48,108,.1)}
-.soc-btn.ig2:hover{color:#c13584;border-color:#c13584;background:rgba(193,53,132,.1)}
-.soc-btn.ml:hover{color:var(--cyan);border-color:var(--cyan);background:rgba(0,245,255,.08)}
-footer{padding:48px 0;border-top:1px solid var(--border);text-align:center;color:#333;font-size:12px;font-family:'Space Mono',monospace;position:relative;z-index:1}
-</style>
-
+<!-- STEAM -->
 <section id="steam">
-  <div class="container">
-    <p class="section-label reveal">03 — Steam</p>
-    <h2 class="section-title reveal d1">Oyun Profili</h2>
-    <div class="steam-stats">
-      <div class="glass stat-card reveal" style="--ac:#66c0f4"><i class="fas fa-gamepad stat-icon"></i><span class="stat-val">115</span><span class="stat-lbl">Oyun</span></div>
-      <div class="glass stat-card reveal d1" style="--ac:#a855f7"><i class="fas fa-check-double stat-icon"></i><span class="stat-val">38</span><span class="stat-lbl">%100 Tamamlanan</span></div>
-      <div class="glass stat-card reveal d2" style="--ac:#eab308"><i class="fas fa-trophy stat-icon"></i><span class="stat-val" style="color:#eab308">6.616</span><span class="stat-lbl">Başarım</span></div>
-      <div class="glass stat-card reveal d3" style="--ac:#22c55e"><i class="fas fa-chart-line stat-icon"></i><span class="stat-val">%77</span><span class="stat-lbl">Bitirme Oranı</span></div>
+  <div class="wrap">
+    <p class="slb rv">04 — Steam</p>
+    <h2 class="stl rv d1">Oyun Vitrini</h2>
+    <div class="sg">
+      <div class="gl sc rv" style="--ac:#66c0f4"><i class="fas fa-gamepad"></i><span class="sv">115</span><span class="sl">Oyun</span></div>
+      <div class="gl sc rv d1" style="--ac:#a855f7"><i class="fas fa-check-double"></i><span class="sv">38</span><span class="sl">%100 Tamamlanan</span></div>
+      <div class="gl sc rv d2" style="--ac:#eab308"><i class="fas fa-trophy"></i><span class="sv" style="color:#eab308">6.616</span><span class="sl">Başarım</span></div>
+      <div class="gl sc rv d3" style="--ac:#22c55e"><i class="fas fa-chart-line"></i><span class="sv">%77</span><span class="sl">Bitirme Oranı</span></div>
     </div>
-    <a href="https://steamcommunity.com/id/burakpekel/" target="_blank" class="glass steam-level reveal" style="text-decoration:none;color:inherit">
-      <div class="level-badge"><span class="lv">LV</span><span class="num">35</span></div>
-      <div class="level-info"><div class="level-title">Steam Seviyesi</div><div class="level-sub">Profili görüntüle →</div></div>
+    <a href="https://steamcommunity.com/id/burakpekel/" target="_blank" class="gl lvl-row rv" style="text-decoration:none;color:inherit">
+      <div class="lvl-badge"><span class="lv">LV</span><span class="ln">35</span></div>
+      <div><p style="color:#fff;font-weight:700;font-size:14px">Steam Level 35</p><p style="color:#444;font-size:11px;margin-top:2px">Profili görüntüle →</p></div>
     </a>
-    <div class="game-grid">
-      <div class="game-card reveal"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/library_600x900.jpg" alt="Cyberpunk 2077"><div class="game-overlay"><div class="game-name">Cyberpunk 2077</div><div class="game-bar-wrap"><div class="game-bar" style="width:85%;background:#00ff9f;color:#00ff9f"></div></div></div></div>
-      <div class="game-card reveal d1"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1808500/library_600x900.jpg" alt="ARC Raiders"><div class="game-overlay"><div class="game-name">ARC Raiders</div><div class="game-bar-wrap"><div class="game-bar" style="width:40%;background:#f97316;color:#f97316"></div></div></div></div>
-      <div class="game-card reveal d2"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/239140/library_600x900.jpg" alt="Dying Light"><div class="game-overlay"><div class="game-name">Dying Light</div><div class="game-bar-wrap"><div class="game-bar" style="width:70%;background:#eab308;color:#eab308"></div></div></div></div>
-      <div class="game-card reveal d3"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/271590/library_600x900.jpg" alt="GTA V"><div class="game-overlay"><div class="game-name">GTA V</div><div class="game-bar-wrap"><div class="game-bar" style="width:55%;background:#a855f7;color:#a855f7"></div></div></div></div>
+    <div class="gg rv d1">
+      <div class="gc"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/library_600x900.jpg" alt="Cyberpunk 2077"><div class="go"><div class="gn">Cyberpunk 2077</div><div class="gbw"><div class="gbr" style="width:85%;background:#00ff9f;box-shadow:0 0 6px #00ff9f"></div></div></div></div>
+      <div class="gc"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1808500/library_600x900.jpg" alt="ARC Raiders"><div class="go"><div class="gn">ARC Raiders</div><div class="gbw"><div class="gbr" style="width:40%;background:#f97316;box-shadow:0 0 6px #f97316"></div></div></div></div>
+      <div class="gc"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/239140/library_600x900.jpg" alt="Dying Light"><div class="go"><div class="gn">Dying Light</div><div class="gbw"><div class="gbr" style="width:75%;background:#eab308;box-shadow:0 0 6px #eab308"></div></div></div></div>
+      <div class="gc"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/library_600x900.jpg" alt="Split Fiction"><div class="go"><div class="gn">Split Fiction</div><div class="gbw"><div class="gbr" style="width:55%;background:#a855f7;box-shadow:0 0 6px #a855f7"></div></div></div></div>
     </div>
-  </div>
-</section>
-
-<section id="github">
-  <div class="container">
-    <p class="section-label reveal">04 — GitHub</p>
-    <h2 class="section-title reveal d1">Açık Kaynak</h2>
-    <div id="gh-grid" class="gh-grid"><div class="gh-loading">Repolar yükleniyor...</div></div>
-  </div>
-</section>
-
-<section id="creative">
-  <div class="container">
-    <p class="section-label reveal">05 — Kreatif</p>
-    <h2 class="section-title reveal d1">İçerik & Editler</h2>
-    <a href="https://www.instagram.com/sineorbit/" target="_blank" class="glass sineorbit-card reveal">
-      <div class="so-icon"><i class="fab fa-instagram"></i></div>
-      <div class="so-info">
-        <div class="so-name">@sineorbit</div>
-        <div class="so-desc">Video kurgu, sinema estetiği ve yaratıcı içerikler.</div>
-        <span class="so-badge">Instagram Sayfasını Ziyaret Et →</span>
+    <div class="ach-row rv">
+      <div class="ach" title="Zup! S"><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/617670/ff473e4edb88865aa2204ca5cbb3b8430ed469c1.jpg"></div>
+      <div class="ach" title="Zup! S"><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/617670/0fa9f59cef98ed26a2830ba1bd303955c5ad61b1.jpg"></div>
+      <div class="ach" title="Zup! S"><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/617670/4cf7bf4cb63dae3a678b7884c23957728f78367d.jpg"></div>
+      <div class="ach" title="Zup! S"><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/617670/ae55ecb37205f05eb4a5dcdb8c03e721df5cbfb8.jpg"></div>
+      <div class="ach" title="Zup! S"><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/617670/2624a2514dd83bc2412c57fea4431e678f9128be.jpg"></div>
+      <div class="ach" title="Zup! S"><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/617670/0fa9f59cef98ed26a2830ba1bd303955c5ad61b1.jpg"></div>
+      <div class="ach" title="Zup! S"><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/617670/4cf7bf4cb63dae3a678b7884c23957728f78367d.jpg"></div>
+      <div class="ach" title="Zup! S"><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/617670/b6f9183c35c6e75641994d91f23518b714166ab9.jpg"></div>
+      <div class="ach" title="Zup! S"><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/617670/6848899b96700a6dccb129191b4b03d7d4a1b217.jpg"></div>
+      <div class="ach" title="Zup! S"><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/617670/274f87c76648d4a5c3f36a229d3a104947b7ec2c.jpg"></div>
+      <div class="ach" title="Zup! S"><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/617670/f386305a0ae748d9d48e8e8c68fa90072116c46b.jpg"></div>
+      <div class="ach" title="Zup! S"><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/617670/b6f9183c35c6e75641994d91f23518b714166ab9.jpg"></div>
+      <div class="ach" title="Zup! S"><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/617670/e47271f28eda7f9d02214c316a8ef7b020985dc0.jpg"></div>
+      <div class="ach" title="Zup! S"><img src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/apps/617670/d0294a5412e445c6c974d3dec4aab6e106c26648.jpg"></div>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.03);border:1px solid rgba(102,192,244,.2);border-radius:100px;padding:4px 14px 4px 6px">
+        <div style="width:36px;height:36px;border-radius:50%;border:2px solid #66c0f4;background:#04030a;display:flex;align-items:center;justify-content:center;position:relative">
+          <span style="color:#fff;font-weight:900;font-size:12px;font-family:'Space Mono',monospace">35</span>
+          <div style="position:absolute;inset:0;border-radius:50%;border:1px solid rgba(102,192,244,.3);animation:pu 2s infinite"></div>
+        </div>
+        <div style="font-size:9px;color:#66c0f4;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.1em">Steam Level</div>
       </div>
-    </a>
-    <div class="ig-grid" id="ig-grid"></div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="container">
-    <p class="section-label reveal">06 — İletişim</p>
-    <h2 class="section-title reveal d1">Bağlantı Kur</h2>
-    <div class="socials reveal d2">
-      <a href="https://discord.com/users/kingpin1dev" target="_blank" class="soc-btn dc" title="Discord"><i class="fab fa-discord"></i></a>
-      <a href="https://github.com/kingpin1dev" target="_blank" class="soc-btn gh" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="https://www.instagram.com/burakpekeel/" target="_blank" class="soc-btn ig1" title="@burakpekeel"><i class="fas fa-user-circle"></i></a>
-      <a href="https://www.instagram.com/sineorbit/" target="_blank" class="soc-btn ig2" title="@sineorbit"><i class="fas fa-film"></i></a>
-      <a href="mailto:admin@bokmails.com" class="soc-btn ml" title="E-posta"><i class="fas fa-envelope"></i></a>
     </div>
   </div>
 </section>
 
-<footer><div class="container"><p>© 2025 kingpin1dev — kingpindev.net</p></div></footer>
+<!-- GITHUB -->
+<section id="github">
+  <div class="wrap">
+    <p class="slb rv">05 — GitHub</p>
+    <h2 class="stl rv d1">Açık Kaynak</h2>
+    <div id="ghg" class="ghg"><div class="ghl2">Yükleniyor...</div></div>
+  </div>
+</section>
+
+<!-- CREATIVE -->
+<section id="creative">
+  <div class="wrap">
+    <p class="slb rv">06 — Kreatif</p>
+    <h2 class="stl rv d1">İçerik & Editler</h2>
+    <div class="cr2 rv d2">
+      <a href="https://www.instagram.com/sineorbit/" target="_blank" class="gl crc" style="text-decoration:none;color:inherit">
+        <div style="width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);display:flex;align-items:center;justify-content:center;font-size:26px;color:#fff"><i class="fab fa-instagram"></i></div>
+        <div><p style="color:#fff;font-weight:700;font-size:16px">SineOrbit</p><p style="color:#555;font-size:12px;margin-top:4px">Film sahnelerine hayat verdiğim, sinematografik video edit sayfam.</p></div>
+        <span style="font-size:11px;padding:5px 14px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:#888">Sayfayı İncele →</span>
+      </a>
+      <a href="https://open.spotify.com/intl-tr/artist/3KwVC87AX4WLGOS8oLWvc0?si=1n1RJoF7SruHa5ZbUIIt2Q" target="_blank" class="gl crc" style="text-decoration:none;color:inherit">
+        <i class="fab fa-spotify" style="font-size:48px;color:#1db954;filter:drop-shadow(0 0 10px rgba(29,185,84,.3))"></i>
+        <div><p style="color:#fff;font-weight:700;font-size:16px">Spotify</p><p style="color:#555;font-size:12px;margin-top:4px">Zaman zaman hobi olarak ürettiğim ve yayınladığım parçalar.</p></div>
+        <span style="font-size:11px;padding:5px 14px;border-radius:8px;background:rgba(29,185,84,.08);border:1px solid rgba(29,185,84,.2);color:#1db954">Spotify'da Dinle →</span>
+      </a>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px" class="rv">
+      <p style="color:#666;font-size:13px;display:flex;align-items:center;gap:6px"><i class="fab fa-instagram" style="color:#e1306c"></i> @sineorbit'ten Öne Çıkan Editler</p>
+      <a href="https://www.instagram.com/sineorbit/" target="_blank" style="font-size:11px;color:#444;text-decoration:none;font-family:'Space Mono',monospace;transition:color .2s" onmouseover="this.style.color='#e1306c'" onmouseout="this.style.color='#444'">Tümünü Gör →</a>
+    </div>
+    <div class="ig-g" id="igg"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<footer id="contact">
+  <div class="wrap" style="padding:60px 24px 40px;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;text-align:left;max-width:920px">
+    <div>
+      <p style="color:#fff;font-size:24px;font-weight:700;margin-bottom:10px">Bağlantıda Kalalım</p>
+      <p style="color:#444;font-size:13px;line-height:1.6;margin-bottom:20px">Projeler hakkında konuşmak veya iş birliği için bana ulaşabilirsin.</p>
+      <div class="soc">
+        <a href="https://discord.com/users/Kingpindev" target="_blank" class="sb dc" title="Discord"><i class="fab fa-discord"></i></a>
+        <a href="https://github.com/kingpin1dev" target="_blank" class="sb gh" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/burakpekeel/" target="_blank" class="sb i1" title="@burakpekeel"><i class="fas fa-user-circle"></i></a>
+        <a href="https://www.instagram.com/sineorbit/" target="_blank" class="sb i2" title="@sineorbit"><i class="fas fa-film"></i></a>
+        <a href="mailto:admin@bokmails.com" class="sb ml" title="E-posta"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="gl dsc">
+      <p style="font-size:11px;color:#333;text-transform:uppercase;letter-spacing:.1em;font-family:'Space Mono',monospace;margin-bottom:4px">Canlı Discord Durumu</p>
+      <div class="dsh">
+        <div class="dav">
+          <img src="https://avatars.githubusercontent.com/u/75186785?v=4" alt="discord">
+          <div class="dsd s-of" id="dsd"></div>
+        </div>
+        <div>
+          <p style="color:#fff;font-weight:700;font-size:14px">Kingpindev</p>
+          <p id="dst" style="font-size:12px;color:#444">Yükleniyor...</p>
+        </div>
+      </div>
+      <div id="dact" class="dact"></div>
+    </div>
+  </div>
+  <div style="border-top:1px solid var(--bd);padding:20px 24px;text-align:center">
+    <p>© 2026 Burak PEKEL (kingpindev) — Tasarım ve Kodlama.</p>
+  </div>
+</footer>
+
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 <script>
 // PARTICLES
-const canvas=document.getElementById('bg-canvas'),ctx=canvas.getContext('2d');
+const cv=document.getElementById('bgc'),cx=cv.getContext('2d');
 let W,H,stars=[];
-function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
-resize();window.addEventListener('resize',resize);
-for(let i=0;i<130;i++)stars.push({x:Math.random()*1920,y:Math.random()*1080,r:Math.random()*1.2+.2,a:Math.random(),speed:Math.random()*.004+.001,phase:Math.random()*Math.PI*2});
-function drawStars(t){ctx.clearRect(0,0,W,H);stars.forEach(s=>{const alpha=(Math.sin(t*s.speed*60+s.phase)+1)/2*.5+.1;ctx.beginPath();ctx.arc(s.x%W,s.y%H,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(255,255,255,${alpha*s.a})`;ctx.fill()});requestAnimationFrame(drawStars)}
-requestAnimationFrame(drawStars);
+function rsz(){W=cv.width=window.innerWidth;H=cv.height=window.innerHeight}
+rsz();window.addEventListener('resize',rsz);
+for(let i=0;i<130;i++)stars.push({x:Math.random()*1920,y:Math.random()*1080,r:Math.random()*1.1+.2,a:Math.random(),sp:Math.random()*.004+.001,ph:Math.random()*Math.PI*2});
+function drw(t){cx.clearRect(0,0,W,H);stars.forEach(s=>{const al=(Math.sin(t*s.sp*60+s.ph)+1)/2*.45+.08;cx.beginPath();cx.arc(s.x%W,s.y%H,s.r,0,Math.PI*2);cx.fillStyle=`rgba(255,255,255,${al*s.a})`;cx.fill()});requestAnimationFrame(drw)}
+requestAnimationFrame(drw);
 
 // SCROLL REVEAL
-const reveals=document.querySelectorAll('.reveal');
-new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08}).observe=function(el){IntersectionObserver.prototype.observe.call(this,el)};
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.08});
-reveals.forEach(el=>obs.observe(el));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
-// DISCORD STATUS
-async function fetchDiscord(){
+// NAV ACTIVE
+const secs=document.querySelectorAll('section,footer');
+const nls=document.querySelectorAll('.nl a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(pageYOffset>=s.offsetTop-160)cur=s.getAttribute('id')});
+  nls.forEach(a=>{a.classList.remove('act');if(a.getAttribute('href').includes(cur))a.classList.add('act')});
+  document.getElementById('btt').classList.toggle('show',window.scrollY>300);
+});
+
+// MARQUEE
+(function(){
+  const mq=document.querySelector('.mq'),t=document.getElementById('mqt');
+  if(!mq||!t)return;
+  let drag=false,sx=0,dx=0,pos=-(t.scrollWidth/2),raf;
+  function step(){
+    const hw=t.scrollWidth/2;
+    if(!drag)pos+=.35;
+    if(pos>=0)pos-=hw;
+    else if(pos<=-hw)pos+=hw;
+    t.style.transform=`translateX(${pos}px)`;
+    raf=requestAnimationFrame(step);
+  }
+  step();
+  mq.addEventListener('mousedown',e=>{drag=true;sx=e.pageX;dx=pos});
+  window.addEventListener('mousemove',e=>{if(!drag)return;pos=dx+(e.pageX-sx)});
+  window.addEventListener('mouseup',()=>drag=false);
+  mq.addEventListener('mouseleave',()=>drag=false);
+  mq.addEventListener('touchstart',e=>{drag=true;sx=e.touches[0].pageX;dx=pos},{passive:true});
+  window.addEventListener('touchmove',e=>{if(!drag)return;pos=dx+(e.touches[0].pageX-sx)},{passive:true});
+  window.addEventListener('touchend',()=>drag=false);
+})();
+
+// DISCORD + SPOTIFY + VSCODE
+async function fetchLanyard(){
   try{
     const r=await fetch('https://api.lanyard.rest/v1/users/349640233651798027');
     const d=(await r.json()).data;
-    const badge=document.getElementById('discord-status-badge');
-    const txt=document.getElementById('discord-status-text');
-    const act=document.getElementById('discord-activity');
-    const map={online:['Çevrimiçi','status-online','dot-online'],idle:['Boşta','status-idle','dot-idle'],dnd:['Rahatsız Etme','status-dnd','dot-dnd']};
-    const [label,cls]=map[d.discord_status]||['Çevrimdışı','status-offline','dot-offline'];
-    badge.textContent=label;badge.className='plat-badge '+cls;
-    txt.innerHTML=`<span class="status-dot ${map[d.discord_status]?.[2]||'dot-offline'}"></span>${label}`;
+    // Status dot
+    const dot=document.getElementById('dsd'),txt=document.getElementById('dst'),act=document.getElementById('dact');
+    const sm={online:['Çevrimiçi','s-on'],idle:['Boşta','s-id'],dnd:['Rahatsız Etme','s-dn']};
+    const [lb,cls]=sm[d.discord_status]||['Çevrimdışı','s-of'];
+    dot.className='dsd '+cls;txt.textContent=lb;
     if(d.activities&&d.activities.length>0){
       const a=d.activities.find(x=>x.name!=='Spotify')||d.activities[0];
-      if(d.spotify){act.innerHTML=`🎵 ${d.spotify.song} — ${d.spotify.artist}`}
-      else{act.innerHTML=`🎮 ${a.name}`}
+      act.textContent=d.spotify?`🎵 ${d.spotify.song} — ${d.spotify.artist}`:`🎮 ${a.name}`;
+    }else act.textContent='';
+    // Spotify
+    const sc=document.getElementById('sp-card'),sct=document.getElementById('sp-content');
+    if(d.spotify){
+      const sp=d.spotify,now=Date.now(),tot=sp.timestamps.end-sp.timestamps.start,el=now-sp.timestamps.start,pct=Math.min(100,Math.max(0,(el/tot)*100)),rem=Math.max(0,sp.timestamps.end-now);
+      sc.style.borderColor='rgba(29,185,84,.3)';
+      sct.innerHTML=`<div style="display:flex;align-items:center;gap:5px;margin-bottom:10px"><i class="fab fa-spotify" style="color:#1db954;font-size:11px"></i><span style="color:#1db954;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em">Şu An Dinliyor</span><span style="width:5px;height:5px;background:#1db954;border-radius:50%;margin-left:3px;animation:pu 1.5s infinite;display:inline-block"></span></div><div style="display:flex;align-items:center;gap:10px"><img src="${sp.album_art_url}" style="width:44px;height:44px;border-radius:8px;object-fit:cover;flex-shrink:0" alt="album"><div style="min-width:0"><p style="color:#fff;font-weight:700;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${sp.song}</p><p style="color:#888;font-size:11px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${sp.artist}</p></div></div><div style="margin-top:10px;width:100%;background:rgba(255,255,255,.1);border-radius:3px;height:2px"><div id="spb" style="background:#1db954;height:100%;border-radius:3px;width:${pct}%"></div></div>`;
+      setTimeout(()=>{const b=document.getElementById('spb');if(b){b.style.transition=`width ${rem}ms linear`;b.style.width='100%'}},50);
+    }else{
+      sc.style.borderColor='';
+      sct.innerHTML=`<div style="display:flex;flex-direction:column;align-items:center;gap:7px;color:#2a2a2a;text-align:center"><i class="fab fa-spotify" style="font-size:30px"></i><p style="font-size:11px">Spotify Kapalı</p></div>`;
+    }
+    // VS Code
+    const vc=document.getElementById('vs-card'),vct=document.getElementById('vs-content');
+    const va=d.activities&&d.activities.find(a=>a.name==='Visual Studio Code');
+    if(va){
+      vc.style.borderColor='rgba(59,130,246,.3)';
+      vct.innerHTML=`<div style="display:flex;align-items:center;gap:5px;margin-bottom:10px"><i class="fas fa-code" style="color:#3b82f6;font-size:11px"></i><span style="color:#3b82f6;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em">Şu An Kodluyor</span><span style="width:5px;height:5px;background:#3b82f6;border-radius:50%;margin-left:3px;animation:pu 1.5s infinite;display:inline-block"></span></div><div style="display:flex;align-items:center;gap:10px"><div style="width:44px;height:44px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="fas fa-file-code" style="color:#3b82f6;font-size:19px"></i></div><div style="min-width:0"><p style="color:#fff;font-weight:700;font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${va.details||'Dosya düzenleniyor'}</p>${va.state?`<p style="color:#888;font-size:11px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${va.state}</p>`:''}</div></div>`;
+    }else{
+      vc.style.borderColor='';
+      vct.innerHTML=`<div style="display:flex;flex-direction:column;align-items:center;gap:7px;color:#2a2a2a;text-align:center"><i class="fas fa-code" style="font-size:30px"></i><p style="font-size:11px">VS Code Kapalı</p></div>`;
     }
   }catch(e){}
 }
-fetchDiscord();setInterval(fetchDiscord,30000);
+fetchLanyard();setInterval(fetchLanyard,15000);
 
-// GITHUB REPOS
+// GITHUB
 async function fetchGH(){
   try{
     const r=await fetch('https://api.github.com/users/kingpin1dev/repos?per_page=100');
     const repos=await r.json();
-    const grid=document.getElementById('gh-grid');
-    const langColors={'C#':'#178600','Python':'#3572A5','JavaScript':'#f1e05a','TypeScript':'#3178c6','HTML':'#e34c26','CSS':'#563d7c'};
+    const lc={'C#':'#178600','Python':'#3572A5','JavaScript':'#f1e05a','TypeScript':'#3178c6','HTML':'#e34c26','CSS':'#563d7c'};
     const top=repos.filter(r=>!r.fork).sort((a,b)=>b.stargazers_count-a.stargazers_count).slice(0,6);
-    grid.innerHTML=top.map(repo=>{
-      const lc=langColors[repo.language]||'#666';
-      return `<div class="glass gh-card">
-        <div class="gh-header">
-          <i class="fas fa-code-branch gh-icon" style="color:${lc}"></i>
-          <div class="gh-actions">
-            <span class="gh-stars"><i class="fas fa-star" style="color:#eab308"></i>${repo.stargazers_count}</span>
-            <a href="${repo.html_url}" target="_blank" class="gh-link"><i class="fas fa-external-link-alt"></i></a>
-          </div>
-        </div>
-        <div class="gh-name">${repo.name}</div>
-        <div class="gh-desc">${repo.description||''}</div>
-        <span class="gh-lang" style="border-color:${lc}40;color:${lc};background:${lc}15">${repo.language||'Markdown'}</span>
-      </div>`;
-    }).join('');
-  }catch(e){document.getElementById('gh-grid').innerHTML='<div class="gh-loading">Yüklenemedi.</div>'}
+    document.getElementById('ghp').innerHTML=`<div class="ghg">${top.map(repo=>{const c=lc[repo.language]||'#555';return`<div class="gl ghc"><div class="ghh"><i class="fas fa-code-branch ghi" style="color:${c}"></i><div class="gha"><span class="ghs"><i class="fas fa-star" style="color:#eab308"></i>${repo.stargazers_count}</span><a href="${repo.html_url}" target="_blank" class="ghl"><i class="fas fa-external-link-alt"></i></a></div></div><div class="ghn">${repo.name}</div><div class="ghd">${repo.description||''}</div><span class="ghlng" style="border-color:${c}40;color:${c};background:${c}15">${repo.language||'Markdown'}</span></div>`}).join('')}</div>`;
+  }catch(e){document.getElementById('ghp').innerHTML='<div class="ghl2">Yüklenemedi.</div>'}
 }
 fetchGH();
 
 // INSTAGRAM
-const igPosts=[
-  {url:'https://www.instagram.com/p/DF5Ur9UN0nn/',img:'img/ig1.jpg',likes:'8,6B',comments:105},
-  {url:'https://www.instagram.com/p/DD2znKCtNWy/',img:'img/ig2.jpg',likes:'397',comments:4},
-  {url:'https://www.instagram.com/p/C9r4GdPtqMD/',img:'img/ig3.jpg',likes:'476',comments:26},
-  {url:'https://www.instagram.com/p/C7jI_oftVvz/',img:'img/ig4.jpg',likes:'91,8B',comments:457},
-  {url:'https://www.instagram.com/p/C5vgkL8M14j/',img:'img/ig5.jpg',likes:'72,4B',comments:297},
-  {url:'https://www.instagram.com/p/C22EVl5sPN_/',img:'img/ig6.jpg',likes:'5,5B',comments:58}
-];
-document.getElementById('ig-grid').innerHTML=igPosts.map(p=>`
-  <a href="${p.url}" target="_blank" class="ig-card">
-    <img src="${p.img}" alt="post" loading="lazy">
-    <div class="ig-overlay">
-      <span class="ig-stat"><i class="fas fa-heart" style="color:#ff006e"></i> ${p.likes}</span>
-      <span class="ig-stat"><i class="fas fa-comment"></i> ${p.comments}</span>
-    </div>
-  </a>`).join('');
+document.getElementById('igg').innerHTML=[
+  {url:'https://www.instagram.com/p/DF5Ur9UN0nn/',img:'img/ig1.jpg',likes:'8,6B',c:105},
+  {url:'https://www.instagram.com/p/DD2znKCtNWy/',img:'img/ig2.jpg',likes:'397',c:4},
+  {url:'https://www.instagram.com/p/C9r4GdPtqMD/',img:'img/ig3.jpg',likes:'476',c:26},
+  {url:'https://www.instagram.com/p/C7jI_oftVvz/',img:'img/ig4.jpg',likes:'91,8B',c:457},
+  {url:'https://www.instagram.com/p/C5vgkL8M14j/',img:'img/ig5.jpg',likes:'72,4B',c:297},
+  {url:'https://www.instagram.com/p/C22EVl5sPN_/',img:'img/ig6.jpg',likes:'5,5B',c:58}
+].map(p=>`<a href="${p.url}" target="_blank" class="igc"><img src="${p.img}" alt="post" loading="lazy"><div class="igo"><span class="igs"><i class="fas fa-heart" style="color:#ff006e"></i>${p.likes}</span><span class="igs"><i class="fas fa-comment"></i>${p.c}</span></div></a>`).join('');
 </script>
 </body>
 </html>
