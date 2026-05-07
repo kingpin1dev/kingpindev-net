@@ -11,20 +11,14 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--c:#a855f7;--c2:#00f5ff;--p:#7c3aed;--pk:#f0abfc;--bg:#0e0c1e;--bd:rgba(168,85,247,.12)}
 html{scroll-behavior:smooth}
-body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:#c9d1d9;overflow-x:hidden;cursor:none}
+body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:#c9d1d9;overflow-x:hidden;cursor:none;background-image:radial-gradient(ellipse 80% 50% at 10% 0%,rgba(124,58,237,.22),transparent 60%),radial-gradient(ellipse 60% 40% at 90% 60%,rgba(0,245,255,.08),transparent 55%),radial-gradient(ellipse 50% 35% at 50% 100%,rgba(168,85,247,.1),transparent 60%)}
 
 /* CURSOR */
-#cur{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--c);pointer-events:none;z-index:9999;transition:opacity .2s;mix-blend-mode:normal;will-change:transform}
+#cur{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--c);pointer-events:none;z-index:9999;transition:opacity .2s;will-change:transform}
 #cur2{position:fixed;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(168,85,247,.6);pointer-events:none;z-index:9998;will-change:transform;transition:border-color .2s,width .2s,height .2s}
 
 /* SPOTLIGHT */
-#spot{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(700px circle at var(--mx,50vw) var(--my,50vh),rgba(124,58,237,.10),transparent 50%)}
-
-/* BLOBS */
-.blob{position:fixed;border-radius:50%;filter:blur(110px);pointer-events:none;z-index:0;will-change:transform}
-@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-50px) scale(1.06)}}
-@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,40px) scale(.94)}}
-@keyframes float3{0%,100%{transform:translate(0,0)}33%{transform:translate(25px,35px)}66%{transform:translate(-18px,-22px)}}
+#spot{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(600px circle at var(--mx,50vw) var(--my,50vh),rgba(124,58,237,.08),transparent 50%)}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(14,12,30,.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
@@ -145,10 +139,6 @@ section{padding:88px 0 48px;position:relative;z-index:1}
 <div id="cur"></div>
 <div id="cur2"></div>
 <div id="spot"></div>
-<!-- Background blobs -->
-<div class="blob" style="width:600px;height:600px;background:rgba(124,58,237,.16);top:-220px;left:-220px;animation:float1 14s ease-in-out infinite"></div>
-<div class="blob" style="width:450px;height:450px;background:rgba(0,245,255,.08);top:40%;right:-180px;animation:float2 19s ease-in-out infinite"></div>
-<div class="blob" style="width:320px;height:320px;background:rgba(168,85,247,.11);bottom:15%;left:30%;animation:float3 24s ease-in-out infinite"></div>
 
 <nav>
   <div class="ni">
