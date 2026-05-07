@@ -20,6 +20,12 @@ body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:#c9d1d9;o
 /* SPOTLIGHT */
 #spot{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(700px circle at var(--mx,50vw) var(--my,50vh),rgba(124,58,237,.10),transparent 50%)}
 
+/* BLOBS */
+.blob{position:fixed;border-radius:50%;filter:blur(110px);pointer-events:none;z-index:0;will-change:transform}
+@keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,-50px) scale(1.06)}}
+@keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,40px) scale(.94)}}
+@keyframes float3{0%,100%{transform:translate(0,0)}33%{transform:translate(25px,35px)}66%{transform:translate(-18px,-22px)}}
+
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(14,12,30,.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
 .ni{max-width:1000px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
@@ -110,9 +116,9 @@ section{padding:88px 0 48px;position:relative;z-index:1}
 #btt:hover{background:rgba(124,58,237,.4);box-shadow:0 0 24px rgba(168,85,247,.3)}
 
 /* SCROLL REVEAL */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
 .rv.on{opacity:1;transform:none}
-.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}.d4{transition-delay:.28s}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.40s}
 
 /* PULSE */
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
@@ -139,6 +145,10 @@ section{padding:88px 0 48px;position:relative;z-index:1}
 <div id="cur"></div>
 <div id="cur2"></div>
 <div id="spot"></div>
+<!-- Background blobs -->
+<div class="blob" style="width:600px;height:600px;background:rgba(124,58,237,.16);top:-220px;left:-220px;animation:float1 14s ease-in-out infinite"></div>
+<div class="blob" style="width:450px;height:450px;background:rgba(0,245,255,.08);top:40%;right:-180px;animation:float2 19s ease-in-out infinite"></div>
+<div class="blob" style="width:320px;height:320px;background:rgba(168,85,247,.11);bottom:15%;left:30%;animation:float3 24s ease-in-out infinite"></div>
 
 <nav>
   <div class="ni">
@@ -159,10 +169,10 @@ section{padding:88px 0 48px;position:relative;z-index:1}
   <div class="w">
     <img src="https://avatars.githubusercontent.com/u/75186785?v=4" alt="Burak" style="width:68px;height:68px;border-radius:50%;border:2px solid rgba(168,85,247,.5);margin-bottom:22px;display:block;animation:fU .5s ease both">
     <p style="font-family:'Space Mono',monospace;font-size:10px;color:var(--c);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;animation:fU .5s .06s ease both">01 — Yazılımcı & Editör</p>
-    <h1 class="glitch" data-text="Burak PEKEL">Burak PEKEL</h1>
-    <div class="hero-sub">// <span id="typed"></span><span class="blink"></span></div>
-    <p class="hero-desc">Yaratıcı uygulamaları geliştirmeyi ve fikirleri gerçeğe dönüştürmeyi seviyorum. Video kurgu ve UI/UX tasarımı tutkunu bir geliştirici. Güncel olarak Sonar Vice, Notchify ve BokMail üzerinde çalışıyorum.</p>
-    <div class="hero-cta">
+    <h1 class="glitch" data-text="Burak PEKEL" style="animation:fU .5s .1s ease both">Burak PEKEL</h1>
+    <div class="hero-sub" style="animation:fU .5s .18s ease both">// <span id="typed"></span><span class="blink"></span></div>
+    <p class="hero-desc" style="animation:fU .5s .26s ease both">Yaratıcı uygulamaları geliştirmeyi ve fikirleri gerçeğe dönüştürmeyi seviyorum. Video kurgu ve UI/UX tasarımı tutkunu bir geliştirici. Güncel olarak Sonar Vice, Notchify ve BokMail üzerinde çalışıyorum.</p>
+    <div class="hero-cta" style="animation:fU .5s .34s ease both">
       <a href="#projects" class="btn-p"><i class="fas fa-rocket"></i> Projeleri Gör</a>
       <a href="https://github.com/kingpin1dev" target="_blank" class="btn-g"><i class="fab fa-github"></i> GitHub</a>
     </div>
@@ -201,11 +211,11 @@ section{padding:88px 0 48px;position:relative;z-index:1}
 <!-- PROJECTS -->
 <section id="projects">
   <div class="w">
-    <div class="sec-label">02 — PROJELER</div>
-    <h2 class="sec-title">Öne Çıkan <span style="color:var(--c)">Çalışmalar</span></h2>
+    <div class="sec-label rv">02 — PROJELER</div>
+    <h2 class="sec-title rv d1">Öne Çıkan <span style="color:var(--c)">Çalışmalar</span></h2>
     <div class="proj-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
 
-      <div class="bento tilt-card" style="background:linear-gradient(135deg,rgba(88,166,255,.07),rgba(124,58,237,.05));border-color:rgba(88,166,255,.18);cursor:pointer" onclick="window.open('https://bokmails.com','_blank')">
+      <div class="bento tilt-card rv d2" style="background:linear-gradient(135deg,rgba(88,166,255,.07),rgba(124,58,237,.05));border-color:rgba(88,166,255,.18);cursor:pointer" onclick="window.open('https://bokmails.com','_blank')">
         <div class="shine"></div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
           <div style="width:42px;height:42px;background:rgba(88,166,255,.14);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px">📧</div>
@@ -223,7 +233,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
         <div style="position:absolute;bottom:18px;right:18px;width:7px;height:7px;background:#58a6ff;border-radius:50%;box-shadow:0 0 10px #58a6ff;animation:pulse 2s infinite"></div>
       </div>
 
-      <div class="bento tilt-card" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.05));border-color:rgba(56,189,248,.18);cursor:pointer" onclick="window.open('https://apps.microsoft.com/detail/9P0JFN5L96VH?hl=tr-tr&gl=TR&ocid=pdpshare','_blank')">
+      <div class="bento tilt-card rv d3" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.05));border-color:rgba(56,189,248,.18);cursor:pointer" onclick="window.open('https://apps.microsoft.com/detail/9P0JFN5L96VH?hl=tr-tr&gl=TR&ocid=pdpshare','_blank')">
         <div class="shine"></div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
           <img src="img/notchify.png" alt="Notchify" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
@@ -240,7 +250,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
         </div>
       </div>
 
-      <div class="bento tilt-card" style="background:linear-gradient(135deg,rgba(249,104,21,.07),rgba(249,104,21,.04));border-color:rgba(249,104,21,.18);cursor:pointer" onclick="window.open('https://apps.microsoft.com/detail/9p40tmplqb43?hl=tr-TR&gl=TR','_blank')">
+      <div class="bento tilt-card rv d4" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:pointer" onclick="window.open('https://apps.microsoft.com/detail/9p40tmplqb43?hl=tr-TR&gl=TR','_blank')">
         <div class="shine"></div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
           <img src="img/vice-sonar.png" alt="VICE Sonar" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
@@ -252,8 +262,8 @@ section{padding:88px 0 48px;position:relative;z-index:1}
         </div>
         <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:18px">Windows için ses dedektörü ve görselleştirme aracı.</p>
         <div style="display:flex;gap:7px">
-          <span style="font-size:10px;background:rgba(249,104,21,.1);color:#f96815;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(249,104,21,.2)">Windows</span>
-          <span style="font-size:10px;background:rgba(249,104,21,.1);color:#f96815;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(249,104,21,.2)">Audio</span>
+          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Windows</span>
+          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Audio</span>
         </div>
       </div>
     </div>
@@ -264,9 +274,9 @@ section{padding:88px 0 48px;position:relative;z-index:1}
 <!-- SETUP TERMINAL -->
 <section id="setup">
   <div class="w">
-    <div class="sec-label">03 — SİSTEM</div>
-    <h2 class="sec-title">Kurulum & <span style="color:var(--c)">Donanım</span></h2>
-    <div style="max-width:620px">
+    <div class="sec-label rv">03 — SİSTEM</div>
+    <h2 class="sec-title rv d1">Kurulum & <span style="color:var(--c)">Donanım</span></h2>
+    <div style="max-width:620px" class="rv d2">
       <div class="terminal">
         <div class="t-bar">
           <span></span><span></span><span></span>
@@ -292,12 +302,12 @@ section{padding:88px 0 48px;position:relative;z-index:1}
 <!-- ACTIVITY -->
 <section id="activity">
   <div class="w">
-    <div class="sec-label">04 — AKTİVİTE</div>
-    <h2 class="sec-title">Canlı <span style="color:var(--c)">Durum</span></h2>
+    <div class="sec-label rv">04 — AKTİVİTE</div>
+    <h2 class="sec-title rv d1">Canlı <span style="color:var(--c)">Durum</span></h2>
     <div class="act-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">
 
       <!-- Discord -->
-      <div class="bento">
+      <div class="bento rv d2">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
           <i class="fab fa-discord" style="font-size:20px;color:#5865f2"></i>
           <span style="font-weight:700;color:#fff">Discord</span>
@@ -312,7 +322,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
       </div>
 
       <!-- Spotify -->
-      <div class="bento">
+      <div class="bento rv d3">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
           <i class="fab fa-spotify" style="font-size:20px;color:#1db954"></i>
           <span style="font-weight:700;color:#fff">Spotify</span>
@@ -337,7 +347,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
       </div>
 
       <!-- VS Code -->
-      <div class="bento">
+      <div class="bento rv d2">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
           <i class="fas fa-code" style="font-size:20px;color:#007acc"></i>
           <span style="font-weight:700;color:#fff">VS Code</span>
@@ -355,7 +365,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
       </div>
 
       <!-- Xbox -->
-      <div class="bento">
+      <div class="bento rv d3">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
           <i class="fab fa-xbox" style="font-size:20px;color:#107c10"></i>
           <span style="font-weight:700;color:#fff">Xbox</span>
@@ -370,11 +380,11 @@ section{padding:88px 0 48px;position:relative;z-index:1}
 <!-- STEAM -->
 <section id="steam-section">
   <div class="w">
-    <div class="sec-label">05 — STEAM</div>
-    <h2 class="sec-title">Steam <span style="color:var(--c)">İstatistikleri</span></h2>
+    <div class="sec-label rv">05 — STEAM</div>
+    <h2 class="sec-title rv d1">Steam <span style="color:var(--c)">İstatistikleri</span></h2>
 
     <!-- Level 35 featured -->
-    <div class="bento" style="display:flex;align-items:center;gap:28px;margin-bottom:12px;background:linear-gradient(135deg,rgba(168,85,247,.12),rgba(0,245,255,.05));border-color:rgba(168,85,247,.35)">
+    <div class="bento rv d2" style="display:flex;align-items:center;gap:28px;margin-bottom:12px;background:linear-gradient(135deg,rgba(168,85,247,.12),rgba(0,245,255,.05));border-color:rgba(168,85,247,.35)">
       <div style="text-align:center;flex-shrink:0">
         <div style="font-size:11px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.18em;margin-bottom:4px;font-family:'Space Mono',monospace">Steam Level</div>
         <div style="font-size:64px;font-weight:800;color:var(--c);font-family:'Space Mono',monospace;line-height:1;text-shadow:0 0 32px rgba(168,85,247,.5)">35</div>
@@ -387,7 +397,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
       </div>
     </div>
     <!-- 4 stats -->
-    <div class="steam-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
+    <div class="steam-grid rv d3" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
       <div class="bento" style="text-align:center">
         <div style="font-size:36px;font-weight:800;color:var(--c2);font-family:'Space Mono',monospace" data-count="115">0</div>
         <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:6px;text-transform:uppercase;letter-spacing:.12em">Oyun</div>
@@ -407,7 +417,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
     </div>
 
     <!-- Game Grid -->
-    <div class="game-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+    <div class="game-grid rv d4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
       <div class="game-card" onclick="window.open('https://store.steampowered.com/app/1091500/','_blank')">
         <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/library_600x900.jpg" alt="Cyberpunk 2077">
         <div class="game-ov"><span>%85</span></div>
@@ -431,11 +441,11 @@ section{padding:88px 0 48px;position:relative;z-index:1}
 <!-- CREATIVE -->
 <section id="creative">
   <div class="w">
-    <div class="sec-label">06 — KREATİF</div>
-    <h2 class="sec-title">Yaratıcı <span style="color:var(--c)">İçerik</span></h2>
+    <div class="sec-label rv">06 — KREATİF</div>
+    <h2 class="sec-title rv d1">Yaratıcı <span style="color:var(--c)">İçerik</span></h2>
     <div class="cr-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px">
 
-      <div class="bento tilt-card" style="background:linear-gradient(135deg,rgba(236,72,153,.07),rgba(99,102,241,.05));border-color:rgba(236,72,153,.2);cursor:pointer" onclick="window.open('https://www.instagram.com/sineorbit/','_blank')">
+      <div class="bento tilt-card rv d2" style="background:linear-gradient(135deg,rgba(236,72,153,.07),rgba(99,102,241,.05));border-color:rgba(236,72,153,.2);cursor:pointer" onclick="window.open('https://www.instagram.com/sineorbit/','_blank')">
         <div class="shine"></div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
           <div style="width:46px;height:46px;background:linear-gradient(135deg,#ec4899,#6366f1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px">🎬</div>
@@ -452,7 +462,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
         </div>
       </div>
 
-      <div class="bento tilt-card" style="background:linear-gradient(135deg,rgba(29,185,84,.07),rgba(29,185,84,.04));border-color:rgba(29,185,84,.2);cursor:pointer" onclick="window.open('https://open.spotify.com/intl-tr/artist/3KwVC87AX4WLGOS8oLWvc0','_blank')">
+      <div class="bento tilt-card rv d3" style="background:linear-gradient(135deg,rgba(29,185,84,.07),rgba(29,185,84,.04));border-color:rgba(29,185,84,.2);cursor:pointer" onclick="window.open('https://open.spotify.com/intl-tr/artist/3KwVC87AX4WLGOS8oLWvc0','_blank')">
         <div class="shine"></div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
           <div style="width:46px;height:46px;background:rgba(29,185,84,.14);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px">🎵</div>
@@ -467,21 +477,21 @@ section{padding:88px 0 48px;position:relative;z-index:1}
     </div>
 
     <!-- Instagram Grid -->
-    <div style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,.35);margin-bottom:14px">
+    <div class="rv d4" style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,.35);margin-bottom:14px">
       <i class="fab fa-instagram" style="color:#ec4899;margin-right:6px"></i>@sineorbit — Son Paylaşımlar
     </div>
-    <div id="ig-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"></div>
+    <div id="ig-grid" class="rv d5" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"></div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
   <div class="w" style="text-align:center">
-    <div class="sec-label">07 — İLETİŞİM</div>
-    <h2 class="sec-title" style="font-size:clamp(28px,6vw,58px);margin-bottom:16px">Birlikte bir şeyler<br><span style="color:var(--c)">yapalım.</span></h2>
-    <p style="max-width:440px;margin:0 auto 36px;color:rgba(255,255,255,.45);font-size:15px;line-height:1.75">Proje fikrin mi var? Kolaborasyon mu istiyorsun? Bir merhaba bile yeter.</p>
-    <a href="mailto:admin@bokmails.com" class="btn-p" style="font-size:14px;padding:13px 32px"><i class="fas fa-envelope"></i> admin@bokmails.com</a>
-    <div style="display:flex;justify-content:center;gap:12px;margin-top:36px;flex-wrap:wrap">
+    <div class="sec-label rv">07 — İLETİŞİM</div>
+    <h2 class="sec-title rv d1" style="font-size:clamp(28px,6vw,58px);margin-bottom:16px">Birlikte bir şeyler<br><span style="color:var(--c)">yapalım.</span></h2>
+    <p class="rv d2" style="max-width:440px;margin:0 auto 36px;color:rgba(255,255,255,.45);font-size:15px;line-height:1.75">Proje fikrin mi var? Kolaborasyon mu istiyorsun? Bir merhaba bile yeter.</p>
+    <a href="mailto:admin@bokmails.com" class="btn-p rv d3" style="font-size:14px;padding:13px 32px"><i class="fas fa-envelope"></i> admin@bokmails.com</a>
+    <div class="rv d4" style="display:flex;justify-content:center;gap:12px;margin-top:36px;flex-wrap:wrap">
       <a href="https://github.com/kingpin1dev" target="_blank" class="soc-btn"><i class="fab fa-github"></i></a>
       <a href="https://discord.com/users/kingpin1dev" target="_blank" class="soc-btn"><i class="fab fa-discord"></i></a>
       <a href="https://www.instagram.com/burakpekeel/" target="_blank" class="soc-btn"><i class="fab fa-instagram"></i></a>
@@ -491,7 +501,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
   </div>
 </section>
 
-<footer style="border-top:1px solid var(--bd);padding:28px;text-align:center;font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,.18)">
+<footer class="rv" style="border-top:1px solid var(--bd);padding:28px;text-align:center;font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,.18)">
   <span>kingpin1dev — 2025</span>
   <span style="margin:0 14px;opacity:.3">•</span>
   <a href="https://kingpindev.com" style="color:inherit;text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--c)'" onmouseout="this.style.color='inherit'">kingpindev.com</a>
