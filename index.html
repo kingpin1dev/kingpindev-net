@@ -81,7 +81,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
 .tilt-card{transition:transform .06s;transform-style:preserve-3d}
 
 /* GAME CARDS */
-.game-card{position:relative;border-radius:14px;overflow:hidden;cursor:pointer;aspect-ratio:2/3}
+.game-card{position:relative;border-radius:14px;overflow:hidden;cursor:none;aspect-ratio:2/3}
 .game-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s,filter .4s;filter:saturate(.7) brightness(.85)}
 .game-card:hover img{transform:scale(1.07);filter:saturate(1.1) brightness(1)}
 .game-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,12,30,.95) 0%,rgba(14,12,30,.3) 50%,transparent 100%);display:flex;align-items:flex-end;padding:12px}
@@ -162,7 +162,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
     <p style="font-family:'Space Mono',monospace;font-size:10px;color:var(--c);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;animation:fU .5s .06s ease both">01 — Yazılımcı & Editör</p>
     <h1 class="glitch" data-text="Burak PEKEL" style="animation:fU .5s .1s ease both">Burak PEKEL</h1>
     <div class="hero-sub" style="animation:fU .5s .18s ease both">// <span id="typed"></span><span class="blink"></span></div>
-    <p class="hero-desc" style="animation:fU .5s .26s ease both">Yaratıcı uygulamaları geliştirmeyi ve fikirleri gerçeğe dönüştürmeyi seviyorum. Video kurgu ve UI/UX tasarımı tutkunu bir geliştirici. Güncel olarak Vensor, Genisys ve BokMail projeleri üzerinde çalışmaktayım.</p>
+    <p class="hero-desc" style="animation:fU .5s .26s ease both">Yaratıcı uygulamaları geliştirmeyi ve fikirleri gerçeğe dönüştürmeyi seviyorum. Aynı zamanda video kurgu ve UI/UX tasarımı tutkunu bir geliştirici ve video editörüyüm. Güncel olarak Fluent Mixer, Aurora Radios ve Spotidrop projeleri üzerinde çalışmaktayım.</p>
     <div class="hero-cta" style="animation:fU .5s .34s ease both">
       <a href="#projects" class="btn-p"><i class="fas fa-rocket"></i> Projeleri Gör</a>
       <a href="https://github.com/kingpin1dev" target="_blank" class="btn-g"><i class="fab fa-github"></i> GitHub</a>
@@ -212,10 +212,10 @@ section{padding:88px 0 48px;position:relative;z-index:1}
     </div>
     <div class="proj-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
 
-      <div class="bento tilt-card rv d2" style="background:linear-gradient(135deg,rgba(88,166,255,.07),rgba(124,58,237,.05));border-color:rgba(88,166,255,.18);cursor:pointer" onclick="window.open('https://bokmails.com','_blank')">
+      <div class="bento tilt-card rv d2" style="background:linear-gradient(135deg,rgba(88,166,255,.07),rgba(124,58,237,.05));border-color:rgba(88,166,255,.18);cursor:none" onclick="window.open('https://bokmails.com','_blank')">
         <div class="shine"></div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
-          <div style="width:42px;height:42px;background:rgba(88,166,255,.14);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px">📧</div>
+          <img src="img/BokMail.png" alt="BokMail" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
           <div>
             <div style="font-weight:700;font-size:16px;color:#fff">BokMail</div>
             <div style="font-size:10px;color:rgba(255,255,255,.35);font-family:'Space Mono',monospace">Web App</div>
@@ -230,7 +230,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
         <div style="position:absolute;bottom:18px;right:18px;width:7px;height:7px;background:#58a6ff;border-radius:50%;box-shadow:0 0 10px #58a6ff;animation:pulse 2s infinite"></div>
       </div>
 
-      <div class="bento tilt-card rv d3" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.05));border-color:rgba(56,189,248,.18);cursor:pointer" onclick="window.open('https://apps.microsoft.com/detail/9P0JFN5L96VH?hl=tr-tr&gl=TR&ocid=pdpshare','_blank')">
+      <div class="bento tilt-card rv d3" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.05));border-color:rgba(56,189,248,.18);cursor:none" onclick="window.open('https://apps.microsoft.com/detail/9P0JFN5L96VH?hl=tr-tr&gl=TR&ocid=pdpshare','_blank')">
         <div class="shine"></div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
           <img src="img/notchify.png" alt="Notchify" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
@@ -252,7 +252,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
         </div>
       </div>
 
-      <div class="bento tilt-card rv d4" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:pointer" onclick="window.open('https://apps.microsoft.com/detail/9p40tmplqb43?hl=tr-TR&gl=TR','_blank')">
+      <div class="bento tilt-card rv d4" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:none" onclick="window.open('https://apps.microsoft.com/detail/9p40tmplqb43?hl=tr-TR&gl=TR','_blank')">
         <div class="shine"></div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
           <img src="img/vice-sonar.png" alt="VICE Sonar" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
@@ -270,7 +270,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
       </div>
 
       <!-- GlideSnap Kartı -->
-      <div class="bento tilt-card rv d2" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:pointer" onclick="window.open('https://apps.microsoft.com/detail/9PND7TH314ZD?hl=tr-tr&gl=TR','_blank')">
+      <div class="bento tilt-card rv d2" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:none" onclick="window.open('https://apps.microsoft.com/detail/9PND7TH314ZD?hl=tr-tr&gl=TR','_blank')">
         <div class="shine"></div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
           <img src="img/GlideSnap.png" alt="GlideSnap" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
@@ -289,7 +289,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
       </div>
 
       <!-- vOrganizer Kartı -->
-      <div class="bento tilt-card rv d3" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:pointer" onclick="window.open('https://apps.microsoft.com/detail/9PKDPQDF6ZJL?hl=tr-tr&gl=TR','_blank')">
+      <div class="bento tilt-card rv d3" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:none" onclick="window.open('https://apps.microsoft.com/detail/9PKDPQDF6ZJL?hl=tr-tr&gl=TR','_blank')">
         <div class="shine"></div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
           <img src="img/Vorganizer.png" alt="vOrganizer" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
@@ -310,7 +310,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
       </div>
 
       <!-- Fluent Mixer Kartı -->
-      <div class="bento tilt-card rv d4" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:pointer" onclick="window.open('https://apps.microsoft.com/detail/9NN5W7D23VLJ?hl=neutral&gl=TR&ocid=pdpshare','_blank')">
+      <div class="bento tilt-card rv d4" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:none" onclick="window.open('https://apps.microsoft.com/detail/9NN5W7D23VLJ?hl=neutral&gl=TR&ocid=pdpshare','_blank')">
         <div class="shine"></div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
           <img src="img/FluentMixer.png" alt="Fluent Mixer" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
@@ -332,7 +332,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
       </div>
 
       <!-- Aurora Radios Kartı -->
-      <div class="bento tilt-card rv d2" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:pointer" onclick="window.open('https://apps.microsoft.com/detail/9nxld94rqv1z?hl','_blank')">
+      <div class="bento tilt-card rv d2" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:none" onclick="window.open('https://apps.microsoft.com/detail/9nxld94rqv1z?hl','_blank')">
         <div class="shine"></div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
           <img src="img/Aurora.png" alt="Aurora Radios" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
@@ -530,7 +530,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
     <h2 class="sec-title rv d1">Yaratıcı <span style="color:var(--c)">İçerik</span></h2>
     <div class="cr-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px">
 
-      <div class="bento tilt-card rv d2" style="background:linear-gradient(135deg,rgba(236,72,153,.07),rgba(99,102,241,.05));border-color:rgba(236,72,153,.2);cursor:pointer" onclick="window.open('https://www.instagram.com/sineorbit/','_blank')">
+      <div class="bento tilt-card rv d2" style="background:linear-gradient(135deg,rgba(236,72,153,.07),rgba(99,102,241,.05));border-color:rgba(236,72,153,.2);cursor:none" onclick="window.open('https://www.instagram.com/sineorbit/','_blank')">
         <div class="shine"></div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
           <div style="width:46px;height:46px;background:linear-gradient(135deg,#ec4899,#6366f1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px">🎬</div>
@@ -547,7 +547,7 @@ section{padding:88px 0 48px;position:relative;z-index:1}
         </div>
       </div>
 
-      <div class="bento tilt-card rv d3" style="background:linear-gradient(135deg,rgba(29,185,84,.07),rgba(29,185,84,.04));border-color:rgba(29,185,84,.2);cursor:pointer" onclick="window.open('https://open.spotify.com/intl-tr/artist/7tqKllQw5Qmb8W2rxxBykt?si=5235320fb4d34e84','_blank')">
+      <div class="bento tilt-card rv d3" style="background:linear-gradient(135deg,rgba(29,185,84,.07),rgba(29,185,84,.04));border-color:rgba(29,185,84,.2);cursor:none" onclick="window.open('https://open.spotify.com/intl-tr/artist/7tqKllQw5Qmb8W2rxxBykt?si=5235320fb4d34e84','_blank')">
         <div class="shine"></div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
           <div style="width:46px;height:46px;background:rgba(29,185,84,.14);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px">🎵</div>
