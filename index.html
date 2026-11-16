@@ -2,770 +2,174 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Burak PEKEL — kingpindev.net</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Burak PEKEL — yazılım, kurgu, arayüz</title>
+<meta name="description" content="Burak PEKEL: Windows uygulamaları geliştiren yazılımcı, video editörü ve UI/UX tasarımcısı. Notchify, Mixora, Hotpad, SpotiDrop ve diğer çalışmalar.">
+<meta name="theme-color" content="#ebe6da">
+<link rel="canonical" href="https://kingpindev.net/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Burak PEKEL">
+<meta property="og:description" content="Yazılımcı, video editörü ve UI/UX tasarımcısı. Windows uygulamaları, Discord botları ve sinematik editler.">
+<meta property="og:url" content="https://kingpindev.net/">
+<meta property="og:image" content="https://kingpindev.net/img/og-image.jpg">
 <link rel="icon" type="image/png" href="img/websitesfavicon.png">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--c:#a855f7;--c2:#00f5ff;--p:#7c3aed;--pk:#f0abfc;--bg:#0e0c1e;--bd:rgba(168,85,247,.12)}
-html{scroll-behavior:smooth}
-body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:#c9d1d9;overflow-x:hidden;cursor:none;background-image:radial-gradient(ellipse 80% 50% at 10% 0%,rgba(124,58,237,.22),transparent 60%),radial-gradient(ellipse 60% 40% at 90% 60%,rgba(0,245,255,.08),transparent 55%),radial-gradient(ellipse 50% 35% at 50% 100%,rgba(168,85,247,.1),transparent 60%)}
-a,button,input,select,textarea,label[for],summary,[onclick]{cursor:none!important}
-
-/* CURSOR */
-#cur{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--c);pointer-events:none;z-index:9999;transition:opacity .2s;will-change:transform}
-#cur2{position:fixed;width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(168,85,247,.6);pointer-events:none;z-index:9998;will-change:transform;transition:border-color .2s,width .2s,height .2s}
-
-/* SPOTLIGHT */
-#spot{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(600px circle at var(--mx,50vw) var(--my,50vh),rgba(124,58,237,.08),transparent 50%)}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 0;background:rgba(14,12,30,.85);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd)}
-.ni{max-width:1000px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:#fff;letter-spacing:.1em}
-.logo span{color:var(--c)}
-.nl{display:flex;gap:4px}
-.nl a{color:rgba(255,255,255,.35);text-decoration:none;font-size:12px;font-weight:500;padding:6px 13px;border-radius:8px;transition:all .2s;letter-spacing:.04em}
-.nl a:hover,.nl a.active{color:#fff;background:rgba(168,85,247,.12)}
-
-/* WRAP */
-.w{max-width:1000px;margin:0 auto;padding:0 32px;position:relative;z-index:1}
-
-/* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:80px;position:relative;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 40%,rgba(124,58,237,.18),transparent 70%);pointer-events:none}
-.glitch{font-size:clamp(48px,8vw,92px);font-weight:800;color:#fff;line-height:.95;letter-spacing:-.03em;position:relative;display:inline-block}
-.glitch::before,.glitch::after{content:attr(data-text);position:absolute;inset:0;opacity:.85}
-.glitch::before{color:var(--c2);clip-path:polygon(0 0,100% 0,100% 38%,0 38%);animation:gl1 3.5s infinite;transform:translateX(-2px)}
-.glitch::after{color:var(--pk);clip-path:polygon(0 65%,100% 65%,100% 100%,0 100%);animation:gl2 3.5s infinite;transform:translateX(2px)}
-@keyframes gl1{0%,88%,100%{transform:translateX(-2px)}89%{transform:translateX(5px) skewX(-3deg)}91%{transform:translateX(-4px)}93%{transform:translateX(3px)}}
-@keyframes gl2{0%,88%,100%{transform:translateX(2px)}89%{transform:translateX(-5px) skewX(3deg)}91%{transform:translateX(4px)}93%{transform:translateX(-3px)}}
-.hero-sub{font-family:'Space Mono',monospace;font-size:14px;color:var(--c);margin-top:18px;letter-spacing:.04em}
-.blink{display:inline-block;width:2px;height:1em;background:var(--c);margin-left:2px;animation:blink 1s step-end infinite;vertical-align:middle}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-.hero-desc{max-width:520px;color:rgba(255,255,255,.5);line-height:1.8;font-size:15px;margin-top:20px}
-.hero-cta{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
-.btn-p{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;background:linear-gradient(135deg,var(--p),#a855f7);color:#fff;transition:all .25s;border:none;cursor:none}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(168,85,247,.4)}
-.btn-g{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7);transition:all .25s}
-.btn-g:hover{border-color:rgba(255,255,255,.3);color:#fff;transform:translateY(-2px)}
-.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.2);font-size:10px;font-family:'Space Mono',monospace;letter-spacing:.12em;animation:bob 2s ease-in-out infinite}
-@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(7px)}}
-
-/* SKILLS STRIP */
-.strip{overflow:hidden;position:relative;padding:13px 0}
-.strip::before,.strip::after{content:'';position:absolute;top:0;width:100px;height:100%;z-index:2;pointer-events:none}
-.strip::before{left:0;background:linear-gradient(to right,var(--bg),transparent)}
-.strip::after{right:0;background:linear-gradient(to left,var(--bg),transparent)}
-.strip-inner{display:flex;width:max-content;animation:stripL 28s linear infinite;will-change:transform}
-.strip:hover .strip-inner{animation-play-state:paused}
-.strip-t{display:flex;gap:28px;padding:0 14px;flex-shrink:0}
-@keyframes stripL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.sk{display:flex;align-items:center;gap:8px;font-size:12px;font-family:'Space Mono',monospace;color:rgba(255,255,255,.4);white-space:nowrap;transition:color .2s}
-.sk:hover{color:rgba(255,255,255,.85)}
-.sk i{font-size:17px}
-
-/* CARD (bento) */
-.bento{background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:16px;padding:22px;position:relative;overflow:hidden;transition:border-color .3s,transform .2s}
-.bento:hover{border-color:rgba(168,85,247,.3)}
-.shine{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s}
-.bento:hover .shine{opacity:1}
-
-/* SECTION */
-section{padding:88px 0 48px;position:relative;z-index:1}
-.sec-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--c);margin-bottom:8px}
-.sec-title{font-size:clamp(24px,4vw,38px);font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:36px}
-
-/* TILT CARD */
-.tilt-card{transition:transform .06s;transform-style:preserve-3d}
-
-/* GAME CARDS */
-.game-card{position:relative;border-radius:14px;overflow:hidden;cursor:none;aspect-ratio:2/3}
-.game-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s,filter .4s;filter:saturate(.7) brightness(.85)}
-.game-card:hover img{transform:scale(1.07);filter:saturate(1.1) brightness(1)}
-.game-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,12,30,.95) 0%,rgba(14,12,30,.3) 50%,transparent 100%);display:flex;align-items:flex-end;padding:12px}
-.game-ov span{font-size:12px;font-weight:700;color:#fff;font-family:'Space Mono',monospace;background:rgba(168,85,247,.25);padding:3px 9px;border-radius:6px;border:1px solid rgba(168,85,247,.4)}
-
-/* TERMINAL */
-.terminal{background:#09080f;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;font-family:'Space Mono',monospace;font-size:12px}
-.t-bar{background:#110f1e;padding:10px 16px;display:flex;align-items:center;gap:7px;border-bottom:1px solid rgba(255,255,255,.06)}
-.t-bar span:nth-child(1){width:10px;height:10px;border-radius:50%;background:#ff5f57;display:block}
-.t-bar span:nth-child(2){width:10px;height:10px;border-radius:50%;background:#ffbd2e;display:block}
-.t-bar span:nth-child(3){width:10px;height:10px;border-radius:50%;background:#28c840;display:block}
-.t-bar .t-title{margin-left:auto;font-size:10px;color:rgba(255,255,255,.25)}
-.t-body{padding:18px 20px;line-height:2;overflow-x:auto}
-.t-line{color:rgba(255,255,255,.7)}
-.t-prompt{color:var(--c);margin-right:8px}
-.t-cmd{color:rgba(255,255,255,.9)}
-.t-key{color:var(--c)}
-
-/* SOCIAL BUTTONS */
-.soc-btn{width:44px;height:44px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;font-size:17px;background:rgba(255,255,255,.04);border:1px solid var(--bd);color:rgba(255,255,255,.4);text-decoration:none;transition:all .25s}
-.soc-btn:hover{transform:translateY(-3px);color:#fff;border-color:rgba(168,85,247,.5);box-shadow:0 6px 20px rgba(168,85,247,.2)}
-
-/* BACK TO TOP */
-#btt{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:10px;background:rgba(124,58,237,.2);border:1px solid rgba(168,85,247,.4);color:var(--pk);display:flex;align-items:center;justify-content:center;cursor:none;z-index:50;font-size:14px;opacity:0;pointer-events:none;transform:translateY(8px);transition:all .3s}
-#btt.show{opacity:1;pointer-events:all;transform:translateY(0)}
-#btt:hover{background:rgba(124,58,237,.4);box-shadow:0 0 24px rgba(168,85,247,.3)}
-
-/* SCROLL REVEAL */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
-.rv.on{opacity:1;transform:none}
-.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.40s}
-
-/* PULSE */
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.6)}}
-@keyframes fU{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-
-/* SCROLLBAR */
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(168,85,247,.3);border-radius:2px}
-
-@media(max-width:900px){
-  .proj-grid{grid-template-columns:1fr!important}
-  .act-grid{grid-template-columns:1fr!important}
-  .steam-grid{grid-template-columns:repeat(2,1fr)!important}
-  .game-grid{grid-template-columns:repeat(2,1fr)!important}
-  .cr-grid{grid-template-columns:1fr!important}
-}
-@media(max-width:720px){
-  .ni .nl{display:none}
-  .hero-cta{flex-direction:column;align-items:flex-start}
-  .steam-grid{grid-template-columns:repeat(2,1fr)!important}
-}
-@keyframes floatHeart2{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-110vh) scale(.5);opacity:0}}
-</style>
+<link rel="preload" href="assets/fonts/InstrumentSerif-normal-latin-jizBRFtNs2ka5fXjeivQ4LroWlx-6zUTjg.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/site.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
-<div id="cur"></div>
-<div id="cur2"></div>
-<div id="spot"></div>
+<a class="skip" href="#work">İçeriğe geç</a>
 
-<nav>
-  <div class="ni">
-    <span class="logo">kp<span>1</span>dev</span>
-    <div class="nl">
-      <a href="#projects">Projeler</a>
-      <a href="#setup">Sistem</a>
-      <a href="#activity">Aktivite</a>
-      <a href="#creative">Kreatif</a>
-      <a href="#contact">İletişim</a>
-    </div>
-  </div>
-</nav>
+<header class="top" id="top-bar">
+  <a class="mark" href="#top" aria-label="Burak Pekel, sayfa başı">Burak Pekel<i>.</i></a>
+  <nav aria-label="Ana gezinme">
+    <a href="#work">Çalışmalar</a>
+    <a href="#edit">Kurgu</a>
+    <a href="#setup">Donanım</a>
+    <a href="#now">Şimdi</a>
+    <a href="#contact">İletişim</a>
+  </nav>
+  <span class="tc" aria-hidden="true"><b></b><span id="tc">TRT 00:00:00:00</span></span>
+</header>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="w">
-    <img src="https://avatars.githubusercontent.com/u/75186785?v=4" alt="Burak" style="width:68px;height:68px;border-radius:50%;border:2px solid rgba(168,85,247,.5);margin-bottom:22px;display:block;animation:fU .5s ease both">
-    <p style="font-family:'Space Mono',monospace;font-size:10px;color:var(--c);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;animation:fU .5s .06s ease both">01 — Yazılımcı & Editör</p>
-    <h1 class="glitch" data-text="Burak PEKEL" style="animation:fU .5s .1s ease both">Burak PEKEL</h1>
-    <div class="hero-sub" style="animation:fU .5s .18s ease both">// <span id="typed"></span><span class="blink"></span></div>
-    <p class="hero-desc" style="animation:fU .5s .26s ease both">Yaratıcı uygulamaları geliştirmeyi ve fikirleri gerçeğe dönüştürmeyi seviyorum. Aynı zamanda video kurgu ve UI/UX tasarımı tutkunu bir geliştirici ve video editörüyüm. Güncel olarak Fluent Mixer, Aurora Radios ve Spotidrop projeleri üzerinde çalışmaktayım.</p>
-    <div class="hero-cta" style="animation:fU .5s .34s ease both">
-      <a href="#projects" class="btn-p"><i class="fas fa-rocket"></i> Projeleri Gör</a>
-      <a href="https://github.com/kingpin1dev" target="_blank" class="btn-g"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://apps.microsoft.com/search/publisher?name=Kingpindev" target="_blank" class="btn-g"><i class="fab fa-windows" style="color:#0078d4"></i> Microsoft Store</a>
-    </div>
-  </div>
-  <div class="hero-scroll"><i class="fas fa-chevron-down"></i>scroll</div>
-</section>
+<main id="top">
+<section class="hero" aria-labelledby="name">
+  <p class="roles"><span>Yazılım geliştirici,</span><span>video editör ve</span><span>arayüz tasarımcısı.</span></p>
 
-<!-- SKILLS STRIP -->
-<div style="position:relative;z-index:1;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd)">
-  <div class="strip">
-    <div class="strip-inner">
-      <div class="strip-t">
-        <div class="sk"><i class="fab fa-js" style="color:#f1e05a"></i>JavaScript</div>
-        <div class="sk"><i class="fab fa-python" style="color:#3572A5"></i>Python</div>
-        <div class="sk"><i class="fab fa-windows" style="color:#a855f7"></i>C# / .NET</div>
-        <div class="sk"><i class="fas fa-wind" style="color:#06b6d4"></i>Tailwind CSS</div>
-        <div class="sk"><i class="fas fa-video" style="color:#ec4899"></i>Premiere Pro</div>
-        <div class="sk"><i class="fas fa-film" style="color:#6366f1"></i>After Effects</div>
-        <div class="sk"><i class="fab fa-figma" style="color:#f97316"></i>Figma</div>
-        <div class="sk"><i class="fab fa-html5" style="color:#e44d26"></i>HTML / CSS</div>
-      </div>
-      <div class="strip-t" aria-hidden="true">
-        <div class="sk"><i class="fab fa-js" style="color:#f1e05a"></i>JavaScript</div>
-        <div class="sk"><i class="fab fa-python" style="color:#3572A5"></i>Python</div>
-        <div class="sk"><i class="fab fa-windows" style="color:#a855f7"></i>C# / .NET</div>
-        <div class="sk"><i class="fas fa-wind" style="color:#06b6d4"></i>Tailwind CSS</div>
-        <div class="sk"><i class="fas fa-video" style="color:#ec4899"></i>Premiere Pro</div>
-        <div class="sk"><i class="fas fa-film" style="color:#6366f1"></i>After Effects</div>
-        <div class="sk"><i class="fab fa-figma" style="color:#f97316"></i>Figma</div>
-        <div class="sk"><i class="fab fa-html5" style="color:#e44d26"></i>HTML / CSS</div>
-      </div>
-    </div>
-  </div>
-</div>
+  <figure class="still">
+    <div class="frame"><img src="assets/burak.jpg" alt="Burak Pekel" width="460" height="460" decoding="async"><figcaption><span>Kare 01</span><span>kingpin1dev</span></figcaption></div>
+  </figure>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="w">
-    <div class="sec-label rv">02 — PROJELER</div>
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:36px">
-      <h2 class="sec-title rv d1" style="margin-bottom:0">Öne Çıkan <span style="color:var(--c)">Çalışmalar</span></h2>
-      <a href="https://apps.microsoft.com/search/publisher?name=Kingpindev&hl=tr-TR&gl=TR" target="_blank" style="display:inline-flex;align-items:center;gap:8px;font-size:11px;font-family:'Space Mono',monospace;color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.12);padding:6px 14px;border-radius:8px;text-decoration:none;transition:.2s;white-space:nowrap" onmouseover="this.style.color='#0078d4';this.style.borderColor='rgba(0,120,212,.4)'" onmouseout="this.style.color='rgba(255,255,255,.4)';this.style.borderColor='rgba(255,255,255,.12)'">
-        <i class="fab fa-windows" style="color:#0078d4"></i> Microsoft Store Profilim
-      </a>
-    </div>
-    <div class="proj-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px">
+  <h1 class="name" id="name"><span class="ln"><span>Burak</span></span><span class="ln"><span><em>Pekel</em><span class="dot">.</span></span></span></h1>
 
-      <div class="bento tilt-card rv d2" style="background:linear-gradient(135deg,rgba(88,166,255,.07),rgba(124,58,237,.05));border-color:rgba(88,166,255,.18);cursor:none" onclick="window.open('https://bokmails.com','_blank')">
-        <div class="shine"></div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
-          <img src="img/BokMail.png" alt="BokMail" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
-          <div>
-            <div style="font-weight:700;font-size:16px;color:#fff">BokMail</div>
-            <div style="font-size:10px;color:rgba(255,255,255,.35);font-family:'Space Mono',monospace">Web App</div>
-          </div>
-          <a href="https://github.com/kingpin1dev/" target="_blank" onclick="event.stopPropagation()" style="margin-left:auto;color:rgba(255,255,255,.35);font-size:16px;transition:.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.35)'"><i class="fab fa-github"></i></a>
-        </div>
-        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:18px">Geçici e-posta servisi. Spam olmadan inbox'ınızı temiz tutun.</p>
-        <div style="display:flex;gap:7px">
-          <span style="font-size:10px;background:rgba(88,166,255,.1);color:#58a6ff;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(88,166,255,.2)">Web</span>
-          <span style="font-size:10px;background:rgba(88,166,255,.1);color:#58a6ff;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(88,166,255,.2)">Mail</span>
-        </div>
-        <div style="position:absolute;bottom:18px;right:18px;width:7px;height:7px;background:#58a6ff;border-radius:50%;box-shadow:0 0 10px #58a6ff;animation:pulse 2s infinite"></div>
-      </div>
-
-      <div class="bento tilt-card rv d3" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.05));border-color:rgba(56,189,248,.18);cursor:none" onclick="window.open('https://apps.microsoft.com/detail/9P0JFN5L96VH?hl=tr-tr&gl=TR&ocid=pdpshare','_blank')">
-        <div class="shine"></div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
-          <img src="img/notchify.png" alt="Notchify" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
-          <div>
-            <div style="font-weight:700;font-size:16px;color:#fff">Notchify</div>
-            <div style="font-size:10px;color:rgba(255,255,255,.35);font-family:'Space Mono',monospace">Windows App</div>
-          </div>
-          <a href="https://github.com/kingpin1dev/Notchify" target="_blank" onclick="event.stopPropagation()" style="margin-left:auto;color:rgba(255,255,255,.35);font-size:16px;transition:.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.35)'"><i class="fab fa-github"></i></a>
-        </div>
-        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:18px">Windows için Dynamic Island tarzı masaüstü overlay uygulaması.</p>
-        <div style="display:flex;gap:7px">
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Akıcı Animasyonlar</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Bildirimler</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Medya Kontrolü</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Kısayollar</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Takvim</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Hava Durumu</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Tray</span>
-        </div>
-      </div>
-
-      <div class="bento tilt-card rv d4" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:none" onclick="window.open('https://apps.microsoft.com/detail/9p40tmplqb43?hl=tr-TR&gl=TR','_blank')">
-        <div class="shine"></div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
-          <img src="img/vice-sonar.png" alt="VICE Sonar" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
-          <div>
-            <div style="font-weight:700;font-size:16px;color:#fff">VICE Sonar</div>
-            <div style="font-size:10px;color:rgba(255,255,255,.35);font-family:'Space Mono',monospace">Windows App</div>
-          </div>
-          <a href="https://github.com/kingpin1dev/VICE-Sonar" target="_blank" onclick="event.stopPropagation()" style="margin-left:auto;color:rgba(255,255,255,.35);font-size:16px;transition:.2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.35)'"><i class="fab fa-github"></i></a>
-        </div>
-        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:18px">Windows için ses dedektörü ve görselleştirme aracı.</p>
-        <div style="display:flex;gap:7px">
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Windows</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Audio</span>
-        </div>
-      </div>
-
-      <!-- GlideSnap Kartı -->
-      <div class="bento tilt-card rv d2" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:none" onclick="window.open('https://apps.microsoft.com/detail/9PND7TH314ZD?hl=tr-tr&gl=TR','_blank')">
-        <div class="shine"></div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
-          <img src="img/GlideSnap.png" alt="GlideSnap" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
-          <div>
-            <div style="font-weight:700;font-size:16px;color:#fff">GlideSnap</div>
-            <div style="font-size:10px;color:rgba(255,255,255,.35);font-family:'Space Mono',monospace">Windows App</div>
-          </div>
-        </div>
-        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:18px">GlideSnap, basit fare hareketleriyle pencereleriniz üzerinde tam kontrol sağlar. Anında kontrolü ele alın.</p>
-        <div style="display:flex;gap:7px;flex-wrap:wrap">
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Alt+Sürükle</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Snap</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Opaklık Kontrolü</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Sistem Tepsisi</span>
-        </div>
-      </div>
-
-      <!-- vOrganizer Kartı -->
-      <div class="bento tilt-card rv d3" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:none" onclick="window.open('https://apps.microsoft.com/detail/9PKDPQDF6ZJL?hl=tr-tr&gl=TR','_blank')">
-        <div class="shine"></div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
-          <img src="img/Vorganizer.png" alt="vOrganizer" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
-          <div>
-            <div style="font-weight:700;font-size:16px;color:#fff">vOrganizer</div>
-            <div style="font-size:10px;color:rgba(255,255,255,.35);font-family:'Space Mono',monospace">Windows App</div>
-          </div>
-        </div>
-        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:18px">vOrganizer, dağınık klasörleri saniyeler içinde temiz ve düzenli alanlara dönüştürmenize yardımcı olur. Klasörlerinizi dosya türlerine göre otomatik olarak sıralar ve organize eder.</p>
-        <div style="display:flex;gap:7px;flex-wrap:wrap">
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Otomatik Sıralama</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Dosya Türleri</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">İndirilenler</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Hızlı</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Dosya Düzeni</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Kategoriler</span>
-        </div>
-      </div>
-
-      <!-- Fluent Mixer Kartı -->
-      <div class="bento tilt-card rv d4" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:none" onclick="window.open('https://apps.microsoft.com/detail/9NN5W7D23VLJ?hl=neutral&gl=TR&ocid=pdpshare','_blank')">
-        <div class="shine"></div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
-          <img src="img/FluentMixer.png" alt="Fluent Mixer" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
-          <div>
-            <div style="font-weight:700;font-size:16px;color:#fff">Fluent Mixer</div>
-            <div style="font-size:10px;color:rgba(255,255,255,.35);font-family:'Space Mono',monospace">Windows App</div>
-          </div>
-        </div>
-        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:18px">Ses çıkaran uygulamaları Game / Chat / Media / Aux gruplarına atayın, seslerini ve mute durumunu tek yerden yönetin. Sistem tepsisi, flyout panel ve Island Mode ile tam kontrol.</p>
-        <div style="display:flex;gap:7px;flex-wrap:wrap">
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Ses Grupları</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Island Mode</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Flyout</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Windows</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">ChatMix</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Çıkış Cihazı</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Kısayol Tuşları</span>
-        </div>
-      </div>
-
-      <!-- Aurora Radios Kartı -->
-      <div class="bento tilt-card rv d2" style="background:linear-gradient(135deg,rgba(56,189,248,.07),rgba(6,182,212,.04));border-color:rgba(56,189,248,.18);cursor:none" onclick="window.open('https://apps.microsoft.com/detail/9nxld94rqv1z?hl','_blank')">
-        <div class="shine"></div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px">
-          <img src="img/Aurora.png" alt="Aurora Radios" style="width:42px;height:42px;border-radius:10px;object-fit:cover;flex-shrink:0">
-          <div>
-            <div style="font-weight:700;font-size:16px;color:#fff">Aurora Radios</div>
-            <div style="font-size:10px;color:rgba(255,255,255,.35);font-family:'Space Mono',monospace">Windows App</div>
-          </div>
-        </div>
-        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:18px">Ruh haline, türe veya ülkeye göre dünya çapında binlerce internet radyosunu keşfet ve tek tıkla dinle. Çalan şarkıyı anında gör, beğen ve dilediğin müzik platformunda aç; sevdiğin istasyonları kaydet, kaldığın yerden devam et.</p>
-        <div style="display:flex;gap:7px;flex-wrap:wrap">
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Mood</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Genre</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Country</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Online Radyo</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Şarkı</span>
-          <span style="font-size:10px;background:rgba(56,189,248,.1);color:#38bdf8;padding:3px 10px;border-radius:20px;font-family:'Space Mono',monospace;border:1px solid rgba(56,189,248,.2)">Favoriler</span>
-        </div>
-      </div>
-    </div>
-
+  <div class="intro">
+    <p class="bio">Yaratıcı uygulamalar geliştirmeyi ve fikirleri gerçeğe dönüştürmeyi seviyorum. Aynı zamanda video kurgu ve UI/UX tasarımı tutkunu bir geliştirici ve video editörüyüm. Şu sıralar Mixora, Aurora Radios, SpotiDrop ve Hotpad üzerinde çalışıyorum.</p>
+    <p class="cta">
+      <a class="btn" href="#work">Çalışmalara bak <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v11M3.5 9 8 13.5 12.5 9"/></svg></a>
+      <a class="lnk" href="https://github.com/kingpin1dev" target="_blank" rel="noopener">GitHub</a>
+      <a class="lnk" href="https://apps.microsoft.com/search/publisher?name=Kingpindev&hl=tr-TR&gl=TR" target="_blank" rel="noopener">Microsoft Store</a>
+    </p>
+    <p class="tools" lang="en"><span>JavaScript</span><span>Python</span><span>C# / .NET</span><span>HTML / CSS</span><span>Tailwind CSS</span><span>Premiere Pro</span><span>After Effects</span><span>Figma</span></p>
   </div>
 </section>
 
-<!-- SETUP TERMINAL -->
-<section id="setup">
-  <div class="w">
-    <div class="sec-label rv">03 — SİSTEM</div>
-    <h2 class="sec-title rv d1">Kurulum & <span style="color:var(--c)">Donanım</span></h2>
-    <div style="max-width:620px" class="rv d2">
-      <div class="terminal">
-        <div class="t-bar">
-          <span></span><span></span><span></span>
-          <span class="t-title">kingpin@desktop — bash</span>
-        </div>
-        <div class="t-body">
-          <div class="t-line"><span class="t-prompt">❯</span><span class="t-cmd">neofetch</span></div>
-          <div class="t-line" style="margin-top:6px"><span class="t-key">OS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>Windows 11 Pro</div>
-          <div class="t-line"><span class="t-key">CPU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>AMD Ryzen 5 5600X</div>
-          <div class="t-line"><span class="t-key">GPU&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>NVIDIA RTX 3060</div>
-          <div class="t-line"><span class="t-key">RAM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>16 GB DDR4 3200 MHz</div>
-          <div class="t-line"><span class="t-key">Display&nbsp;</span>2560×1440 @ 144 Hz</div>
-          <div class="t-line"><span class="t-key">Storage&nbsp;</span>1 TB NVMe SSD</div>
-          <div class="t-line"><span class="t-key">Editor&nbsp;&nbsp;</span>VS Code</div>
-          <div class="t-line"><span class="t-key">Shell&nbsp;&nbsp;&nbsp;</span>PowerShell 7</div>
-          <div class="t-line" style="margin-top:8px"><span class="t-prompt">❯</span><span class="blink" style="display:inline-block;vertical-align:middle"></span></div>
-        </div>
-      </div>
+<section id="work" aria-labelledby="work-h">
+  <h2 class="sec-h" id="work-h">Çalışma<em>lar</em></h2>
+  <ul class="index">
+    <li data-r><a class="row" href="https://notchify.app" target="_blank" rel="noopener"><img class="r-ic" src="img/notchify.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">Notchify</span><span class="r-desc">Ekranın üstüne Dinamik Ada ekleyen masaüstü uygulaması: müzik, bildirimler, pano geçmişi ve widget'lar.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
+    <li data-r style="--i:1"><a class="row" href="https://mixora.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/FluentMixer.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">Mixora<small>eski adıyla Fluent Mixer</small></span><span class="r-desc">Uygulama seslerini Oyun, Sohbet, Medya ve Aux gruplarına ayıran, sanal sürücü gerektirmeyen ses mikseri.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
+    <li data-r style="--i:2"><a class="row" href="https://lunadock.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/lunadock.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">LunaDock</span><span class="r-desc">Masaüstündeki dosya, klasör ve kısayolları tek tıkla açılan düzenli yığınlara ayıran düzenleyici.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
+    <li data-r style="--i:3"><a class="row" href="https://hotpad.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/Hotpad.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">Hotpad</span><span class="r-desc">İkinci bir klavyeyi makro klavyeye çevirir: program aç, metin yaz, kısayol gönder, adım dizisi çalıştır.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
+    <li data-r style="--i:4"><a class="row" href="https://spotidrop.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/SpotiDrop.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">SpotiDrop</span><span class="r-desc">YouTube, SoundCloud ve Bandcamp'ten müziği etiketli MP3 olarak Spotify Yerel Dosyalar'a indirir.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
+    <li data-r style="--i:5"><a class="row" href="https://aurora.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/Aurora.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">Aurora Radios</span><span class="r-desc">Ruh haline, türe ya da ülkeye göre dünya radyoları. Reklamsız, hesapsız, çalan şarkı anında görünür.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
+    <li data-r><a class="row" href="https://vicesonar.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/vice-sonar.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">VICE Sonar</span><span class="r-desc">SteelSeries GG Sonar için hafif kontrol aracı: ses, ChatMix, EQ ve RGB tek bir widget'tan.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
+    <li data-r style="--i:1"><a class="row" href="https://glidesnap.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/GlideSnap.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">GlideSnap</span><span class="r-desc">Alt tuşunu basılı tutup pencereleri farenin herhangi bir yerinden sürükleyin ve boyutlandırın.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
+    <li data-r style="--i:2"><a class="row" href="https://vorganizer.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/Vorganizer.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">vOrganizer</span><span class="r-desc">Dağınık klasörleri dosya türüne göre ayıran; önce önizleyen, tek tıkla geri alabilen düzenleyici.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
+    <li data-r style="--i:3"><a class="row" href="https://bokmails.com" target="_blank" rel="noopener"><img class="r-ic" src="img/BokMail.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">BokMail</span><span class="r-desc">Kişisel adresinizi paylaşmadan kullandığınız ücretsiz geçici e-posta servisi.</span><span class="r-kind" lang="en">Web</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
+    <li data-r style="--i:4"><a class="row" href="https://goliath.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/Goliath.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">Goliath</span><span class="r-desc">Moderasyon, seviye sistemi, müzik ve yardım paneliyle sunucuyu düzenleyen çok amaçlı Discord botu.</span><span class="r-kind" lang="en">Discord botu</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
+    <li data-r style="--i:5"><a class="row" href="https://lolable.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/Lolable.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">Lolable</span><span class="r-desc">League of Legends toplulukları için rank, maç dökümü ve liderlik tablosu sunan Discord botu.</span><span class="r-kind" lang="en">Discord botu</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
+  </ul>
+  <p class="store-line">Mağaza uygulamalarım <a href="https://apps.microsoft.com/search/publisher?name=Kingpindev&hl=tr-TR&gl=TR" target="_blank" rel="noopener">Microsoft Store profilimde</a>; Hotpad ve SpotiDrop kendi sitelerinden indirilir.</p>
+</section>
+
+<section id="edit" class="edit" aria-labelledby="edit-h">
+  <div class="edit-top">
+    <h2 class="sec-h" id="edit-h">Kurgu<em>.</em></h2>
+    <p class="lead">SineOrbit, film sahnelerine hayat verdiğim sinematografik edit sayfam. En çok beğenilen kare 91,8B beğeniye ulaştı.</p>
+  </div>
+  <div class="strip" role="list" aria-label="SineOrbit'ten altı kare" tabindex="0">
+    <a class="frame-link" role="listitem" href="https://www.instagram.com/p/DF5Ur9UN0nn/" target="_blank" rel="noopener"><div class="ph"><img src="img/ig1.jpg" alt="SineOrbit paylaşımı, kare 1" loading="lazy" width="640" height="640"></div><div class="meta"><b>01</b><span><span>8,6B beğeni</span><span>105 yorum</span></span></div></a>
+    <a class="frame-link" role="listitem" href="https://www.instagram.com/p/DD2znKCtNWy/" target="_blank" rel="noopener"><div class="ph"><img src="img/ig2.jpg" alt="SineOrbit paylaşımı, kare 2" loading="lazy" width="640" height="640"></div><div class="meta"><b>02</b><span><span>397 beğeni</span><span>4 yorum</span></span></div></a>
+    <a class="frame-link" role="listitem" href="https://www.instagram.com/p/C9r4GdPtqMD/" target="_blank" rel="noopener"><div class="ph"><img src="img/ig3.jpg" alt="SineOrbit paylaşımı, kare 3" loading="lazy" width="640" height="640"></div><div class="meta"><b>03</b><span><span>476 beğeni</span><span>26 yorum</span></span></div></a>
+    <a class="frame-link" role="listitem" href="https://www.instagram.com/p/C7jI_oftVvz/" target="_blank" rel="noopener"><div class="ph"><img src="img/ig4.jpg" alt="SineOrbit paylaşımı, kare 4" loading="lazy" width="640" height="640"></div><div class="meta"><b>04</b><span><span>91,8B beğeni</span><span>457 yorum</span></span></div></a>
+    <a class="frame-link" role="listitem" href="https://www.instagram.com/p/C5vgkL8M14j/" target="_blank" rel="noopener"><div class="ph"><img src="img/ig5.jpg" alt="SineOrbit paylaşımı, kare 5" loading="lazy" width="640" height="640"></div><div class="meta"><b>05</b><span><span>72,4B beğeni</span><span>297 yorum</span></span></div></a>
+    <a class="frame-link" role="listitem" href="https://www.instagram.com/p/C22EVl5sPN_/" target="_blank" rel="noopener"><div class="ph"><img src="img/ig6.jpg" alt="SineOrbit paylaşımı, kare 6" loading="lazy" width="640" height="640"></div><div class="meta"><b>06</b><span><span>5,5B beğeni</span><span>58 yorum</span></span></div></a>
+  </div>
+  <p class="hint">Yana kaydır</p>
+  <div class="edit-foot">
+    <p>Kurgunun yanında müzik de üretiyorum; Spotify'da sanatçı profilim var.</p>
+    <div class="pairs"><a class="lnk" href="https://www.instagram.com/sineorbit/" target="_blank" rel="noopener">@sineorbit</a><a class="lnk" href="https://open.spotify.com/intl-tr/artist/7tqKllQw5Qmb8W2rxxBykt?si=5235320fb4d34e84" target="_blank" rel="noopener">Spotify sanatçı profili</a></div>
+  </div>
+</section>
+
+<section id="setup" aria-labelledby="setup-h">
+  <h2 class="sec-h" id="setup-h">Masa<em>üstü</em></h2>
+  <div class="setup-grid">
+    <dl class="spec">
+      <div data-r><dt>İşletim sistemi</dt><dd>Windows 11 Pro</dd></div>
+      <div data-r style="--i:1"><dt>İşlemci</dt><dd>AMD Ryzen 5 5600X</dd></div>
+      <div data-r style="--i:2"><dt>Ekran kartı</dt><dd>NVIDIA RTX 3060</dd></div>
+      <div data-r style="--i:3"><dt>Bellek</dt><dd>16 GB DDR4 3200 MHz</dd></div>
+      <div data-r style="--i:4"><dt>Ekran</dt><dd>2560 × 1440 · 144 Hz</dd></div>
+      <div data-r style="--i:5"><dt>Depolama</dt><dd>1 TB NVMe SSD</dd></div>
+      <div data-r style="--i:6"><dt>Editör</dt><dd>VS Code</dd></div>
+      <div data-r style="--i:7"><dt>Kabuk</dt><dd>PowerShell 7</dd></div>
+    </dl>
+    <figure class="monitor" data-r>
+      <svg viewBox="0 0 400 280" role="img" aria-label="Ekran çizimi: 2560 piksel genişlik, 1440 piksel yükseklik, 144 hertz">
+        <g fill="none" stroke="#15130f" stroke-width="1.2">
+          <rect x="20" y="28" width="320" height="180" rx="3" stroke-width="1.6"/>
+          <rect x="30" y="38" width="300" height="160" stroke-opacity=".35" stroke-dasharray="3 3"/>
+          <path d="M160 208v22M118 232h84"/>
+          <!-- width dimension -->
+          <path d="M20 12v12M340 12v12M20 18h320" stroke-opacity=".6"/><path d="M20 18l7-3v6zM340 18l-7-3v6z" fill="#15130f" stroke="none"/>
+          <!-- height dimension -->
+          <path d="M356 28h12M356 208h12M362 28v180" stroke-opacity=".6"/><path d="M362 28l-3 7h6zM362 208l-3-7h6z" fill="#15130f" stroke="none"/>
+        </g>
+        <text x="180" y="9" text-anchor="middle">2560 PX</text>
+        <text x="380" y="122" transform="rotate(90 380 122)" text-anchor="middle">1440 PX</text>
+        <text x="180" y="124" text-anchor="middle" style="font-size:26px;fill:#15130f;font-family:'Instrument Serif',serif;letter-spacing:0">144 Hz</text>
+        <text x="180" y="262" text-anchor="middle">16 : 9</text>
+      </svg>
+      <figcaption>Ana ekranın ölçüleri.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="now" class="edit" aria-labelledby="now-h">
+  <h2 class="sec-h" id="now-h">Şimdi<em>.</em></h2>
+  <p class="lead">Discord durumumdan canlı okunur, on beş saniyede bir yenilenir.</p>
+  <ul class="now-list">
+    <li data-r><div class="now-name">Discord<small>kingpin1dev</small></div><div class="now-body"><div class="t" id="ds-state-long">Yükleniyor…</div><div class="s" id="ds-game" hidden>Oynuyor: <span id="ds-game-name"></span></div></div><span class="state"><i id="ds-dot"></i><span id="ds-state">…</span></span></li>
+    <li data-r style="--i:1"><div class="now-name">Spotify</div><div class="now-body"><div id="sp-idle" class="s">Şu an bir şey çalmıyor.</div><div id="sp-playing" hidden><div class="sp-line"><img id="sp-art" src="" alt="" width="52" height="52"><div><div class="t" id="sp-title"></div><div class="s" id="sp-artist"></div></div></div><div class="sp-bar" aria-hidden="true"><div id="sp-bar"></div></div></div></div><span class="state"><i id="sp-dot"></i><span id="sp-state">Boşta</span></span></li>
+    <li data-r style="--i:2"><div class="now-name">VS Code</div><div class="now-body"><div id="vc-idle" class="s">Şu an kod yazmıyor.</div><div id="vc-active" hidden><div class="t" id="vc-file"></div><div class="s" id="vc-proj"></div></div></div><span class="state"><i id="vc-dot"></i><span id="vc-state">Kapalı</span></span></li>
+    <li data-r style="--i:3"><div class="now-name">Xbox<small>Kingpin7841</small></div><div class="now-body"><div class="s">Xbox oyunlarını Steam'in yanı sıra takip ettiğim platform. Game Pass ve Xbox'a özel oyunlar için.</div></div><span class="state"></span></li>
+  </ul>
+</section>
+
+<section id="steam" aria-labelledby="steam-h">
+  <h2 class="sec-h" id="steam-h">Steam<em>.</em></h2>
+  <div class="steam-grid">
+    <div class="steam-copy">
+      <p data-r>Kütüphanemde <b class="num">159</b> oyun var; <b class="num">40</b> tanesini yüzde yüz bitirdim ve toplamda <b class="num">9.784</b> başarım açtım. Bitirme oranım <b class="num">%74</b>.</p>
+      <p class="small" data-r style="--i:1">Steam seviyem <span class="num">36</span> · <span>#1473 Vice Club</span></p>
+    </div>
+    <div class="posters">
+      <a class="poster" data-r href="https://store.steampowered.com/app/1091500/" target="_blank" rel="noopener"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/library_600x900.jpg" alt="Cyberpunk 2077" loading="lazy" width="300" height="450"><span>Cyberpunk 2077</span><small>%85</small></a>
+      <a class="poster" data-r style="--i:1" href="https://store.steampowered.com/app/1808500/" target="_blank" rel="noopener"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1808500/library_600x900.jpg" alt="ARC Raiders" loading="lazy" width="300" height="450"><span>ARC Raiders</span><small>%40</small></a>
+      <a class="poster" data-r style="--i:2" href="https://store.steampowered.com/app/239140/" target="_blank" rel="noopener"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/239140/library_600x900.jpg" alt="Dying Light" loading="lazy" width="300" height="450"><span>Dying Light</span><small>Gizli</small></a>
+      <a class="poster" data-r style="--i:3" href="https://store.steampowered.com/app/2001120/" target="_blank" rel="noopener"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/library_600x900.jpg" alt="Split Fiction" loading="lazy" width="300" height="450"><span>Split Fiction</span><small>Yeni</small></a>
     </div>
   </div>
 </section>
 
-<!-- ACTIVITY -->
-<section id="activity">
-  <div class="w">
-    <div class="sec-label rv">04 — AKTİVİTE</div>
-    <h2 class="sec-title rv d1">Canlı <span style="color:var(--c)">Durum</span></h2>
-    <div class="act-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px">
-
-      <!-- Discord -->
-      <div class="bento rv d2">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-          <i class="fab fa-discord" style="font-size:20px;color:#5865f2"></i>
-          <span style="font-weight:700;color:#fff">Discord</span>
-          <div id="ds-dot" style="width:9px;height:9px;border-radius:50%;background:#747f8d;margin-left:auto;transition:background .4s"></div>
-        </div>
-        <div style="font-size:14px;font-weight:600;color:#fff">kingpin1dev</div>
-        <div style="font-size:12px;color:rgba(255,255,255,.4);margin-top:4px" id="ds-state">Yükleniyor...</div>
-        <div id="ds-game" style="display:none;margin-top:12px;padding:10px 12px;background:rgba(88,101,242,.08);border-radius:8px;border-left:3px solid #5865f2">
-          <div style="font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px">Oynuyor</div>
-          <div id="ds-game-name" style="font-size:12px;font-weight:600;color:#fff"></div>
-        </div>
-      </div>
-
-      <!-- Spotify -->
-      <div class="bento rv d3">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-          <i class="fab fa-spotify" style="font-size:20px;color:#1db954"></i>
-          <span style="font-weight:700;color:#fff">Spotify</span>
-          <div id="sp-dot" style="width:9px;height:9px;border-radius:50%;background:#747f8d;margin-left:auto;transition:background .4s"></div>
-        </div>
-        <div id="sp-idle" style="text-align:center;padding:16px 0;color:rgba(255,255,255,.3)">
-          <i class="fas fa-music" style="display:block;font-size:26px;margin-bottom:8px"></i>
-          <span style="font-size:12px">Şu an çalmıyor</span>
-        </div>
-        <div id="sp-playing" style="display:none">
-          <div style="display:flex;gap:12px;align-items:center">
-            <img id="sp-art" src="" alt="" style="width:50px;height:50px;border-radius:8px;object-fit:cover">
-            <div style="min-width:0">
-              <div id="sp-title" style="font-weight:700;font-size:13px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div>
-              <div id="sp-artist" style="font-size:11px;color:rgba(255,255,255,.5);margin-top:2px"></div>
-            </div>
-          </div>
-          <div style="margin-top:10px;height:3px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden">
-            <div id="sp-bar" style="height:100%;background:#1db954;width:0%;transition:width .5s"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- VS Code -->
-      <div class="bento rv d2">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-          <i class="fas fa-code" style="font-size:20px;color:#007acc"></i>
-          <span style="font-weight:700;color:#fff">VS Code</span>
-          <div id="vc-dot" style="width:9px;height:9px;border-radius:50%;background:#747f8d;margin-left:auto;transition:background .4s"></div>
-        </div>
-        <div id="vc-idle" style="text-align:center;padding:16px 0;color:rgba(255,255,255,.3)">
-          <i class="fas fa-code-branch" style="display:block;font-size:26px;margin-bottom:8px"></i>
-          <span style="font-size:12px">Kodlamıyor</span>
-        </div>
-        <div id="vc-active" style="display:none">
-          <div style="font-size:10px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Düzenleniyor</div>
-          <div id="vc-file" style="font-weight:700;font-size:13px;color:var(--c);font-family:'Space Mono',monospace"></div>
-          <div id="vc-proj" style="font-size:11px;color:rgba(255,255,255,.35);margin-top:4px;font-family:'Space Mono',monospace"></div>
-        </div>
-      </div>
-
-      <!-- Xbox -->
-      <div class="bento rv d3">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
-          <i class="fab fa-xbox" style="font-size:20px;color:#107c10"></i>
-          <span style="font-weight:700;color:#fff">Xbox</span>
-          <span style="margin-left:auto;font-size:10px;background:rgba(16,124,16,.12);color:#4ade80;padding:2px 8px;border-radius:10px;font-family:'Space Mono',monospace;border:1px solid rgba(16,124,16,.25)">Kingpin7841</span>
-        </div>
-        <div style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.75">Xbox oyunlarını Steam'in yanı sıra takip ettiğim platform. Game Pass ve exclusives için.</div>
-      </div>
-    </div>
-  </div>
+<section id="contact" class="dark credits" aria-labelledby="contact-h">
+  <h2 class="sec-h" id="contact-h">Birlikte bir şeyler <em>yapalım.</em></h2>
+  <p class="say">Proje fikrin mi var, birlikte çalışmak mı istiyorsun? Bir merhaba bile yeter.</p>
+  <a class="mail" href="mailto:admin@bokmails.com">admin@bokmails.com</a>
+  <ul class="reach">
+    <li><a href="https://github.com/kingpin1dev" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
+    <li><a href="https://discord.com/users/kingpin1dev" target="_blank" rel="noopener">Discord <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
+    <li><a href="https://www.instagram.com/burakpekeel/" target="_blank" rel="noopener">Instagram <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
+    <li><a href="https://www.instagram.com/sineorbit/" target="_blank" rel="noopener">SineOrbit <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
+    <li><a href="https://open.spotify.com/intl-tr/artist/7tqKllQw5Qmb8W2rxxBykt?si=5235320fb4d34e84" target="_blank" rel="noopener">Spotify <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
+  </ul>
+  <div class="foot"><span>kingpin1dev · 2026</span><a href="https://kingpindev.com">kingpindev.com</a></div>
 </section>
+</main>
 
-<!-- STEAM -->
-<section id="steam-section">
-  <div class="w">
-    <div class="sec-label rv">05 — STEAM</div>
-    <h2 class="sec-title rv d1">Steam <span style="color:var(--c)">İstatistikleri</span></h2>
-
-    <!-- Level 36 featured -->
-    <div class="bento rv d2" style="display:flex;align-items:center;gap:28px;margin-bottom:12px;background:linear-gradient(135deg,rgba(168,85,247,.12),rgba(0,245,255,.05));border-color:rgba(168,85,247,.35)">
-      <div style="text-align:center;flex-shrink:0">
-        <div style="font-size:11px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.18em;margin-bottom:4px;font-family:'Space Mono',monospace">Steam Level</div>
-        <div style="font-size:64px;font-weight:800;color:var(--c);font-family:'Space Mono',monospace;line-height:1;text-shadow:0 0 32px rgba(168,85,247,.5)">36</div>
-      </div>
-      <div style="flex:1">
-        <div style="height:6px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden;margin-bottom:8px">
-          <div style="height:100%;width:70%;background:linear-gradient(90deg,var(--p),var(--c));border-radius:6px"></div>
-        </div>
-        <div style="font-size:11px;color:rgba(255,255,255,.35);font-family:'Space Mono',monospace">#1473 Vice Club</div>
-      </div>
-    </div>
-    <!-- 4 stats -->
-    <div class="steam-grid rv d3" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
-      <div class="bento" style="text-align:center">
-        <div style="font-size:36px;font-weight:800;color:var(--c2);font-family:'Space Mono',monospace" data-count="159">0</div>
-        <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:6px;text-transform:uppercase;letter-spacing:.12em">Oyun</div>
-      </div>
-      <div class="bento" style="text-align:center">
-        <div style="font-size:36px;font-weight:800;color:#4ade80;font-family:'Space Mono',monospace" data-count="40">0</div>
-        <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:6px;text-transform:uppercase;letter-spacing:.12em">%100 Biten</div>
-      </div>
-      <div class="bento" style="text-align:center">
-        <div style="font-size:36px;font-weight:800;color:#fbbf24;font-family:'Space Mono',monospace" data-count="9784">0</div>
-        <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:6px;text-transform:uppercase;letter-spacing:.12em">Başarım</div>
-      </div>
-      <div class="bento" style="text-align:center">
-        <div style="font-size:36px;font-weight:800;color:#a855f7;font-family:'Space Mono',monospace">%74</div>
-        <div style="font-size:10px;color:rgba(255,255,255,.4);margin-top:6px;text-transform:uppercase;letter-spacing:.12em">Bitirme Oranı</div>
-      </div>
-    </div>
-
-    <!-- Game Grid -->
-    <div class="game-grid rv d4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
-      <div class="game-card" onclick="window.open('https://store.steampowered.com/app/1091500/','_blank')">
-        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/library_600x900.jpg" alt="Cyberpunk 2077">
-        <div class="game-ov"><span>%85</span></div>
-      </div>
-      <div class="game-card" onclick="window.open('https://store.steampowered.com/app/1808500/','_blank')">
-        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1808500/library_600x900.jpg" alt="ARC Raiders">
-        <div class="game-ov"><span>%40</span></div>
-      </div>
-      <div class="game-card" onclick="window.open('https://store.steampowered.com/app/239140/','_blank')">
-        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/239140/library_600x900.jpg" alt="Dying Light">
-        <div class="game-ov"><span>Gizli</span></div>
-      </div>
-      <div class="game-card" onclick="window.open('https://store.steampowered.com/app/2001120/','_blank')">
-        <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2001120/library_600x900.jpg" alt="Split Fiction">
-        <div class="game-ov"><span>Yeni</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CREATIVE -->
-<section id="creative">
-  <div class="w">
-    <div class="sec-label rv">06 — KREATİF</div>
-    <h2 class="sec-title rv d1">Yaratıcı <span style="color:var(--c)">İçerik</span></h2>
-    <div class="cr-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px">
-
-      <div class="bento tilt-card rv d2" style="background:linear-gradient(135deg,rgba(236,72,153,.07),rgba(99,102,241,.05));border-color:rgba(236,72,153,.2);cursor:none" onclick="window.open('https://www.instagram.com/sineorbit/','_blank')">
-        <div class="shine"></div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-          <div style="width:46px;height:46px;background:linear-gradient(135deg,#ec4899,#6366f1);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px">🎬</div>
-          <div>
-            <div style="font-weight:800;font-size:17px;color:#fff">SineOrbit</div>
-            <div style="font-size:10px;color:rgba(255,255,255,.35);font-family:'Space Mono',monospace">@sineorbit</div>
-          </div>
-          <i class="fab fa-instagram" style="margin-left:auto;font-size:20px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);-webkit-background-clip:text;-webkit-text-fill-color:transparent"></i>
-        </div>
-        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:14px">Film sahnelerine hayat verdiğim, sinematografik video edit sayfam.</p>
-        <div style="display:flex;gap:20px">
-          <div><div style="font-weight:700;color:var(--pk);font-size:14px">91,8B+</div><div style="font-size:10px;color:rgba(255,255,255,.35)">En yüksek beğeni</div></div>
-          <div><div style="font-weight:700;color:var(--pk);font-size:14px">6</div><div style="font-size:10px;color:rgba(255,255,255,.35)">Vitrin post</div></div>
-        </div>
-      </div>
-
-      <div class="bento tilt-card rv d3" style="background:linear-gradient(135deg,rgba(29,185,84,.07),rgba(29,185,84,.04));border-color:rgba(29,185,84,.2);cursor:none" onclick="window.open('https://open.spotify.com/intl-tr/artist/7tqKllQw5Qmb8W2rxxBykt?si=5235320fb4d34e84','_blank')">
-        <div class="shine"></div>
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
-          <div style="width:46px;height:46px;background:rgba(29,185,84,.14);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px">🎵</div>
-          <div>
-            <div style="font-weight:800;font-size:17px;color:#fff">Spotify</div>
-            <div style="font-size:10px;color:rgba(255,255,255,.35);font-family:'Space Mono',monospace">Artist Profile</div>
-          </div>
-          <i class="fab fa-spotify" style="margin-left:auto;font-size:20px;color:#1db954"></i>
-        </div>
-        <p style="font-size:13px;color:rgba(255,255,255,.55);line-height:1.75">Müzik üretimi ve Spotify'daki sanatçı profilim.</p>
-      </div>
-    </div>
-
-    <!-- Instagram Grid -->
-    <div class="rv d4" style="font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,.35);margin-bottom:14px">
-      <i class="fab fa-instagram" style="color:#ec4899;margin-right:6px"></i>@sineorbit — Son Paylaşımlar
-    </div>
-    <div id="ig-grid" class="rv d5" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"></div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="w" style="text-align:center">
-    <div class="sec-label rv">07 — İLETİŞİM</div>
-    <h2 class="sec-title rv d1" style="font-size:clamp(28px,6vw,58px);margin-bottom:16px">Birlikte bir şeyler<br><span style="color:var(--c)">yapalım.</span></h2>
-    <p class="rv d2" style="max-width:440px;margin:0 auto 36px;color:rgba(255,255,255,.45);font-size:15px;line-height:1.75">Proje fikrin mi var? Kolaborasyon mu istiyorsun? Bir merhaba bile yeter.</p>
-    <a href="mailto:admin@bokmails.com" class="btn-p rv d3" style="font-size:14px;padding:13px 32px"><i class="fas fa-envelope"></i> admin@bokmails.com</a>
-    <div class="rv d4" style="display:flex;justify-content:center;gap:12px;margin-top:36px;flex-wrap:wrap">
-      <a href="https://github.com/kingpin1dev" target="_blank" class="soc-btn"><i class="fab fa-github"></i></a>
-      <a href="https://discord.com/users/kingpin1dev" target="_blank" class="soc-btn"><i class="fab fa-discord"></i></a>
-      <a href="https://www.instagram.com/burakpekeel/" target="_blank" class="soc-btn"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.instagram.com/sineorbit/" target="_blank" class="soc-btn"><i class="fas fa-film"></i></a>
-      <a href="https://open.spotify.com/intl-tr/artist/7tqKllQw5Qmb8W2rxxBykt?si=5235320fb4d34e84" target="_blank" class="soc-btn"><i class="fab fa-spotify"></i></a>
-      <a href="https://apps.microsoft.com/search/publisher?name=Kingpindev&hl=tr-TR&gl=TR" target="_blank" class="soc-btn" onmouseover="this.style.color='#0078d4';this.style.borderColor='rgba(0,120,212,.4)'" onmouseout="this.style.color='';this.style.borderColor=''"><i class="fab fa-windows"></i></a>
-    </div>
-  </div>
-</section>
-
-<footer class="rv" style="border-top:1px solid var(--bd);padding:28px;text-align:center;font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,.18)">
-  <span>kingpin1dev — 2025</span>
-  <span style="margin:0 14px;opacity:.3">•</span>
-  <a href="https://kingpindev.com" style="color:inherit;text-decoration:none;transition:color .2s" onmouseover="this.style.color='var(--c)'" onmouseout="this.style.color='inherit'">kingpindev.com</a>
-</footer>
-
-<button id="btt" onclick="scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
-
-<script>
-// CURSOR
-const curEl=document.getElementById('cur'),curR=document.getElementById('cur2');
-let mx=0,my=0,lx=0,ly=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  curEl.style.transform=`translate(${mx-5}px,${my-5}px)`;
-  document.documentElement.style.setProperty('--mx',mx+'px');
-  document.documentElement.style.setProperty('--my',my+'px');
-});
-(function loopR(){
-  lx+=(mx-lx)*.1;ly+=(my-ly)*.1;
-  curR.style.transform=`translate(${lx-17}px,${ly-17}px)`;
-  requestAnimationFrame(loopR);
-})();
-document.querySelectorAll('a,button,.tilt-card,.game-card,.bento').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{curR.style.width='46px';curR.style.height='46px';curR.style.borderColor='rgba(168,85,247,.8)';});
-  el.addEventListener('mouseleave',()=>{curR.style.width='34px';curR.style.height='34px';curR.style.borderColor='rgba(168,85,247,.6)';});
-});
-
-// TYPING
-const phrases=['Yazılım Geliştirici','Video Editör','UI/UX Tasarımcı','Windows App Dev'];
-let pi=0,ci=0,del=false;
-function typeStep(){
-  const el=document.getElementById('typed'),p=phrases[pi];
-  if(!del){el.textContent=p.slice(0,++ci);if(ci===p.length){del=true;setTimeout(typeStep,1900);return;}}
-  else{el.textContent=p.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%phrases.length;}}
-  setTimeout(typeStep,del?48:88);
-}
-typeStep();
-
-// 3D TILT + SHINE
-document.querySelectorAll('.tilt-card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;
-    const rx=((y/r.height)-.5)*14,ry=-((x/r.width)-.5)*14;
-    card.style.transform=`perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) scale(1.025)`;
-    const sh=card.querySelector('.shine');
-    if(sh)sh.style.background=`radial-gradient(circle at ${x}px ${y}px,rgba(255,255,255,.1),transparent 65%)`;
-  });
-  card.addEventListener('mouseleave',()=>{
-    card.style.transform='perspective(900px) rotateX(0) rotateY(0) scale(1)';
-  });
-});
-
-// COUNTERS
-const cntObs=new IntersectionObserver(entries=>{
-  entries.forEach(en=>{
-    if(!en.isIntersecting)return;
-    const el=en.target,target=+el.dataset.count,dur=1500;
-    let t0=null;
-    (function tick(ts){
-      if(!t0)t0=ts;
-      const p=Math.min((ts-t0)/dur,1),e=p*p*(3-2*p);
-      el.textContent=Math.floor(e*target).toLocaleString('tr-TR');
-      if(p<1)requestAnimationFrame(tick);
-    })(performance.now());
-    cntObs.unobserve(el);
-  });
-},{threshold:.4});
-document.querySelectorAll('[data-count]').forEach(el=>cntObs.observe(el));
-
-// SCROLL REVEAL
-const rvObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');rvObs.unobserve(e.target);}});},{threshold:.1});
-document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
-
-// NAV + BTT
-const sections=document.querySelectorAll('section[id]'),navAs=document.querySelectorAll('.nl a');
-window.addEventListener('scroll',()=>{
-  let cur2='';
-  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur2=s.id;});
-  navAs.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur2));
-  document.getElementById('btt').classList.toggle('show',window.scrollY>500);
-},{passive:true});
-
-// LANYARD
-async function lanyard(){
-  try{
-    const d=(await(await fetch('https://api.lanyard.rest/v1/users/349640233651798027')).json()).data;
-    const sc={online:'#23a559',idle:'#f0b232',dnd:'#f23f43',offline:'#747f8d'};
-    const sl={online:'Çevrimiçi',idle:'Boşta',dnd:'Rahatsız Etme',offline:'Çevrimdışı'};
-    document.getElementById('ds-dot').style.background=sc[d.discord_status]||'#747f8d';
-    document.getElementById('ds-state').textContent=sl[d.discord_status]||'';
-    const gact=d.activities?.find(a=>a.type===0);
-    if(gact){document.getElementById('ds-game').style.display='block';document.getElementById('ds-game-name').textContent=gact.name;}
-    if(d.spotify){
-      document.getElementById('sp-dot').style.background='#1db954';
-      document.getElementById('sp-idle').style.display='none';
-      document.getElementById('sp-playing').style.display='block';
-      document.getElementById('sp-art').src=d.spotify.album_art_url;
-      document.getElementById('sp-title').textContent=d.spotify.song;
-      document.getElementById('sp-artist').textContent=d.spotify.artist;
-      const pct=(Date.now()-d.spotify.timestamps.start)/(d.spotify.timestamps.end-d.spotify.timestamps.start)*100;
-      document.getElementById('sp-bar').style.width=Math.min(pct,100).toFixed(1)+'%';
-    }
-    const vc=d.activities?.find(a=>a.name?.includes('Visual Studio Code'));
-    if(vc){
-      document.getElementById('vc-dot').style.background='#007acc';
-      document.getElementById('vc-idle').style.display='none';
-      document.getElementById('vc-active').style.display='block';
-      document.getElementById('vc-file').textContent=vc.details||'Bilinmeyen dosya';
-      document.getElementById('vc-proj').textContent=vc.state||'';
-    }
-  }catch(e){}
-}
-lanyard();setInterval(lanyard,15000);
-
-
-// INSTAGRAM
-const igPosts=[
-  {url:'https://www.instagram.com/p/DF5Ur9UN0nn/',img:'https://kingpindev.com/img/ig1.jpg',likes:'8,6B',comments:105},
-  {url:'https://www.instagram.com/p/DD2znKCtNWy/',img:'https://kingpindev.com/img/ig2.jpg',likes:'397',comments:4},
-  {url:'https://www.instagram.com/p/C9r4GdPtqMD/',img:'https://kingpindev.com/img/ig3.jpg',likes:'476',comments:26},
-  {url:'https://www.instagram.com/p/C7jI_oftVvz/',img:'https://kingpindev.com/img/ig4.jpg',likes:'91,8B',comments:457},
-  {url:'https://www.instagram.com/p/C5vgkL8M14j/',img:'https://kingpindev.com/img/ig5.jpg',likes:'72,4B',comments:297},
-  {url:'https://www.instagram.com/p/C22EVl5sPN_/',img:'https://kingpindev.com/img/ig6.jpg',likes:'5,5B',comments:58},
-];
-const igEl=document.getElementById('ig-grid');
-igPosts.forEach(p=>{
-  const a=document.createElement('a');
-  a.href=p.url;a.target='_blank';
-  a.style.cssText='display:block;position:relative;aspect-ratio:1;overflow:hidden;border-radius:10px;border:1px solid var(--bd)';
-  a.innerHTML=`<img src="${p.img}" alt="" style="width:100%;height:100%;object-fit:cover;transition:transform .4s,filter .4s;filter:saturate(.8)">
-    <div class="ig-ov" style="position:absolute;inset:0;background:rgba(14,12,30,.75);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center;gap:14px;font-size:12px;font-weight:700;color:#fff">
-      <span><i class="fas fa-heart" style="color:#ec4899;margin-right:4px"></i>${p.likes}</span>
-      <span><i class="fas fa-comment" style="margin-right:4px"></i>${p.comments}</span>
-    </div>`;
-  a.addEventListener('mouseenter',()=>{a.querySelector('img').style.transform='scale(1.07)';a.querySelector('img').style.filter='saturate(1.1)';a.querySelector('.ig-ov').style.opacity='1';});
-  a.addEventListener('mouseleave',()=>{a.querySelector('img').style.transform='';a.querySelector('img').style.filter='saturate(.8)';a.querySelector('.ig-ov').style.opacity='0';});
-  igEl.appendChild(a);
-});
-
-// Easter eggs
-(function(){
-  let b1='',b2='';
-  document.addEventListener('keydown',function(e){
-    if(e.ctrlKey||e.altKey||e.metaKey)return;
-    const k=e.key;
-    b1=(b1+k.toLowerCase()).slice(-11);
-    b2=(b2+k).slice(-8);
-    if(b1==='eriswashere'){
-      b1='';
-      const o=document.createElement('div');
-      o.style.cssText='position:fixed;inset:0;background:#fff;z-index:99999;opacity:1;pointer-events:none';
-      document.body.appendChild(o);
-      setTimeout(()=>{o.style.transition='opacity 1s ease';o.style.opacity='0';setTimeout(()=>o.remove(),1000);},4000);
-    }
-    if(b2==='04012025'){
-      b2='';
-      if(document.getElementById('ee2'))return;
-      const ov=document.createElement('div');
-      ov.id='ee2';
-      ov.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:99999;display:flex;align-items:center;justify-content:center;cursor:pointer;overflow:hidden';
-      ov.innerHTML='<div style="text-align:center;font-family:\'Space Grotesk\',sans-serif;color:#fff;font-size:clamp(22px,5vw,52px);font-weight:800;line-height:1.5;user-select:none;pointer-events:none">To eternity<br><span style="color:#f0abfc;font-style:italic">E\'</span></div>';
-      const hh=['❤️','💜','🤍','💗','💖','💝','🩷'];
-      for(let i=0;i<24;i++){
-        const h=document.createElement('span');
-        h.textContent=hh[i%hh.length];
-        h.style.cssText=`position:fixed;font-size:${16+Math.random()*28}px;left:${Math.random()*100}vw;bottom:-60px;animation:floatHeart2 ${2.5+Math.random()*2.5}s ease-in ${Math.random()*4}s infinite;pointer-events:none;z-index:100000`;
-        ov.appendChild(h);
-      }
-      document.body.appendChild(ov);
-      const dismiss=()=>{const el=document.getElementById('ee2');if(el)el.remove();document.removeEventListener('keydown',escH);};
-      const escH=(ev)=>{if(ev.key==='Escape')dismiss();};
-      document.addEventListener('keydown',escH);
-      ov.addEventListener('click',dismiss);
-      setTimeout(dismiss,7000);
-    }
-  });
-})();
-</script>
+<div class="peek" id="peek" aria-hidden="true"><img alt="" width="132" height="132"></div>
+<script src="assets/app.js" defer></script>
 </body>
 </html>
