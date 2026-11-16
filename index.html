@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Burak PEKEL — yazılım, kurgu, arayüz</title>
 <meta name="description" content="Burak PEKEL: Windows uygulamaları geliştiren yazılımcı, video editörü ve UI/UX tasarımcısı. Notchify, Mixora, Hotpad, SpotiDrop ve diğer çalışmalar.">
-<meta name="theme-color" content="#ebe6da">
+<meta name="theme-color" content="#ffe14d">
 <link rel="canonical" href="https://kingpindev.net/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Burak PEKEL">
@@ -13,16 +13,16 @@
 <meta property="og:url" content="https://kingpindev.net/">
 <meta property="og:image" content="https://kingpindev.net/img/og-image.jpg">
 <link rel="icon" type="image/png" href="img/websitesfavicon.png">
-<link rel="preload" href="assets/fonts/InstrumentSerif-normal-latin-jizBRFtNs2ka5fXjeivQ4LroWlx-6zUTjg.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/BricolageGrotesque-normal-latin-3y9K6as8bTXq_nANBjzKo3IeZx8z6up5BeSl9D4dj_x9PpZBMlGIInE.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/fonts.css">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/pop.css?v=1">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 <a class="skip" href="#work">İçeriğe geç</a>
 
 <header class="top" id="top-bar">
-  <a class="mark" href="#top" aria-label="Burak Pekel, sayfa başı">Burak Pekel<i>.</i></a>
+  <a class="mark" href="#top" aria-label="Burak Pekel, sayfa başı">Burak Pekel<i></i></a>
   <nav aria-label="Ana gezinme">
     <a href="#work">Çalışmalar</a>
     <a href="#edit">Kurgu</a>
@@ -30,120 +30,118 @@
     <a href="#now">Şimdi</a>
     <a href="#contact">İletişim</a>
   </nav>
-  <span class="tc" aria-hidden="true"><b></b><span id="tc">TRT 00:00:00:00</span></span>
+  <span class="live" aria-live="polite"><i id="live-dot"></i><span id="live-txt">Discord</span></span>
 </header>
 
 <main id="top">
 <section class="hero" aria-labelledby="name">
-  <p class="roles"><span>Yazılım geliştirici,</span><span>video editör ve</span><span>arayüz tasarımcısı.</span></p>
+  <ul class="chips"><li>Yazılım</li><li>Kurgu</li><li>Arayüz</li></ul>
 
-  <figure class="still">
-    <div class="frame"><img src="assets/burak.jpg" alt="Burak Pekel" width="460" height="460" decoding="async"><figcaption><span>Kare 01</span><span>kingpin1dev</span></figcaption></div>
+  <figure class="photo">
+    <div class="fr"><img src="assets/burak.jpg" alt="Burak Pekel" width="460" height="460" decoding="async"><figcaption>kingpin1dev</figcaption>
+      <svg class="burst" viewBox="0 0 100 100" aria-hidden="true"><polygon points="97.0,50.0 87.0,58.5 92.3,70.4 79.7,73.7 79.3,86.7 66.5,84.2 60.5,95.8 50.0,88.0 39.5,95.8 33.5,84.2 20.7,86.7 20.3,73.7 7.7,70.4 13.0,58.5 3.0,50.0 13.0,41.5 7.7,29.6 20.3,26.3 20.7,13.3 33.5,15.8 39.5,4.2 50.0,12.0 60.5,4.2 66.5,15.8 79.3,13.3 79.7,26.3 92.3,29.6 87.0,41.5" fill="#ff8fc8" stroke="#111" stroke-width="2.6" stroke-linejoin="round"/><text x="50" y="54" text-anchor="middle">merhaba!</text></svg>
+    </div>
   </figure>
 
-  <h1 class="name" id="name"><span class="ln"><span>Burak</span></span><span class="ln"><span><em>Pekel</em><span class="dot">.</span></span></span></h1>
+  <h1 class="name" id="name"><span class="ln"><span>Burak</span></span><span class="ln"><span class="o">Pekel</span></span></h1>
 
   <div class="intro">
     <p class="bio">Yaratıcı uygulamalar geliştirmeyi ve fikirleri gerçeğe dönüştürmeyi seviyorum. Aynı zamanda video kurgu ve UI/UX tasarımı tutkunu bir geliştirici ve video editörüyüm. Şu sıralar Mixora, Aurora Radios, SpotiDrop ve Hotpad üzerinde çalışıyorum.</p>
     <p class="cta">
-      <a class="btn" href="#work">Çalışmalara bak <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v11M3.5 9 8 13.5 12.5 9"/></svg></a>
-      <a class="lnk" href="https://github.com/kingpin1dev" target="_blank" rel="noopener">GitHub</a>
-      <a class="lnk" href="https://apps.microsoft.com/search/publisher?name=Kingpindev&hl=tr-TR&gl=TR" target="_blank" rel="noopener">Microsoft Store</a>
+      <a class="btn" href="#work">Çalışmalara bak <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v11M3.5 9 8 13.5 12.5 9"/></svg></a>
+      <a class="btn alt" href="https://github.com/kingpin1dev" target="_blank" rel="noopener">GitHub</a>
     </p>
-    <p class="tools" lang="en"><span>JavaScript</span><span>Python</span><span>C# / .NET</span><span>HTML / CSS</span><span>Tailwind CSS</span><span>Premiere Pro</span><span>After Effects</span><span>Figma</span></p>
   </div>
 </section>
 
-<section id="work" aria-labelledby="work-h">
-  <h2 class="sec-h" id="work-h">Çalışma<em>lar</em></h2>
-  <ul class="index">
-    <li data-r><a class="row" href="https://notchify.app" target="_blank" rel="noopener"><img class="r-ic" src="img/notchify.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">Notchify</span><span class="r-desc">Ekranın üstüne Dinamik Ada ekleyen masaüstü uygulaması: müzik, bildirimler, pano geçmişi ve widget'lar.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
-    <li data-r style="--i:1"><a class="row" href="https://mixora.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/FluentMixer.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">Mixora<small>eski adıyla Fluent Mixer</small></span><span class="r-desc">Uygulama seslerini Oyun, Sohbet, Medya ve Aux gruplarına ayıran, sanal sürücü gerektirmeyen ses mikseri.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
-    <li data-r style="--i:2"><a class="row" href="https://lunadock.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/lunadock.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">LunaDock</span><span class="r-desc">Masaüstündeki dosya, klasör ve kısayolları tek tıkla açılan düzenli yığınlara ayıran düzenleyici.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
-    <li data-r style="--i:3"><a class="row" href="https://hotpad.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/Hotpad.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">Hotpad</span><span class="r-desc">İkinci bir klavyeyi makro klavyeye çevirir: program aç, metin yaz, kısayol gönder, adım dizisi çalıştır.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
-    <li data-r style="--i:4"><a class="row" href="https://spotidrop.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/SpotiDrop.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">SpotiDrop</span><span class="r-desc">YouTube, SoundCloud ve Bandcamp'ten müziği etiketli MP3 olarak Spotify Yerel Dosyalar'a indirir.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
-    <li data-r style="--i:5"><a class="row" href="https://aurora.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/Aurora.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">Aurora Radios</span><span class="r-desc">Ruh haline, türe ya da ülkeye göre dünya radyoları. Reklamsız, hesapsız, çalan şarkı anında görünür.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
-    <li data-r><a class="row" href="https://vicesonar.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/vice-sonar.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">VICE Sonar</span><span class="r-desc">SteelSeries GG Sonar için hafif kontrol aracı: ses, ChatMix, EQ ve RGB tek bir widget'tan.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
-    <li data-r style="--i:1"><a class="row" href="https://glidesnap.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/GlideSnap.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">GlideSnap</span><span class="r-desc">Alt tuşunu basılı tutup pencereleri farenin herhangi bir yerinden sürükleyin ve boyutlandırın.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
-    <li data-r style="--i:2"><a class="row" href="https://vorganizer.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/Vorganizer.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">vOrganizer</span><span class="r-desc">Dağınık klasörleri dosya türüne göre ayıran; önce önizleyen, tek tıkla geri alabilen düzenleyici.</span><span class="r-kind" lang="en">Windows</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
-    <li data-r style="--i:3"><a class="row" href="https://bokmails.com" target="_blank" rel="noopener"><img class="r-ic" src="img/BokMail.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">BokMail</span><span class="r-desc">Kişisel adresinizi paylaşmadan kullandığınız ücretsiz geçici e-posta servisi.</span><span class="r-kind" lang="en">Web</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
-    <li data-r style="--i:4"><a class="row" href="https://goliath.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/Goliath.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">Goliath</span><span class="r-desc">Moderasyon, seviye sistemi, müzik ve yardım paneliyle sunucuyu düzenleyen çok amaçlı Discord botu.</span><span class="r-kind" lang="en">Discord botu</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
-    <li data-r style="--i:5"><a class="row" href="https://lolable.kingpindev.com" target="_blank" rel="noopener"><img class="r-ic" src="img/Lolable.png" alt="" width="44" height="44" loading="lazy"><span class="r-name">Lolable</span><span class="r-desc">League of Legends toplulukları için rank, maç dökümü ve liderlik tablosu sunan Discord botu.</span><span class="r-kind" lang="en">Discord botu</span><svg class="r-go" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16 16 6M8 6h8v8"/></svg></a></li>
+<div class="ticker" aria-hidden="true"><div><span>JavaScript</span><span>Python</span><span>C# / .NET</span><span>HTML / CSS</span><span>Tailwind CSS</span><span>Premiere Pro</span><span>After Effects</span><span>Figma</span><span>JavaScript</span><span>Python</span><span>C# / .NET</span><span>HTML / CSS</span><span>Tailwind CSS</span><span>Premiere Pro</span><span>After Effects</span><span>Figma</span><span>JavaScript</span><span>Python</span><span>C# / .NET</span><span>HTML / CSS</span><span>Tailwind CSS</span><span>Premiere Pro</span><span>After Effects</span><span>Figma</span><span>JavaScript</span><span>Python</span><span>C# / .NET</span><span>HTML / CSS</span><span>Tailwind CSS</span><span>Premiere Pro</span><span>After Effects</span><span>Figma</span></div></div>
+
+<section id="work" class="work" aria-labelledby="work-h">
+  <h2 class="sec-h" id="work-h">Çalış<span class="hl">malar</span></h2>
+  <ul class="bento">
+    <li class="tile xl" data-r style="--i:0;--bg:#c9b6ff"><a href="https://notchify.app" target="_blank" rel="noopener"><span class="pill" lang="en">Windows</span><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg></span><img class="ic" src="img/notchify.png" alt="" width="92" height="92" loading="lazy"><h3>Notchify</h3><p>Ekranın üstüne Dinamik Ada ekleyen masaüstü uygulaması: müzik, bildirimler, pano geçmişi ve widget&#x27;lar.</p></a></li>
+    <li class="tile l" data-r style="--i:1;--bg:#ffb86b"><a href="https://mixora.kingpindev.com" target="_blank" rel="noopener"><span class="pill" lang="en">Windows</span><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg></span><img class="ic" src="img/FluentMixer.png" alt="" width="92" height="92" loading="lazy"><h3>Mixora<small>eski adıyla Fluent Mixer</small></h3><p>Uygulama seslerini Oyun, Sohbet, Medya ve Aux gruplarına ayıran ses mikseri.</p></a></li>
+    <li class="tile l" data-r style="--i:2;--bg:#8fd8ff"><a href="https://lunadock.kingpindev.com" target="_blank" rel="noopener"><span class="pill" lang="en">Windows</span><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg></span><img class="ic" src="img/lunadock.png" alt="" width="92" height="92" loading="lazy"><h3>LunaDock</h3><p>Masaüstündeki dosya ve kısayolları düzenli yığınlara ayıran düzenleyici.</p></a></li>
+    <li class="tile " data-r style="--i:3;--bg:#ffe14d"><a href="https://hotpad.kingpindev.com" target="_blank" rel="noopener"><span class="pill" lang="en">Windows</span><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg></span><img class="ic" src="img/Hotpad.png" alt="" width="92" height="92" loading="lazy"><h3>Hotpad</h3><p>İkinci bir klavyeyi makro klavyeye çevirir.</p></a></li>
+    <li class="tile " data-r style="--i:0;--bg:#5cf09a"><a href="https://spotidrop.kingpindev.com" target="_blank" rel="noopener"><span class="pill" lang="en">Windows</span><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg></span><img class="ic" src="img/SpotiDrop.png" alt="" width="92" height="92" loading="lazy"><h3>SpotiDrop</h3><p>Müziği etiketli MP3 olarak Spotify Yerel Dosyalar&#x27;a indirir.</p></a></li>
+    <li class="tile " data-r style="--i:1;--bg:#ff9fd0"><a href="https://aurora.kingpindev.com" target="_blank" rel="noopener"><span class="pill" lang="en">Windows</span><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg></span><img class="ic" src="img/Aurora.png" alt="" width="92" height="92" loading="lazy"><h3>Aurora Radios</h3><p>Ruh haline, türe ya da ülkeye göre dünya radyoları.</p></a></li>
+    <li class="tile w" data-r style="--i:2;--bg:#86a9ff"><a href="https://vicesonar.kingpindev.com" target="_blank" rel="noopener"><span class="pill" lang="en">Windows</span><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg></span><img class="ic" src="img/vice-sonar.png" alt="" width="92" height="92" loading="lazy"><h3>VICE Sonar</h3><p>SteelSeries GG Sonar için hafif kontrol aracı: ses, ChatMix, EQ ve RGB.</p></a></li>
+    <li class="tile w" data-r style="--i:3;--bg:#c4ff55"><a href="https://glidesnap.kingpindev.com" target="_blank" rel="noopener"><span class="pill" lang="en">Windows</span><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg></span><img class="ic" src="img/GlideSnap.png" alt="" width="92" height="92" loading="lazy"><h3>GlideSnap</h3><p>Alt tuşuyla pencereleri farenin her yerinden sürükleyip boyutlandırın.</p></a></li>
+    <li class="tile " data-r style="--i:0;--bg:#ff9066"><a href="https://vorganizer.kingpindev.com" target="_blank" rel="noopener"><span class="pill" lang="en">Windows</span><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg></span><img class="ic" src="img/Vorganizer.png" alt="" width="92" height="92" loading="lazy"><h3>vOrganizer</h3><p>Dağınık klasörleri dosya türüne göre ayıran, tek tıkla geri alınabilen düzenleyici.</p></a></li>
+    <li class="tile " data-r style="--i:1;--bg:#fff0b8"><a href="https://bokmails.com" target="_blank" rel="noopener"><span class="pill" lang="en">Web</span><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg></span><img class="ic" src="img/BokMail.png" alt="" width="92" height="92" loading="lazy"><h3>BokMail</h3><p>Kişisel adresinizi vermeden kullandığınız geçici e-posta servisi.</p></a></li>
+    <li class="tile " data-r style="--i:2;--bg:#a6adff"><a href="https://goliath.kingpindev.com" target="_blank" rel="noopener"><span class="pill" lang="en">Discord botu</span><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg></span><img class="ic" src="img/Goliath.png" alt="" width="92" height="92" loading="lazy"><h3>Goliath</h3><p>Moderasyon, seviye, müzik ve yardım paneliyle çok amaçlı Discord botu.</p></a></li>
+    <li class="tile w" data-r style="--i:3;--bg:#ff7d7d"><a href="https://lolable.kingpindev.com" target="_blank" rel="noopener"><span class="pill" lang="en">Discord botu</span><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg></span><img class="ic" src="img/Lolable.png" alt="" width="92" height="92" loading="lazy"><h3>Lolable</h3><p>League of Legends toplulukları için rank, maç dökümü ve liderlik tablosu botu.</p></a></li>
+    <li class="tile store w" data-r><a href="https://apps.microsoft.com/search/publisher?name=Kingpindev&hl=tr-TR&gl=TR" target="_blank" rel="noopener"><span class="pill" lang="en">Microsoft Store</span><span class="go"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 15 15 5M7 5h8v8"/></svg></span><h3>Hepsi Store profilimde</h3><p>Hotpad ve SpotiDrop Store'da değil; kendi sitelerinden indirilir.</p></a></li>
   </ul>
-  <p class="store-line">Mağaza uygulamalarım <a href="https://apps.microsoft.com/search/publisher?name=Kingpindev&hl=tr-TR&gl=TR" target="_blank" rel="noopener">Microsoft Store profilimde</a>; Hotpad ve SpotiDrop kendi sitelerinden indirilir.</p>
 </section>
 
 <section id="edit" class="edit" aria-labelledby="edit-h">
-  <div class="edit-top">
-    <h2 class="sec-h" id="edit-h">Kurgu<em>.</em></h2>
-    <p class="lead">SineOrbit, film sahnelerine hayat verdiğim sinematografik edit sayfam. En çok beğenilen kare 91,8B beğeniye ulaştı.</p>
+  <div class="stamp" aria-hidden="true"><span>91,8B<small>en çok beğeni</small></span></div>
+  <h2 class="sec-h" id="edit-h">Kur<span class="hl">gu</span></h2>
+  <p class="lead">SineOrbit, film sahnelerine hayat verdiğim sinematografik edit sayfam. Aşağıda altı vitrin paylaşımı var.</p>
+  <div class="collage">
+    <a class="shot" data-r style="--i:0" href="https://www.instagram.com/p/DF5Ur9UN0nn/" target="_blank" rel="noopener"><img src="img/ig1.jpg" alt="SineOrbit paylaşımı, kare 1" width="640" height="640" loading="lazy"><span class="meta"><span>8,6B beğeni</span><span>105 yorum</span></span></a>
+    <a class="shot" data-r style="--i:1" href="https://www.instagram.com/p/DD2znKCtNWy/" target="_blank" rel="noopener"><img src="img/ig2.jpg" alt="SineOrbit paylaşımı, kare 2" width="640" height="640" loading="lazy"><span class="meta"><span>397 beğeni</span><span>4 yorum</span></span></a>
+    <a class="shot" data-r style="--i:2" href="https://www.instagram.com/p/C9r4GdPtqMD/" target="_blank" rel="noopener"><img src="img/ig3.jpg" alt="SineOrbit paylaşımı, kare 3" width="640" height="640" loading="lazy"><span class="meta"><span>476 beğeni</span><span>26 yorum</span></span></a>
+    <a class="shot" data-r style="--i:0" href="https://www.instagram.com/p/C7jI_oftVvz/" target="_blank" rel="noopener"><img src="img/ig4.jpg" alt="SineOrbit paylaşımı, kare 4" width="640" height="640" loading="lazy"><span class="meta"><span>91,8B beğeni</span><span>457 yorum</span></span></a>
+    <a class="shot" data-r style="--i:1" href="https://www.instagram.com/p/C5vgkL8M14j/" target="_blank" rel="noopener"><img src="img/ig5.jpg" alt="SineOrbit paylaşımı, kare 5" width="640" height="640" loading="lazy"><span class="meta"><span>72,4B beğeni</span><span>297 yorum</span></span></a>
+    <a class="shot" data-r style="--i:2" href="https://www.instagram.com/p/C22EVl5sPN_/" target="_blank" rel="noopener"><img src="img/ig6.jpg" alt="SineOrbit paylaşımı, kare 6" width="640" height="640" loading="lazy"><span class="meta"><span>5,5B beğeni</span><span>58 yorum</span></span></a>
   </div>
-  <div class="strip" role="list" aria-label="SineOrbit'ten altı kare" tabindex="0">
-    <a class="frame-link" role="listitem" href="https://www.instagram.com/p/DF5Ur9UN0nn/" target="_blank" rel="noopener"><div class="ph"><img src="img/ig1.jpg" alt="SineOrbit paylaşımı, kare 1" loading="lazy" width="640" height="640"></div><div class="meta"><b>01</b><span><span>8,6B beğeni</span><span>105 yorum</span></span></div></a>
-    <a class="frame-link" role="listitem" href="https://www.instagram.com/p/DD2znKCtNWy/" target="_blank" rel="noopener"><div class="ph"><img src="img/ig2.jpg" alt="SineOrbit paylaşımı, kare 2" loading="lazy" width="640" height="640"></div><div class="meta"><b>02</b><span><span>397 beğeni</span><span>4 yorum</span></span></div></a>
-    <a class="frame-link" role="listitem" href="https://www.instagram.com/p/C9r4GdPtqMD/" target="_blank" rel="noopener"><div class="ph"><img src="img/ig3.jpg" alt="SineOrbit paylaşımı, kare 3" loading="lazy" width="640" height="640"></div><div class="meta"><b>03</b><span><span>476 beğeni</span><span>26 yorum</span></span></div></a>
-    <a class="frame-link" role="listitem" href="https://www.instagram.com/p/C7jI_oftVvz/" target="_blank" rel="noopener"><div class="ph"><img src="img/ig4.jpg" alt="SineOrbit paylaşımı, kare 4" loading="lazy" width="640" height="640"></div><div class="meta"><b>04</b><span><span>91,8B beğeni</span><span>457 yorum</span></span></div></a>
-    <a class="frame-link" role="listitem" href="https://www.instagram.com/p/C5vgkL8M14j/" target="_blank" rel="noopener"><div class="ph"><img src="img/ig5.jpg" alt="SineOrbit paylaşımı, kare 5" loading="lazy" width="640" height="640"></div><div class="meta"><b>05</b><span><span>72,4B beğeni</span><span>297 yorum</span></span></div></a>
-    <a class="frame-link" role="listitem" href="https://www.instagram.com/p/C22EVl5sPN_/" target="_blank" rel="noopener"><div class="ph"><img src="img/ig6.jpg" alt="SineOrbit paylaşımı, kare 6" loading="lazy" width="640" height="640"></div><div class="meta"><b>06</b><span><span>5,5B beğeni</span><span>58 yorum</span></span></div></a>
-  </div>
-  <p class="hint">Yana kaydır</p>
   <div class="edit-foot">
     <p>Kurgunun yanında müzik de üretiyorum; Spotify'da sanatçı profilim var.</p>
-    <div class="pairs"><a class="lnk" href="https://www.instagram.com/sineorbit/" target="_blank" rel="noopener">@sineorbit</a><a class="lnk" href="https://open.spotify.com/intl-tr/artist/7tqKllQw5Qmb8W2rxxBykt?si=5235320fb4d34e84" target="_blank" rel="noopener">Spotify sanatçı profili</a></div>
+    <div class="links"><a class="btn" href="https://www.instagram.com/sineorbit/" target="_blank" rel="noopener">@sineorbit</a><a class="btn" href="https://open.spotify.com/intl-tr/artist/7tqKllQw5Qmb8W2rxxBykt?si=5235320fb4d34e84" target="_blank" rel="noopener">Spotify profili</a></div>
   </div>
 </section>
 
-<section id="setup" aria-labelledby="setup-h">
-  <h2 class="sec-h" id="setup-h">Masa<em>üstü</em></h2>
+<section id="setup" class="setup" aria-labelledby="setup-h">
+  <h2 class="sec-h" id="setup-h">Masa<span class="hl">üstü</span></h2>
   <div class="setup-grid">
-    <dl class="spec">
-      <div data-r><dt>İşletim sistemi</dt><dd>Windows 11 Pro</dd></div>
-      <div data-r style="--i:1"><dt>İşlemci</dt><dd>AMD Ryzen 5 5600X</dd></div>
-      <div data-r style="--i:2"><dt>Ekran kartı</dt><dd>NVIDIA RTX 3060</dd></div>
-      <div data-r style="--i:3"><dt>Bellek</dt><dd>16 GB DDR4 3200 MHz</dd></div>
-      <div data-r style="--i:4"><dt>Ekran</dt><dd>2560 × 1440 · 144 Hz</dd></div>
-      <div data-r style="--i:5"><dt>Depolama</dt><dd>1 TB NVMe SSD</dd></div>
-      <div data-r style="--i:6"><dt>Editör</dt><dd>VS Code</dd></div>
-      <div data-r style="--i:7"><dt>Kabuk</dt><dd>PowerShell 7</dd></div>
+    <dl class="spec" data-r>
+      <div><dt>İşletim sistemi</dt><dd>Windows 11 Pro</dd></div>
+      <div><dt>İşlemci</dt><dd>AMD Ryzen 5 5600X</dd></div>
+      <div><dt>Ekran kartı</dt><dd>NVIDIA RTX 3060</dd></div>
+      <div><dt>Bellek</dt><dd>16 GB DDR4 3200 MHz</dd></div>
+      <div><dt>Ekran</dt><dd>2560 × 1440 · 144 Hz</dd></div>
+      <div><dt>Depolama</dt><dd>1 TB NVMe SSD</dd></div>
+      <div><dt>Editör</dt><dd>VS Code</dd></div>
+      <div><dt>Kabuk</dt><dd>PowerShell 7</dd></div>
     </dl>
     <figure class="monitor" data-r>
-      <svg viewBox="0 0 400 280" role="img" aria-label="Ekran çizimi: 2560 piksel genişlik, 1440 piksel yükseklik, 144 hertz">
-        <g fill="none" stroke="#15130f" stroke-width="1.2">
-          <rect x="20" y="28" width="320" height="180" rx="3" stroke-width="1.6"/>
-          <rect x="30" y="38" width="300" height="160" stroke-opacity=".35" stroke-dasharray="3 3"/>
-          <path d="M160 208v22M118 232h84"/>
-          <!-- width dimension -->
-          <path d="M20 12v12M340 12v12M20 18h320" stroke-opacity=".6"/><path d="M20 18l7-3v6zM340 18l-7-3v6z" fill="#15130f" stroke="none"/>
-          <!-- height dimension -->
-          <path d="M356 28h12M356 208h12M362 28v180" stroke-opacity=".6"/><path d="M362 28l-3 7h6zM362 208l-3-7h6z" fill="#15130f" stroke="none"/>
+      <svg viewBox="0 0 400 290" role="img" aria-label="Ekran çizimi: 2560 piksel genişlik, 1440 piksel yükseklik, 144 hertz">
+        <g stroke="#111" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
+          <rect x="26" y="40" width="320" height="188" rx="14" fill="#fff"/>
+          <rect x="40" y="54" width="292" height="150" rx="6" fill="#ffe14d" stroke-width="2.4"/>
+          <path d="M186 228v26M130 258h112" fill="none"/>
         </g>
-        <text x="180" y="9" text-anchor="middle">2560 PX</text>
-        <text x="380" y="122" transform="rotate(90 380 122)" text-anchor="middle">1440 PX</text>
-        <text x="180" y="124" text-anchor="middle" style="font-size:26px;fill:#15130f;font-family:'Instrument Serif',serif;letter-spacing:0">144 Hz</text>
-        <text x="180" y="262" text-anchor="middle">16 : 9</text>
+        <g fill="none" stroke="#111" stroke-width="2"><path d="M26 16v14M346 16v14M26 23h320"/><path d="M366 40h14M366 228h14M373 40v188"/></g>
+        <g fill="#111"><path d="M26 23l8-4v8zM346 23l-8-4v8z"/><path d="M373 40l-4 8h8zM373 228l-4-8h8z"/></g>
+        <text x="186" y="11" text-anchor="middle">2560 PX</text>
+        <text x="396" y="134" transform="rotate(90 396 134)" text-anchor="middle">1440 PX</text>
+        <text x="186" y="150" text-anchor="middle" style="font:800 46px 'Bricolage Grotesque',sans-serif;letter-spacing:-.04em">144 Hz</text>
+        <text x="186" y="282" text-anchor="middle">16 : 9</text>
       </svg>
       <figcaption>Ana ekranın ölçüleri.</figcaption>
     </figure>
   </div>
 </section>
 
-<section id="now" class="edit" aria-labelledby="now-h">
-  <h2 class="sec-h" id="now-h">Şimdi<em>.</em></h2>
+<section id="now" class="now" aria-labelledby="now-h">
+  <h2 class="sec-h" id="now-h">Şim<span class="hl">di</span></h2>
   <p class="lead">Discord durumumdan canlı okunur, on beş saniyede bir yenilenir.</p>
   <ul class="now-list">
     <li data-r><div class="now-name">Discord<small>kingpin1dev</small></div><div class="now-body"><div class="t" id="ds-state-long">Yükleniyor…</div><div class="s" id="ds-game" hidden>Oynuyor: <span id="ds-game-name"></span></div></div><span class="state"><i id="ds-dot"></i><span id="ds-state">…</span></span></li>
-    <li data-r style="--i:1"><div class="now-name">Spotify</div><div class="now-body"><div id="sp-idle" class="s">Şu an bir şey çalmıyor.</div><div id="sp-playing" hidden><div class="sp-line"><img id="sp-art" src="" alt="" width="52" height="52"><div><div class="t" id="sp-title"></div><div class="s" id="sp-artist"></div></div></div><div class="sp-bar" aria-hidden="true"><div id="sp-bar"></div></div></div></div><span class="state"><i id="sp-dot"></i><span id="sp-state">Boşta</span></span></li>
+    <li data-r style="--i:1"><div class="now-name">Spotify</div><div class="now-body"><div id="sp-idle" class="s">Şu an bir şey çalmıyor.</div><div id="sp-playing" hidden><div class="sp-line"><img id="sp-art" src="" alt="" width="56" height="56"><div><div class="t" id="sp-title"></div><div class="s" id="sp-artist"></div></div></div><div class="sp-bar" aria-hidden="true"><div id="sp-bar"></div></div></div></div><span class="state"><i id="sp-dot"></i><span id="sp-state">Boşta</span></span></li>
     <li data-r style="--i:2"><div class="now-name">VS Code</div><div class="now-body"><div id="vc-idle" class="s">Şu an kod yazmıyor.</div><div id="vc-active" hidden><div class="t" id="vc-file"></div><div class="s" id="vc-proj"></div></div></div><span class="state"><i id="vc-dot"></i><span id="vc-state">Kapalı</span></span></li>
     <li data-r style="--i:3"><div class="now-name">Xbox<small>Kingpin7841</small></div><div class="now-body"><div class="s">Xbox oyunlarını Steam'in yanı sıra takip ettiğim platform. Game Pass ve Xbox'a özel oyunlar için.</div></div><span class="state"></span></li>
   </ul>
 </section>
 
-<section id="steam" aria-labelledby="steam-h">
-  <h2 class="sec-h" id="steam-h">Steam<em>.</em></h2>
+<section id="steam" class="steam" aria-labelledby="steam-h">
+  <h2 class="sec-h" id="steam-h">Ste<span class="hl">am</span></h2>
   <div class="steam-grid">
     <div class="steam-copy">
-      <p data-r>Kütüphanemde <b class="num">159</b> oyun var; <b class="num">40</b> tanesini yüzde yüz bitirdim ve toplamda <b class="num">9.784</b> başarım açtım. Bitirme oranım <b class="num">%74</b>.</p>
-      <p class="small" data-r style="--i:1">Steam seviyem <span class="num">36</span> · <span>#1473 Vice Club</span></p>
+      <p data-r>Kütüphanemde <mark>159</mark> oyun var; <mark>40</mark> tanesini yüzde yüz bitirdim ve toplamda <mark>9.784</mark> başarım açtım. Bitirme oranım <mark>%74</mark>.</p>
+      <p class="small" data-r style="--i:1">Steam seviyem 36 · #1473 Vice Club</p>
     </div>
     <div class="posters">
       <a class="poster" data-r href="https://store.steampowered.com/app/1091500/" target="_blank" rel="noopener"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/library_600x900.jpg" alt="Cyberpunk 2077" loading="lazy" width="300" height="450"><span>Cyberpunk 2077</span><small>%85</small></a>
@@ -154,22 +152,21 @@
   </div>
 </section>
 
-<section id="contact" class="dark credits" aria-labelledby="contact-h">
-  <h2 class="sec-h" id="contact-h">Birlikte bir şeyler <em>yapalım.</em></h2>
+<section id="contact" class="contact" aria-labelledby="contact-h">
+  <h2 class="sec-h" id="contact-h">Birlikte bir şeyler <span class="hl">yapalım.</span></h2>
   <p class="say">Proje fikrin mi var, birlikte çalışmak mı istiyorsun? Bir merhaba bile yeter.</p>
   <a class="mail" href="mailto:admin@bokmails.com">admin@bokmails.com</a>
   <ul class="reach">
-    <li><a href="https://github.com/kingpin1dev" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
-    <li><a href="https://discord.com/users/kingpin1dev" target="_blank" rel="noopener">Discord <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
-    <li><a href="https://www.instagram.com/burakpekeel/" target="_blank" rel="noopener">Instagram <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
-    <li><a href="https://www.instagram.com/sineorbit/" target="_blank" rel="noopener">SineOrbit <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
-    <li><a href="https://open.spotify.com/intl-tr/artist/7tqKllQw5Qmb8W2rxxBykt?si=5235320fb4d34e84" target="_blank" rel="noopener">Spotify <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
+    <li><a href="https://github.com/kingpin1dev" target="_blank" rel="noopener">GitHub <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
+    <li><a href="https://discord.com/users/kingpin1dev" target="_blank" rel="noopener">Discord <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
+    <li><a href="https://www.instagram.com/burakpekeel/" target="_blank" rel="noopener">Instagram <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
+    <li><a href="https://www.instagram.com/sineorbit/" target="_blank" rel="noopener">SineOrbit <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
+    <li><a href="https://open.spotify.com/intl-tr/artist/7tqKllQw5Qmb8W2rxxBykt?si=5235320fb4d34e84" target="_blank" rel="noopener">Spotify <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 10.5l7-7M4.5 3.5h6v6"/></svg></a></li>
   </ul>
   <div class="foot"><span>kingpin1dev · 2026</span><a href="https://kingpindev.com">kingpindev.com</a></div>
 </section>
 </main>
 
-<div class="peek" id="peek" aria-hidden="true"><img alt="" width="132" height="132"></div>
-<script src="assets/app.js" defer></script>
+<script src="assets/pop.js?v=1" defer></script>
 </body>
 </html>
