@@ -59,7 +59,7 @@ SOC = [("GitHub", "https://github.com/kingpin1dev"), ("Discord", "https://discor
        ("Spotify", "https://open.spotify.com/intl-tr/artist/7tqKllQw5Qmb8W2rxxBykt?si=5235320fb4d34e84")]
 reach = "\n    ".join('<li><a href="%s" target="_blank" rel="noopener">%s %s</a></li>' % (u, n, ARROW_S) for n, u in SOC)
 
-SP = [("Windows 11 Pro", "İşletim sistemi"), ("AMD Ryzen 5 5600X", "İşlemci"), ("NVIDIA RTX 3060", "Ekran kartı"), ("16 GB DDR4 3200 MHz", "Bellek"), ("2560 × 1440 · 144 Hz", "Ekran"), ("1 TB NVMe SSD", "Depolama"), ("VS Code", "Editör"), ("PowerShell 7", "Kabuk")]
+SP = [("Windows 11 Pro", "İşletim sistemi"), ("AMD Ryzen 5 5600X", "İşlemci"), ("NVIDIA RTX 3060", "Ekran kartı"), ("16 GB DDR4 3200 MHz", "Bellek"), ("2 × 2560 × 1440 · 180 Hz", "Ekranlar"), ("1 TB NVMe SSD", "Depolama"), ("VS Code", "Editör"), ("PowerShell 7", "Kabuk")]
 spec = "\n      ".join('<div><dt>%s</dt><dd>%s</dd></div>' % (k, v) for v, k in SP)
 
 PAGE = open(os.path.join(ROOT, "assets", "index.tpl.html"), encoding="utf-8").read()
