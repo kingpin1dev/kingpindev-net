@@ -36,7 +36,7 @@ a{color:inherit;text-decoration-thickness:2px;text-underline-offset:.2em}
 .chips li{font:700 clamp(14px,1.3vw,18px)/1 var(--display);padding:11px 18px;border:var(--bd);border-radius:999px;box-shadow:4px 4px 0 var(--ink);transition:transform .35s var(--pop)}
 .chips li:nth-child(1){background:var(--pink);transform:rotate(-3deg)}.chips li:nth-child(2){background:var(--cyan);transform:rotate(2deg)}.chips li:nth-child(3){background:var(--lime);transform:rotate(-1.5deg)}
 .chips li:hover{transform:rotate(0) translateY(-4px) scale(1.06)}
-.name{grid-column:1/-1;margin:0;font:800 clamp(5rem,19.5vw,22rem)/.8 var(--display);letter-spacing:-.06em;display:flex;flex-direction:column;position:relative;z-index:2}
+.name{grid-column:1/-1;margin:0;font:800 clamp(5rem,19.5vw,22rem)/.8 var(--display);letter-spacing:-.035em;display:flex;flex-direction:column;position:relative;z-index:2}
 .name .ln{display:block;overflow:hidden;padding:.06em .08em .12em 0;margin-bottom:-.1em}.name .ln>span{display:inline-block}
 .name .ln:nth-child(2){padding-left:.5em}
 .name .o{color:var(--white);-webkit-text-stroke:.025em var(--ink);paint-order:stroke fill}
